@@ -1,0 +1,517 @@
+[
+  {
+    "id": "cursor",
+    "name": "Cursor",
+    "url": "https://cursor.com",
+    "category": "Coding Agents",
+    "description": "AI coding environment with an agent for building software, plus cloud agents on paid plans.",
+    "pricing_summary": "Free plan $0/month with limited agent and chat usage; Premium $30/month, Super $100/month, Ultra $200/month; Teams from $30/user/month.",
+    "free_tier": true,
+    "pricing_url": "https://cursor.com/pricing",
+    "tags": [
+      "ide",
+      "agent",
+      "cloud-agents"
+    ],
+    "verified_on": "2026-10-15"
+  },
+  {
+    "id": "claude-code",
+    "name": "Claude Code",
+    "url": "https://claude.com/product/claude-code",
+    "category": "Coding Agents",
+    "description": "Anthropic's coding agent, included with Claude paid plans.",
+    "pricing_summary": "Included with Claude Pro (listed $17/month with annual discount) and Max (from $100/month); the Free plan's feature table lists Claude Code as 'No'.",
+    "free_tier": false,
+    "pricing_url": "https://claude.com/pricing",
+    "tags": [
+      "cli",
+      "agent",
+      "anthropic"
+    ],
+    "verified_on": "2026-10-15"
+  },
+  {
+    "id": "codex",
+    "name": "OpenAI Codex",
+    "url": "https://developers.openai.com/codex",
+    "category": "Coding Agents",
+    "description": "OpenAI's coding agent available in the CLI, IDE extension, web and desktop app.",
+    "pricing_summary": "Included in ChatGPT plans: Free $0, Go $8/month, Plus $20/month, Pro from $100/month; API-key usage billed at API rates.",
+    "free_tier": true,
+    "pricing_url": "https://developers.openai.com/codex/pricing",
+    "tags": [
+      "cli",
+      "agent",
+      "openai"
+    ],
+    "verified_on": "2026-10-15"
+  },
+  {
+    "id": "github-copilot",
+    "name": "GitHub Copilot",
+    "url": "https://github.com/features/copilot",
+    "category": "Coding Agents",
+    "description": "GitHub's AI coding assistant for editors, the CLI and GitHub itself.",
+    "pricing_summary": "Free plan ($0, limited chat and agent usage) plus paid Pro, Pro+ and Max plans; exact paid prices differ across sections of the plans page, so check the official page.",
+    "free_tier": true,
+    "pricing_url": "https://github.com/features/copilot/plans",
+    "tags": [
+      "ide",
+      "agent",
+      "github"
+    ],
+    "verified_on": "2026-10-15"
+  },
+  {
+    "id": "cline",
+    "name": "Cline",
+    "url": "https://cline.bot",
+    "category": "Coding Agents",
+    "description": "Open-source autonomous coding agent that runs in your editor and works with your own model API keys.",
+    "pricing_summary": "Free for individual developers (open-source extension); you pay only for AI inference with your chosen provider. Enterprise is custom.",
+    "free_tier": true,
+    "pricing_url": "https://cline.bot/pricing",
+    "tags": [
+      "open-source",
+      "vscode",
+      "byok"
+    ],
+    "verified_on": "2026-10-15"
+  },
+  {
+    "id": "aider",
+    "name": "Aider",
+    "url": "https://aider.chat",
+    "category": "Coding Agents",
+    "description": "Open-source AI pair-programming tool that runs in your terminal and integrates with git.",
+    "pricing_summary": "Free open-source software (Apache-2.0 per its GitHub repo); you pay your chosen LLM provider for usage.",
+    "free_tier": true,
+    "pricing_url": "https://aider.chat",
+    "tags": [
+      "open-source",
+      "cli",
+      "git"
+    ],
+    "verified_on": "2026-10-15"
+  },
+  {
+    "id": "windsurf",
+    "name": "Windsurf",
+    "url": "https://windsurf.com",
+    "category": "Coding Agents",
+    "description": "AI coding tool with agents and tab completions, available as an editor and CLI.",
+    "pricing_summary": "Free $0/month (light quota); Pro $20/month; Max $200/month; Team $80/month.",
+    "free_tier": true,
+    "pricing_url": "https://windsurf.com/pricing",
+    "tags": [
+      "ide",
+      "agent"
+    ],
+    "verified_on": "2026-10-15"
+  },
+  {
+    "id": "lovable",
+    "name": "Lovable",
+    "url": "https://lovable.dev",
+    "category": "App Builders",
+    "description": "AI software engineer that builds websites and web apps from chat prompts.",
+    "pricing_summary": "Free plan: 5 build credits per day (up to 30/month) plus 20 monthly Cloud credits; paid Pro and Business plans are priced by credits.",
+    "free_tier": true,
+    "pricing_url": "https://lovable.dev/pricing",
+    "tags": [
+      "no-code",
+      "web-apps",
+      "hosting"
+    ],
+    "verified_on": "2026-10-15"
+  },
+  {
+    "id": "bolt",
+    "name": "Bolt",
+    "url": "https://bolt.new",
+    "category": "App Builders",
+    "description": "Prompt-to-app builder for creating and deploying web apps in the browser.",
+    "pricing_summary": "Free plan with a 300,000 token daily limit; Pro $25/month billed monthly; Teams $30/month per member.",
+    "free_tier": true,
+    "pricing_url": "https://bolt.new/pricing",
+    "tags": [
+      "no-code",
+      "web-apps"
+    ],
+    "verified_on": "2026-10-15"
+  },
+  {
+    "id": "v0",
+    "name": "v0",
+    "url": "https://v0.app",
+    "category": "App Builders",
+    "description": "Vercel's AI app and UI builder that deploys to Vercel and syncs with GitHub.",
+    "pricing_summary": "Free $0/month with a daily message limit; Plus $30/user/month; Business $100/user/month.",
+    "free_tier": true,
+    "pricing_url": "https://v0.app/pricing",
+    "tags": [
+      "ui",
+      "vercel",
+      "web-apps"
+    ],
+    "verified_on": "2026-10-15"
+  },
+  {
+    "id": "replit",
+    "name": "Replit",
+    "url": "https://replit.com",
+    "category": "App Builders",
+    "description": "Browser-based platform where Replit Agent builds, hosts and deploys apps from prompts.",
+    "pricing_summary": "Free mode available (no credit card required); Core $20/month ($18 billed annually); Pro $100/month ($90 billed annually); Enterprise custom.",
+    "free_tier": true,
+    "pricing_url": "https://replit.com/pricing",
+    "tags": [
+      "no-code",
+      "hosting",
+      "agent"
+    ],
+    "verified_on": "2026-10-15"
+  },
+  {
+    "id": "supabase",
+    "name": "Supabase",
+    "url": "https://supabase.com",
+    "category": "Databases & Backends",
+    "description": "Open-source-based Postgres backend platform with auth, storage and APIs.",
+    "pricing_summary": "Free $0/month (free projects paused after 1 week of inactivity, limit of 2 active projects); Pro from $25/month; Team from $599/month.",
+    "free_tier": true,
+    "pricing_url": "https://supabase.com/pricing",
+    "tags": [
+      "postgres",
+      "auth",
+      "backend",
+      "vector"
+    ],
+    "verified_on": "2026-10-15"
+  },
+  {
+    "id": "neon",
+    "name": "Neon",
+    "url": "https://neon.com",
+    "category": "Databases & Backends",
+    "description": "Serverless Postgres with branching and usage-based pricing.",
+    "pricing_summary": "Free $0/month; Launch and Scale plans are usage-based.",
+    "free_tier": true,
+    "pricing_url": "https://neon.com/pricing",
+    "tags": [
+      "postgres",
+      "serverless",
+      "branching"
+    ],
+    "verified_on": "2026-10-15"
+  },
+  {
+    "id": "turso",
+    "name": "Turso",
+    "url": "https://turso.tech",
+    "category": "Databases & Backends",
+    "description": "SQLite-compatible cloud database platform built for many lightweight databases.",
+    "pricing_summary": "Free $0/month (100 databases, 5GB storage); Developer $4.99/month; Scaler $24.92/month; Scaler Pro $416.58/month.",
+    "free_tier": true,
+    "pricing_url": "https://turso.tech/pricing",
+    "tags": [
+      "sqlite",
+      "edge"
+    ],
+    "verified_on": "2026-10-15"
+  },
+  {
+    "id": "planetscale",
+    "name": "PlanetScale",
+    "url": "https://planetscale.com",
+    "category": "Databases & Backends",
+    "description": "Managed MySQL (Vitess) and Postgres databases.",
+    "pricing_summary": "Postgres single node starting at $5/month; Metal starting at $50/month; no free plan shown on the pricing page.",
+    "free_tier": false,
+    "pricing_url": "https://planetscale.com/pricing",
+    "tags": [
+      "mysql",
+      "postgres",
+      "vitess"
+    ],
+    "verified_on": "2026-10-15"
+  },
+  {
+    "id": "pinecone",
+    "name": "Pinecone",
+    "url": "https://www.pinecone.io",
+    "category": "Databases & Backends",
+    "description": "Fully managed vector database for search and AI applications.",
+    "pricing_summary": "Starter plan is free; Builder $20/month flat; Standard from $50/month minimum usage (3-week trial with $300 credits).",
+    "free_tier": true,
+    "pricing_url": "https://www.pinecone.io/pricing/",
+    "tags": [
+      "vector-db",
+      "managed"
+    ],
+    "verified_on": "2026-10-15"
+  },
+  {
+    "id": "qdrant",
+    "name": "Qdrant",
+    "url": "https://qdrant.tech",
+    "category": "Databases & Backends",
+    "description": "Open-source vector search engine with a managed cloud.",
+    "pricing_summary": "Free tier 'free forever' (single-node cluster, 4 GB disk); Standard tier usage-based; Premium tier available.",
+    "free_tier": true,
+    "pricing_url": "https://qdrant.tech/pricing/",
+    "tags": [
+      "vector-db",
+      "open-source"
+    ],
+    "verified_on": "2026-10-15"
+  },
+  {
+    "id": "weaviate",
+    "name": "Weaviate",
+    "url": "https://weaviate.io",
+    "category": "Databases & Backends",
+    "description": "Vector database with managed cloud clusters.",
+    "pricing_summary": "Free forever $0/mo sandbox (no credit card; 1 cluster per user); Flex from $45/mo pay-as-you-go; higher tiers available.",
+    "free_tier": true,
+    "pricing_url": "https://weaviate.io/pricing",
+    "tags": [
+      "vector-db",
+      "managed"
+    ],
+    "verified_on": "2026-10-15"
+  },
+  {
+    "id": "chroma",
+    "name": "Chroma",
+    "url": "https://www.trychroma.com",
+    "category": "Databases & Backends",
+    "description": "Open-source search infrastructure for AI with a hosted cloud.",
+    "pricing_summary": "Starter $0/month plus usage with free credits; Team $250/month plus usage; usage-billed per GiB written, stored and queried.",
+    "free_tier": true,
+    "pricing_url": "https://www.trychroma.com/pricing",
+    "tags": [
+      "vector-db",
+      "open-source"
+    ],
+    "verified_on": "2026-10-15"
+  },
+  {
+    "id": "firebase",
+    "name": "Firebase",
+    "url": "https://firebase.google.com",
+    "category": "Databases & Backends",
+    "description": "Google's app development platform with databases, auth, hosting and functions.",
+    "pricing_summary": "No-cost Spark plan with included usage; pay-as-you-go Blaze plan above that.",
+    "free_tier": true,
+    "pricing_url": "https://firebase.google.com/pricing",
+    "tags": [
+      "backend",
+      "google",
+      "auth"
+    ],
+    "verified_on": "2026-10-15"
+  },
+  {
+    "id": "langchain",
+    "name": "LangChain",
+    "url": "https://www.langchain.com",
+    "category": "Agent Frameworks",
+    "description": "Framework (MIT-licensed on GitHub) for building agents and LLM apps, with LangSmith for observability.",
+    "pricing_summary": "Framework is open source; LangSmith Developer $0/seat then pay-as-you-go, Plus $39/seat/month, Enterprise custom.",
+    "free_tier": true,
+    "pricing_url": "https://www.langchain.com/pricing",
+    "tags": [
+      "open-source",
+      "agents",
+      "python"
+    ],
+    "verified_on": "2026-10-15"
+  },
+  {
+    "id": "llamaindex",
+    "name": "LlamaIndex",
+    "url": "https://www.llamaindex.ai",
+    "category": "Agent Frameworks",
+    "description": "Data framework (MIT-licensed on GitHub) and LlamaCloud for document parsing and retrieval for LLM apps.",
+    "pricing_summary": "LlamaCloud Free $0/month (10K credits); Starter $50/month (40K credits); higher tiers available.",
+    "free_tier": true,
+    "pricing_url": "https://www.llamaindex.ai/pricing",
+    "tags": [
+      "open-source",
+      "rag",
+      "documents"
+    ],
+    "verified_on": "2026-10-15"
+  },
+  {
+    "id": "crewai",
+    "name": "CrewAI",
+    "url": "https://www.crewai.com",
+    "category": "Agent Frameworks",
+    "description": "Framework (MIT-licensed on GitHub) and platform for building multi-agent workflows.",
+    "pricing_summary": "Basic plan is free; Enterprise is custom pricing.",
+    "free_tier": true,
+    "pricing_url": "https://www.crewai.com/pricing",
+    "tags": [
+      "open-source",
+      "multi-agent",
+      "python"
+    ],
+    "verified_on": "2026-10-15"
+  },
+  {
+    "id": "autogen",
+    "name": "AutoGen",
+    "url": "https://microsoft.github.io/autogen/",
+    "category": "Agent Frameworks",
+    "description": "Microsoft's open-source framework for creating multi-agent AI applications.",
+    "pricing_summary": "Free open-source software (MIT and CC-BY-4.0 licenses per its GitHub repo).",
+    "free_tier": true,
+    "pricing_url": "https://github.com/microsoft/autogen",
+    "tags": [
+      "open-source",
+      "multi-agent",
+      "microsoft"
+    ],
+    "verified_on": "2026-10-15"
+  },
+  {
+    "id": "openai-api",
+    "name": "OpenAI API",
+    "url": "https://platform.openai.com/docs/pricing",
+    "category": "LLM APIs & Inference",
+    "description": "OpenAI's developer API for GPT models, embeddings, audio and image generation.",
+    "pricing_summary": "Pay per 1M tokens (e.g. gpt-6-luna $0.10 input / $0.50 output; gpt-6.1-sol $2.00 / $10.00); free tier not stated on the pricing page.",
+    "free_tier": null,
+    "pricing_url": "https://platform.openai.com/docs/pricing",
+    "tags": [
+      "llm-api",
+      "openai"
+    ],
+    "verified_on": "2026-10-15"
+  },
+  {
+    "id": "anthropic-api",
+    "name": "Anthropic API (Claude Platform)",
+    "url": "https://claude.com/platform/api",
+    "category": "LLM APIs & Inference",
+    "description": "Anthropic's developer platform for building with Claude models.",
+    "pricing_summary": "Usage-based per million tokens (MTok) by model with prompt-caching rates; free tier not stated on the pricing page.",
+    "free_tier": null,
+    "pricing_url": "https://claude.com/pricing",
+    "tags": [
+      "llm-api",
+      "anthropic"
+    ],
+    "verified_on": "2026-10-15"
+  },
+  {
+    "id": "gemini-api",
+    "name": "Google Gemini API",
+    "url": "https://ai.google.dev",
+    "category": "LLM APIs & Inference",
+    "description": "Google's Gemini Developer API for building with Gemini models.",
+    "pricing_summary": "Free tier available ('start building free of charge with generous limits'), then prepaid and pay-as-you-go paid tier per 1M tokens.",
+    "free_tier": true,
+    "pricing_url": "https://ai.google.dev/gemini-api/docs/pricing",
+    "tags": [
+      "llm-api",
+      "google"
+    ],
+    "verified_on": "2026-10-15"
+  },
+  {
+    "id": "groq",
+    "name": "Groq",
+    "url": "https://groq.com",
+    "category": "LLM APIs & Inference",
+    "description": "AI inference cloud built on Groq's LPU hardware.",
+    "pricing_summary": "Pricing not verified: the fetched pricing page showed no plan details.",
+    "free_tier": null,
+    "pricing_url": "https://groq.com/pricing",
+    "tags": [
+      "inference",
+      "fast"
+    ],
+    "verified_on": "2026-10-15"
+  },
+  {
+    "id": "openrouter",
+    "name": "OpenRouter",
+    "url": "https://openrouter.ai",
+    "category": "LLM APIs & Inference",
+    "description": "Unified API for accessing many LLM providers and models.",
+    "pricing_summary": "Free plan (25+ free models, 50 requests/day); Standard pay-as-you-go with 5.5% platform fee; Business 8%.",
+    "free_tier": true,
+    "pricing_url": "https://openrouter.ai/pricing",
+    "tags": [
+      "llm-api",
+      "gateway",
+      "multi-model"
+    ],
+    "verified_on": "2026-10-15"
+  },
+  {
+    "id": "ollama",
+    "name": "Ollama",
+    "url": "https://ollama.com",
+    "category": "LLM APIs & Inference",
+    "description": "Tool for running open models locally, with optional cloud models.",
+    "pricing_summary": "Free $0 (download and run models; cloud models via pay-as-you-go credits); Pro $20/month; Max tier also listed.",
+    "free_tier": true,
+    "pricing_url": "https://ollama.com/pricing",
+    "tags": [
+      "local",
+      "open-models"
+    ],
+    "verified_on": "2026-10-15"
+  },
+  {
+    "id": "n8n",
+    "name": "n8n",
+    "url": "https://n8n.io",
+    "category": "Automation",
+    "description": "Workflow automation platform with AI capabilities, hosted or self-hosted.",
+    "pricing_summary": "Cloud plans billed by workflow executions with a free trial (no credit card for most plans); a self-hosted option exists. Exact free-plan status not confirmed.",
+    "free_tier": null,
+    "pricing_url": "https://n8n.io/pricing/",
+    "tags": [
+      "workflow",
+      "self-hostable",
+      "ai"
+    ],
+    "verified_on": "2026-10-15"
+  },
+  {
+    "id": "zapier",
+    "name": "Zapier",
+    "url": "https://zapier.com",
+    "category": "Automation",
+    "description": "No-code automation connecting thousands of apps, with AI features.",
+    "pricing_summary": "Free forever $0/month; Professional from $19.99/month; Team from $69/month.",
+    "free_tier": true,
+    "pricing_url": "https://zapier.com/pricing",
+    "tags": [
+      "no-code",
+      "integrations"
+    ],
+    "verified_on": "2026-10-15"
+  },
+  {
+    "id": "make",
+    "name": "Make",
+    "url": "https://www.make.com",
+    "category": "Automation",
+    "description": "Visual automation platform for building scenarios across apps.",
+    "pricing_summary": "Free plan with 1,000 credits/month; paid plans by credit volume (Core, Pro, Teams, Enterprise).",
+    "free_tier": true,
+    "pricing_url": "https://www.make.com/en/pricing",
+    "tags": [
+      "no-code",
+      "integrations"
+    ],
+    "verified_on": "2026-10-15"
+  }
+]

@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Agent Radar – AI tools directory</title>
+<meta name="description" content="A directory of AI tools: coding agents, app builders, databases, frameworks, LLM APIs and automation.">
+<link rel="stylesheet" href="style.css">
+</head><body>
+<header><h1>📡 Agent Radar</h1><p>A directory of AI tools. Pricing details checked on official sites.</p></header>
+<main>
+<div class="controls">
+<input id="q" type="search" placeholder="Search name, description, tags…" aria-label="Search">
+<select id="cat" aria-label="Category"><option value="">All categories</option></select>
+<label class="chk"><input id="free" type="checkbox"> Free tier only</label>
+</div>
+<p id="count" aria-live="polite"></p>
+<div id="grid" class="grid"></div>
+</main>
+<footer>Pricing changes often — always confirm on the tool's official pricing page. Data: <a href="data/tools.json">tools.json</a></footer>
+<script src="app.js"></script>
+</body></html>
