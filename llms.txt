@@ -1,0 +1,52 @@
+# Agent Radar
+
+> Agent Radar is a directory of 33 AI tools (coding agents, app builders, databases and backends, agent frameworks, LLM APIs, automation) with pricing summaries and free-tier information taken from each tool's official site, plus a Prompt Vault of 31 original copy-ready prompts. Data last checked 2026-10-15. Pricing changes often; confirm on the official pricing page.
+
+## Main pages
+- [Tools directory](https://www.tryagentradar.com/index.html): all 33 tools
+- [Prompt Vault](https://www.tryagentradar.com/vault.html): 31 prompts
+- [tools.json](https://www.tryagentradar.com/data/tools.json): raw tool data
+- [Sitemap](https://www.tryagentradar.com/sitemap.xml)
+
+## Categories
+- [Agent Frameworks](https://www.tryagentradar.com/category/agent-frameworks.html): 4 tools
+- [App Builders](https://www.tryagentradar.com/category/app-builders.html): 4 tools
+- [Automation](https://www.tryagentradar.com/category/automation.html): 3 tools
+- [Coding Agents](https://www.tryagentradar.com/category/coding-agents.html): 7 tools
+- [Databases & Backends](https://www.tryagentradar.com/category/databases-backends.html): 9 tools
+- [LLM APIs & Inference](https://www.tryagentradar.com/category/llm-apis-inference.html): 6 tools
+
+## Tools
+- [Cursor](https://www.tryagentradar.com/tools/cursor.html): AI coding environment with an agent for building software, plus cloud agents on paid plans. Free tier available.
+- [Claude Code](https://www.tryagentradar.com/tools/claude-code.html): Anthropic's coding agent, included with Claude paid plans. No free tier found.
+- [OpenAI Codex](https://www.tryagentradar.com/tools/codex.html): OpenAI's coding agent available in the CLI, IDE extension, web and desktop app. Free tier available.
+- [GitHub Copilot](https://www.tryagentradar.com/tools/github-copilot.html): GitHub's AI coding assistant for editors, the CLI and GitHub itself. Free tier available.
+- [Cline](https://www.tryagentradar.com/tools/cline.html): Open-source autonomous coding agent that runs in your editor and works with your own model API keys. Free tier available.
+- [Aider](https://www.tryagentradar.com/tools/aider.html): Open-source AI pair-programming tool that runs in your terminal and integrates with git. Free tier available.
+- [Windsurf](https://www.tryagentradar.com/tools/windsurf.html): AI coding tool with agents and tab completions, available as an editor and CLI. Free tier available.
+- [Lovable](https://www.tryagentradar.com/tools/lovable.html): AI software engineer that builds websites and web apps from chat prompts. Free tier available.
+- [Bolt](https://www.tryagentradar.com/tools/bolt.html): Prompt-to-app builder for creating and deploying web apps in the browser. Free tier available.
+- [v0](https://www.tryagentradar.com/tools/v0.html): Vercel's AI app and UI builder that deploys to Vercel and syncs with GitHub. Free tier available.
+- [Replit](https://www.tryagentradar.com/tools/replit.html): Browser-based platform where Replit Agent builds, hosts and deploys apps from prompts. Free tier available.
+- [Supabase](https://www.tryagentradar.com/tools/supabase.html): Open-source-based Postgres backend platform with auth, storage and APIs. Free tier available.
+- [Neon](https://www.tryagentradar.com/tools/neon.html): Serverless Postgres with branching and usage-based pricing. Free tier available.
+- [Turso](https://www.tryagentradar.com/tools/turso.html): SQLite-compatible cloud database platform built for many lightweight databases. Free tier available.
+- [PlanetScale](https://www.tryagentradar.com/tools/planetscale.html): Managed MySQL (Vitess) and Postgres databases. No free tier found.
+- [Pinecone](https://www.tryagentradar.com/tools/pinecone.html): Fully managed vector database for search and AI applications. Free tier available.
+- [Qdrant](https://www.tryagentradar.com/tools/qdrant.html): Open-source vector search engine with a managed cloud. Free tier available.
+- [Weaviate](https://www.tryagentradar.com/tools/weaviate.html): Vector database with managed cloud clusters. Free tier available.
+- [Chroma](https://www.tryagentradar.com/tools/chroma.html): Open-source search infrastructure for AI with a hosted cloud. Free tier available.
+- [Firebase](https://www.tryagentradar.com/tools/firebase.html): Google's app development platform with databases, auth, hosting and functions. Free tier available.
+- [LangChain](https://www.tryagentradar.com/tools/langchain.html): Framework (MIT-licensed on GitHub) for building agents and LLM apps, with LangSmith for observability. Free tier available.
+- [LlamaIndex](https://www.tryagentradar.com/tools/llamaindex.html): Data framework (MIT-licensed on GitHub) and LlamaCloud for document parsing and retrieval for LLM apps. Free tier available.
+- [CrewAI](https://www.tryagentradar.com/tools/crewai.html): Framework (MIT-licensed on GitHub) and platform for building multi-agent workflows. Free tier available.
+- [AutoGen](https://www.tryagentradar.com/tools/autogen.html): Microsoft's open-source framework for creating multi-agent AI applications. Free tier available.
+- [OpenAI API](https://www.tryagentradar.com/tools/openai-api.html): OpenAI's developer API for GPT models, embeddings, audio and image generation. Free tier unverified.
+- [Anthropic API (Claude Platform)](https://www.tryagentradar.com/tools/anthropic-api.html): Anthropic's developer platform for building with Claude models. Free tier unverified.
+- [Google Gemini API](https://www.tryagentradar.com/tools/gemini-api.html): Google's Gemini Developer API for building with Gemini models. Free tier available.
+- [Groq](https://www.tryagentradar.com/tools/groq.html): AI inference cloud built on Groq's LPU hardware. Free tier unverified.
+- [OpenRouter](https://www.tryagentradar.com/tools/openrouter.html): Unified API for accessing many LLM providers and models. Free tier available.
+- [Ollama](https://www.tryagentradar.com/tools/ollama.html): Tool for running open models locally, with optional cloud models. Free tier available.
+- [n8n](https://www.tryagentradar.com/tools/n8n.html): Workflow automation platform with AI capabilities, hosted or self-hosted. Free tier unverified.
+- [Zapier](https://www.tryagentradar.com/tools/zapier.html): No-code automation connecting thousands of apps, with AI features. Free tier available.
+- [Make](https://www.tryagentradar.com/tools/make.html): Visual automation platform for building scenarios across apps. Free tier available.

@@ -31,3 +31,14 @@ button.copy:hover{background:#2f3547}
 .signup button:hover{background:#2f3547}.signup button:disabled{opacity:.6}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 #signup-msg.ok{color:#6ee79a}#signup-msg.err{color:#f08a8a}
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+a.brand{color:inherit;text-decoration:none}
+.catlinks{color:#9aa3b2;font-size:.9rem}.catlinks a,.note a,.links a,.crumbs a,.facts a,.cat a{color:#8ab4ff}
+.crumbs{justify-content:flex-start;margin:.5rem 0;font-size:.85rem;color:#9aa3b2;display:block;gap:0}
+.crumbs a{border:0;padding:0;border-radius:0;font-size:inherit}
+main.page{max-width:760px}
+.tool-h{font-size:1.8rem;margin:.2rem 0;overflow-wrap:anywhere}.lead{font-size:1.05rem;color:#c9cfda}
+.facts{display:grid;grid-template-columns:max-content 1fr;gap:.5rem 1rem;background:#181b22;border:1px solid #2a2f3a;border-radius:12px;padding:1rem}
+.facts dt{color:#9aa3b2}.facts dd{margin:0;overflow-wrap:anywhere}
+@media(max-width:560px){.facts{grid-template-columns:1fr;gap:.1rem}.facts dd{margin-bottom:.6rem}}
+.links{padding-left:1.2rem}.note{color:#9aa3b2;font-size:.9rem}

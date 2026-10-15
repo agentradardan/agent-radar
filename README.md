@@ -26,4 +26,7 @@ python3 -m http.server 8000
 Add an entry to `data/tools.json` with a verified URL and pricing link. Never include unverified claims.
 
 ## Deploy
-Live on Vercel: https://agent-radar-woad.vercel.app (Vault: /vault.html). Any static host works: serve the repo root.
+Canonical site: https://www.tryagentradar.com (apex 308-redirects to www). Any static host works: serve the repo root.
+
+## SEO build
+`node scripts/build.js` (no dependencies) regenerates `tools/<id>.html`, `category/<slug>.html`, `sitemap.xml`, `robots.txt`, `llms.txt`, and the marked `<!--...:start/end-->` regions in `index.html` / `vault.html` (static tool list, JSON-LD, summary). Re-run and commit after editing `data/tools.json` or `data/prompts.json`.
