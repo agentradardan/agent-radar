@@ -23,3 +23,11 @@ pre.prompt{white-space:pre-wrap;overflow-wrap:anywhere;background:#0f1115;border
 pre.prompt mark{background:#33301a;color:#e6d36a;border-radius:3px}
 button.copy{margin-top:auto;padding:.7rem;border-radius:8px;border:1px solid #2a2f3a;background:#242936;color:#e8eaee;font-size:1rem;cursor:pointer}
 button.copy:hover{background:#2f3547}
+.signup{max-width:1100px;margin:1rem auto;padding:1rem;background:#181b22;border:1px solid #2a2f3a;border-radius:12px}
+.signup h2{margin:0 0 .3rem;font-size:1.1rem}.signup p{margin:.2rem 0;color:#9aa3b2;font-size:.85rem}
+.signup form{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.5rem}
+.signup input[type=email]{flex:1 1 220px;padding:.7rem;border-radius:8px;border:1px solid #2a2f3a;background:#0f1115;color:inherit;font-size:1rem}
+.signup button{padding:.7rem 1.2rem;border-radius:8px;border:1px solid #2a2f3a;background:#242936;color:#e8eaee;font-size:1rem;cursor:pointer}
+.signup button:hover{background:#2f3547}.signup button:disabled{opacity:.6}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+#signup-msg.ok{color:#6ee79a}#signup-msg.err{color:#f08a8a}
