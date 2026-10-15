@@ -1,0 +1,502 @@
+[
+  {
+    "id": "bug-triage-from-a-stack-trace",
+    "title": "Bug Triage from a Stack Trace",
+    "category": "Coding",
+    "description": "Turn an error and stack trace into ranked root-cause hypotheses and a minimal fix.",
+    "prompt": "Act as a senior [LANGUAGE] engineer. Here is an error and stack trace:\n\n[STACK_TRACE]\n\nRelevant code:\n[CODE_SNIPPET]\n\n1. List the 3 most likely root causes, ranked by probability, with the evidence for each.\n2. For the top cause, give a minimal fix as a diff.\n3. Suggest one quick experiment (log line, test, or breakpoint) to confirm before changing code.\nDo not refactor unrelated code.",
+    "tags": [
+      "debugging",
+      "errors"
+    ],
+    "suggested_tools": [
+      "Cursor",
+      "Claude Code",
+      "OpenAI Codex",
+      "GitHub Copilot"
+    ]
+  },
+  {
+    "id": "pull-request-review",
+    "title": "Pull Request Review",
+    "category": "Coding",
+    "description": "Get a structured, severity-ranked code review of a diff.",
+    "prompt": "Review this pull request diff for [PROJECT_DESCRIPTION].\n\n[DIFF]\n\nReport findings grouped as Blocker / Should fix / Nit. For each: file and line, the problem, why it matters, and a concrete suggestion. Specifically check: correctness, error handling, security (injection, secrets, auth), performance, and missing tests. End with a one-paragraph merge recommendation.",
+    "tags": [
+      "review",
+      "quality"
+    ],
+    "suggested_tools": [
+      "GitHub Copilot",
+      "Cursor",
+      "Claude Code"
+    ]
+  },
+  {
+    "id": "write-unit-tests-for-a-function",
+    "title": "Write Unit Tests for a Function",
+    "category": "Coding",
+    "description": "Generate thorough tests including edge cases using your test framework.",
+    "prompt": "Write unit tests using [TEST_FRAMEWORK] for the function below.\n\n[FUNCTION_CODE]\n\nCover: the happy path, boundary values, empty/null inputs, invalid types, and any error paths. Use descriptive test names in the form 'should <behavior> when <condition>'. Do not mock anything that can be tested directly. After the tests, list any behavior that is ambiguous and that you had to assume.",
+    "tags": [
+      "testing",
+      "tdd"
+    ],
+    "suggested_tools": [
+      "Cursor",
+      "Claude Code",
+      "OpenAI Codex",
+      "GitHub Copilot",
+      "Cline",
+      "Aider"
+    ]
+  },
+  {
+    "id": "safe-refactor-plan",
+    "title": "Safe Refactor Plan",
+    "category": "Coding",
+    "description": "Plan a refactor in small, reversible steps before touching code.",
+    "prompt": "I want to refactor [MODULE_OR_FILE] to achieve [GOAL, e.g. remove duplication, split a god class].\n\nFirst read the code and produce a plan of small steps where each step keeps all tests passing and can be committed on its own. For each step: what changes, how to verify, and the risk. Flag anything with no test coverage. Do not make changes until I approve the plan.",
+    "tags": [
+      "refactor",
+      "planning"
+    ],
+    "suggested_tools": [
+      "Claude Code",
+      "Cursor",
+      "Aider",
+      "Cline"
+    ]
+  },
+  {
+    "id": "explain-an-unfamiliar-codebase",
+    "title": "Explain an Unfamiliar Codebase",
+    "category": "Coding",
+    "description": "Quickly build a mental map of a repo you've just inherited.",
+    "prompt": "Explore this repository and explain it to a new engineer joining the team. Cover: what the project does, the directory layout, the entry points, the main data flow from request/input to output, key dependencies, how to run and test it, and the 5 files I should read first. Point out anything surprising or fragile. Focus especially on [AREA_OF_INTEREST]. Cite file paths for every claim.",
+    "tags": [
+      "onboarding",
+      "docs"
+    ],
+    "suggested_tools": [
+      "Claude Code",
+      "Cursor",
+      "OpenAI Codex",
+      "Cline"
+    ]
+  },
+  {
+    "id": "sql-query-optimizer",
+    "title": "SQL Query Optimizer",
+    "category": "Coding",
+    "description": "Diagnose a slow query and propose indexes and rewrites.",
+    "prompt": "Here is a slow [DATABASE, e.g. PostgreSQL] query and its schema:\n\nQuery:\n[SQL_QUERY]\n\nSchema:\n[TABLE_DEFINITIONS]\n\nEXPLAIN output (if available):\n[EXPLAIN_OUTPUT]\n\nExplain why it is slow, propose a rewritten query and any indexes (with CREATE INDEX statements), and describe the trade-offs of each index (write cost, size). Tell me how to verify the improvement.",
+    "tags": [
+      "sql",
+      "performance",
+      "database"
+    ],
+    "suggested_tools": [
+      "Supabase",
+      "Neon",
+      "Cursor"
+    ]
+  },
+  {
+    "id": "design-a-rest-api",
+    "title": "Design a REST API",
+    "category": "Coding",
+    "description": "Draft endpoints, payloads and error handling from requirements.",
+    "prompt": "Design a REST API for [PRODUCT_DESCRIPTION]. Users: [USER_TYPES]. Key actions: [KEY_ACTIONS].\n\nOutput a table of endpoints (method, path, purpose, auth), example JSON request/response for the three most important ones, a consistent error format, pagination and idempotency strategy, and a list of open questions I should answer before building.",
+    "tags": [
+      "api",
+      "architecture"
+    ],
+    "suggested_tools": [
+      "Cursor",
+      "Claude Code",
+      "Anthropic API (Claude Platform)"
+    ]
+  },
+  {
+    "id": "commit-message-and-changelog",
+    "title": "Commit Message and Changelog",
+    "category": "Coding",
+    "description": "Write clean conventional commits and a human changelog entry.",
+    "prompt": "Based on this diff:\n\n[DIFF]\n\nWrite (1) a conventional commit message (type(scope): summary under 72 chars, then a body explaining why, not what), and (2) a one-to-two sentence user-facing changelog entry in plain language for [AUDIENCE]. Mention any breaking change explicitly.",
+    "tags": [
+      "git",
+      "docs"
+    ],
+    "suggested_tools": [
+      "GitHub Copilot",
+      "Aider",
+      "Cursor"
+    ]
+  },
+  {
+    "id": "migrate-code-to-a-new-version",
+    "title": "Migrate Code to a New Version",
+    "category": "Coding",
+    "description": "Plan and perform a framework or language upgrade.",
+    "prompt": "Migrate this project from [OLD_VERSION] to [NEW_VERSION] of [FRAMEWORK_OR_LANGUAGE]. Step 1: read the changelog or migration guide and list breaking changes that affect this codebase, with file paths. Step 2: propose an ordered migration plan. Step 3: apply changes one group at a time, running [TEST_COMMAND] after each. Stop and report if tests fail twice in a row.",
+    "tags": [
+      "migration",
+      "upgrade"
+    ],
+    "suggested_tools": [
+      "Claude Code",
+      "Aider",
+      "Cline",
+      "OpenAI Codex"
+    ]
+  },
+  {
+    "id": "build-an-agent-tool-spec",
+    "title": "Build an Agent Tool Spec",
+    "category": "Coding",
+    "description": "Define a clean function-calling tool schema for an LLM agent.",
+    "prompt": "I'm building an LLM agent that must [AGENT_TASK]. Design the set of tools (functions) it needs. For each tool give: name, a description written for the model (when to use and when not to), JSON Schema for parameters, return shape, and failure modes with how the agent should recover. Keep the tool count as small as possible and explain what you deliberately left out.",
+    "tags": [
+      "agents",
+      "function-calling"
+    ],
+    "suggested_tools": [
+      "OpenAI API",
+      "Anthropic API (Claude Platform)",
+      "LangChain",
+      "CrewAI"
+    ]
+  },
+  {
+    "id": "edit-for-clarity-and-concision",
+    "title": "Edit for Clarity and Concision",
+    "category": "Writing",
+    "description": "Tighten a draft without losing your voice.",
+    "prompt": "Edit the text below for clarity and concision. Keep my voice and meaning. Target audience: [AUDIENCE]. Goal of the piece: [GOAL].\n\n[TEXT]\n\nReturn: (1) the edited version, (2) a short list of the most important changes and why, (3) any claims that seem unsupported or vague that I should fix myself. Cut at least [PERCENT]% of the words if possible.",
+    "tags": [
+      "editing",
+      "clarity"
+    ],
+    "suggested_tools": [
+      "OpenAI API",
+      "Anthropic API (Claude Platform)",
+      "Google Gemini API"
+    ]
+  },
+  {
+    "id": "cold-outreach-email",
+    "title": "Cold Outreach Email",
+    "category": "Writing",
+    "description": "Write a short, specific, non-spammy first email.",
+    "prompt": "Write a cold email to [RECIPIENT_ROLE] at [COMPANY_TYPE]. I am [MY_ROLE] offering [OFFER]. One concrete detail I know about them: [PERSONALIZATION_DETAIL].\n\nConstraints: under 110 words, one clear low-friction ask, no buzzwords, no fake flattery, no 'hope this finds you well'. Give 3 subject line options and 2 variations of the opening line.",
+    "tags": [
+      "email",
+      "sales",
+      "outreach"
+    ],
+    "suggested_tools": [
+      "OpenAI API",
+      "Anthropic API (Claude Platform)"
+    ]
+  },
+  {
+    "id": "blog-post-outline-with-angle",
+    "title": "Blog Post Outline with Angle",
+    "category": "Writing",
+    "description": "Find a distinctive angle and a skimmable structure.",
+    "prompt": "I want to write a blog post about [TOPIC] for [AUDIENCE]. Suggest 5 distinct angles (including one contrarian), pick the strongest with reasoning, then produce an outline: working title, hook, 4-6 sections with one-line summaries, concrete examples or data to include in each, and a closing call to action toward [DESIRED_ACTION]. Flag where I need real data or quotes rather than invented ones.",
+    "tags": [
+      "blog",
+      "content",
+      "seo"
+    ],
+    "suggested_tools": [
+      "OpenAI API",
+      "Anthropic API (Claude Platform)",
+      "Google Gemini API"
+    ]
+  },
+  {
+    "id": "rewrite-in-a-different-tone",
+    "title": "Rewrite in a Different Tone",
+    "category": "Writing",
+    "description": "Shift tone while preserving facts.",
+    "prompt": "Rewrite the message below from [CURRENT_TONE] to [TARGET_TONE] for [RECIPIENT]. Preserve every fact, number and date. Keep length within 20% of the original.\n\n[MESSAGE]\n\nThen give one alternative that is [SECOND_TONE] so I can compare.",
+    "tags": [
+      "tone",
+      "communication"
+    ],
+    "suggested_tools": [
+      "OpenAI API",
+      "Anthropic API (Claude Platform)"
+    ]
+  },
+  {
+    "id": "summarize-a-long-document-for-executives",
+    "title": "Summarize a Long Document for Executives",
+    "category": "Writing",
+    "description": "Create a decision-ready summary with risks and open questions.",
+    "prompt": "Summarize the document below for [EXECUTIVE_ROLE] who has 2 minutes. Format: a 2-sentence bottom line; 5 bullet key points; decisions required (with deadline if stated); risks; and questions the document leaves unanswered. Quote exact figures only if present in the text; never infer numbers.\n\n[DOCUMENT_TEXT]",
+    "tags": [
+      "summary",
+      "executive"
+    ],
+    "suggested_tools": [
+      "Google Gemini API",
+      "Anthropic API (Claude Platform)",
+      "OpenAI API"
+    ]
+  },
+  {
+    "id": "structured-literature-scan",
+    "title": "Structured Literature Scan",
+    "category": "Research",
+    "description": "Map what is known on a question and where evidence is weak.",
+    "prompt": "Research question: [QUESTION].\n\nProduce a structured scan: (1) key concepts and terminology, (2) the main schools of thought or competing answers, (3) the strongest evidence for each with the type of source (RCT, survey, case study, opinion), (4) known gaps and disagreements, (5) 5 search queries I should run in [DATABASE_OR_SEARCH_ENGINE]. Clearly mark anything you are unsure of and do not fabricate citations; tell me to verify every source.",
+    "tags": [
+      "research",
+      "literature"
+    ],
+    "suggested_tools": [
+      "OpenAI API",
+      "Anthropic API (Claude Platform)",
+      "Google Gemini API"
+    ]
+  },
+  {
+    "id": "competitor-teardown",
+    "title": "Competitor Teardown",
+    "category": "Research",
+    "description": "Compare competitors on the dimensions that matter.",
+    "prompt": "I'm building [MY_PRODUCT] for [TARGET_CUSTOMER]. Competitors: [COMPETITOR_LIST].\n\nCreate a comparison table across: target customer, core promise, pricing model, key features, notable weaknesses, and distribution channel. Then identify 3 gaps nobody serves well and the evidence you'd need to confirm each. Mark facts that must be verified on each competitor's own site before I rely on them.",
+    "tags": [
+      "competition",
+      "market"
+    ],
+    "suggested_tools": [
+      "OpenAI API",
+      "Google Gemini API",
+      "OpenRouter"
+    ]
+  },
+  {
+    "id": "steelman-and-critique-an-argument",
+    "title": "Steelman and Critique an Argument",
+    "category": "Research",
+    "description": "Stress-test a claim from both sides.",
+    "prompt": "Claim: [CLAIM].\n\nFirst, steelman it: give the strongest honest version with its best supporting evidence. Then give the strongest objections, including hidden assumptions and base-rate problems. Finally, state what evidence would change your mind either way and rate my confidence in the claim as it stands (low/medium/high) with a reason.",
+    "tags": [
+      "critical-thinking",
+      "analysis"
+    ],
+    "suggested_tools": [
+      "OpenAI API",
+      "Anthropic API (Claude Platform)"
+    ]
+  },
+  {
+    "id": "interview-question-bank-for-user-research",
+    "title": "Interview Question Bank for User Research",
+    "category": "Research",
+    "description": "Write non-leading questions for customer discovery.",
+    "prompt": "I want to learn whether [TARGET_USER] struggle with [PROBLEM]. Write a 30-minute interview guide: warm-up, 8 open-ended questions about past behavior (not hypotheticals), 3 follow-up probes, and a close. Avoid leading or pitch-like questions. Then list 5 signals that indicate real pain versus polite interest.",
+    "tags": [
+      "user-research",
+      "discovery"
+    ],
+    "suggested_tools": [
+      "OpenAI API",
+      "Anthropic API (Claude Platform)"
+    ]
+  },
+  {
+    "id": "one-page-business-plan",
+    "title": "One-Page Business Plan",
+    "category": "Business",
+    "description": "Pressure-test an idea on one page.",
+    "prompt": "Idea: [IDEA]. Customer: [CUSTOMER]. Budget: [BUDGET].\n\nWrite a one-page plan: problem, solution, who pays and why, pricing hypothesis, cheapest way to get the first 10 customers, 3 biggest risks, and a 30-day experiment plan with a clear pass/fail metric for each experiment. Be skeptical; if the idea has a fatal flaw, say so first.",
+    "tags": [
+      "strategy",
+      "startup"
+    ],
+    "suggested_tools": [
+      "OpenAI API",
+      "Anthropic API (Claude Platform)"
+    ]
+  },
+  {
+    "id": "customer-support-reply-drafter",
+    "title": "Customer Support Reply Drafter",
+    "category": "Business",
+    "description": "Draft empathetic, accurate replies from your policy.",
+    "prompt": "You are a support agent for [COMPANY]. Policy:\n[POLICY_TEXT]\n\nCustomer message:\n[CUSTOMER_MESSAGE]\n\nDraft a reply that acknowledges the issue in the first sentence, gives the specific resolution allowed by policy, states next steps with timing, and stays under 150 words. If policy doesn't cover the case, don't invent a promise; instead list what to escalate and to whom.",
+    "tags": [
+      "support",
+      "email"
+    ],
+    "suggested_tools": [
+      "OpenAI API",
+      "Anthropic API (Claude Platform)",
+      "Zapier"
+    ]
+  },
+  {
+    "id": "pricing-page-copy",
+    "title": "Pricing Page Copy",
+    "category": "Business",
+    "description": "Turn features into plans with clear value framing.",
+    "prompt": "Product: [PRODUCT]. Features: [FEATURE_LIST]. Customers: [SEGMENTS]. Cost per customer to serve: [COST].\n\nPropose 3 plan tiers with names, price points with reasoning, which features go in each tier, a one-line value statement per tier, and an FAQ of 6 objections with honest answers. Include one alternative pricing model (usage-based or seat-based) and when it would be better.",
+    "tags": [
+      "pricing",
+      "copywriting"
+    ],
+    "suggested_tools": [
+      "OpenAI API",
+      "Anthropic API (Claude Platform)"
+    ]
+  },
+  {
+    "id": "meeting-notes-to-action-items",
+    "title": "Meeting Notes to Action Items",
+    "category": "Business",
+    "description": "Convert messy notes into owners and deadlines.",
+    "prompt": "Turn these raw meeting notes into: decisions made, action items (owner, task, due date, or 'TBD' if unstated), open questions, and a 3-sentence recap suitable for a Slack post to [AUDIENCE]. Do not invent owners or dates.\n\n[NOTES]",
+    "tags": [
+      "meetings",
+      "summary"
+    ],
+    "suggested_tools": [
+      "Zapier",
+      "Make",
+      "n8n",
+      "OpenAI API"
+    ]
+  },
+  {
+    "id": "automation-workflow-blueprint",
+    "title": "Automation Workflow Blueprint",
+    "category": "Business",
+    "description": "Design a no-code workflow from a manual process.",
+    "prompt": "I currently do this manually: [PROCESS_DESCRIPTION], about [FREQUENCY]. Systems involved: [APPS].\n\nDesign an automation: trigger, step-by-step actions, data mapping between apps, where a human approval step belongs, error handling and alerts, and how to test it safely with dummy data. Estimate time saved per month and note anything that shouldn't be automated.",
+    "tags": [
+      "automation",
+      "workflow"
+    ],
+    "suggested_tools": [
+      "n8n",
+      "Zapier",
+      "Make"
+    ]
+  },
+  {
+    "id": "weekly-planning-session",
+    "title": "Weekly Planning Session",
+    "category": "Productivity",
+    "description": "Plan a realistic week around priorities and energy.",
+    "prompt": "Act as a pragmatic planning coach. My top goals this quarter: [GOALS]. This week's fixed commitments: [CALENDAR_ITEMS]. Tasks on my list: [TASK_LIST]. My best focus hours: [FOCUS_HOURS].\n\nPick no more than 3 priorities for the week, schedule deep-work blocks in my focus hours, point out tasks to delete, delegate or defer, and warn me if the plan exceeds realistic capacity (assume 70% of available time).",
+    "tags": [
+      "planning",
+      "time-management"
+    ],
+    "suggested_tools": [
+      "OpenAI API",
+      "Anthropic API (Claude Platform)"
+    ]
+  },
+  {
+    "id": "decision-matrix",
+    "title": "Decision Matrix",
+    "category": "Productivity",
+    "description": "Compare options against weighted criteria.",
+    "prompt": "I'm deciding between [OPTIONS]. What matters to me: [CRITERIA]. Constraints: [CONSTRAINTS].\n\nAsk me up to 3 clarifying questions if needed, then build a weighted decision matrix (explain weights), score each option 1-5 with one-line justification, run a sensitivity check (which weight change flips the winner), and name the biggest risk of the top choice and how to mitigate it.",
+    "tags": [
+      "decisions",
+      "analysis"
+    ],
+    "suggested_tools": [
+      "OpenAI API",
+      "Anthropic API (Claude Platform)"
+    ]
+  },
+  {
+    "id": "inbox-triage-rules",
+    "title": "Inbox Triage Rules",
+    "category": "Productivity",
+    "description": "Create sorting rules and templates for email overload.",
+    "prompt": "Here are examples of email I receive: [EMAIL_EXAMPLES]. My role: [ROLE].\n\nCreate: a category scheme (max 6 categories), rules to auto-label or filter each, a rule for what deserves immediate attention, and 3 short reply templates for the most common requests. Suggest a twice-a-day processing routine.",
+    "tags": [
+      "email",
+      "routine"
+    ],
+    "suggested_tools": [
+      "Zapier",
+      "Make",
+      "n8n"
+    ]
+  },
+  {
+    "id": "personal-study-plan",
+    "title": "Personal Study Plan",
+    "category": "Learning",
+    "description": "Build a spaced, project-based plan for any skill.",
+    "prompt": "I want to learn [SKILL] to reach [TARGET_LEVEL] in [TIMEFRAME], studying [HOURS_PER_WEEK] hours per week. Current level: [CURRENT_LEVEL].\n\nCreate a week-by-week plan mixing learning, practice and a capstone project. Include free resource types to look for (not made-up URLs), a weekly self-test, and checkpoints to adjust if I fall behind.",
+    "tags": [
+      "study",
+      "planning"
+    ],
+    "suggested_tools": [
+      "OpenAI API",
+      "Anthropic API (Claude Platform)",
+      "Google Gemini API"
+    ]
+  },
+  {
+    "id": "explain-like-i-m-new-with-quiz",
+    "title": "Explain Like I'm New (With Quiz)",
+    "category": "Learning",
+    "description": "Layered explanation, then active recall.",
+    "prompt": "Explain [CONCEPT] to someone who knows [PRIOR_KNOWLEDGE] but not this. Use: a one-sentence summary, an everyday analogy (and where the analogy breaks), a concrete worked example, 3 common misconceptions. Then quiz me with 5 questions of increasing difficulty, one at a time, waiting for my answer before giving feedback.",
+    "tags": [
+      "explain",
+      "quiz",
+      "active-recall"
+    ],
+    "suggested_tools": [
+      "OpenAI API",
+      "Anthropic API (Claude Platform)",
+      "Ollama"
+    ]
+  },
+  {
+    "id": "code-mentor-mode",
+    "title": "Code Mentor Mode",
+    "category": "Learning",
+    "description": "Get hints instead of answers while practicing.",
+    "prompt": "Be my coding mentor in [LANGUAGE]. I'm working on this exercise: [EXERCISE]. Here's my attempt so far: [MY_CODE].\n\nDo not give me the solution. Instead: tell me what I did right, ask a guiding question about my biggest misunderstanding, and give a graduated hint (level 1 vague, level 2 specific). Offer the full solution only if I ask for it explicitly.",
+    "tags": [
+      "mentor",
+      "practice"
+    ],
+    "suggested_tools": [
+      "Cursor",
+      "GitHub Copilot",
+      "Ollama"
+    ]
+  },
+  {
+    "id": "local-private-notes-summarizer",
+    "title": "Local Private Notes Summarizer",
+    "category": "Productivity",
+    "description": "Summarize sensitive notes using a local model.",
+    "prompt": "You are running locally so nothing leaves my machine. Summarize the notes below into: key themes, my commitments, and follow-ups with dates. Keep it under 200 words and keep names exactly as written.\n\n[NOTES]",
+    "tags": [
+      "privacy",
+      "local",
+      "summary"
+    ],
+    "suggested_tools": [
+      "Ollama"
+    ]
+  }
+]

@@ -14,3 +14,12 @@ input[type=search],select{flex:1 1 200px;padding:.7rem;border-radius:8px;border:
 .price{font-size:.9rem;color:#c9cfda}.tags span{font-size:.75rem;background:#242936;border-radius:6px;padding:.1rem .4rem;margin-right:.25rem;display:inline-block}
 .card a.pl{font-size:.8rem;color:#9aa3b2}
 footer{text-align:center;color:#9aa3b2;padding:1rem;font-size:.85rem}footer a{color:#8ab4ff}
+nav{display:flex;justify-content:center;gap:.5rem;margin:.6rem 0}
+nav a{color:#8ab4ff;text-decoration:none;padding:.35rem .9rem;border:1px solid #2a2f3a;border-radius:99px;font-size:.9rem}
+nav a.active{background:#242936;color:#e8eaee}
+.card h2{overflow-wrap:anywhere}
+details summary{cursor:pointer;color:#8ab4ff;font-size:.9rem}
+pre.prompt{white-space:pre-wrap;overflow-wrap:anywhere;background:#0f1115;border:1px solid #2a2f3a;border-radius:8px;padding:.7rem;font-size:.82rem;margin:.5rem 0 0;max-height:320px;overflow:auto}
+pre.prompt mark{background:#33301a;color:#e6d36a;border-radius:3px}
+button.copy{margin-top:auto;padding:.7rem;border-radius:8px;border:1px solid #2a2f3a;background:#242936;color:#e8eaee;font-size:1rem;cursor:pointer}
+button.copy:hover{background:#2f3547}
