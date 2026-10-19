@@ -5,6 +5,8 @@
 ## Main pages
 - [Tools directory](https://www.tryagentradar.com/index.html): all 33 tools
 - [Prompt Vault](https://www.tryagentradar.com/vault.html): 31 prompts
+- [Advertise](https://www.tryagentradar.com/advertise.html): featured listings (labeled "Sponsored")
+- [Disclosure](https://www.tryagentradar.com/disclosure.html): affiliate links and sponsored listings policy
 - [tools.json](https://www.tryagentradar.com/data/tools.json): raw tool data
 - [Sitemap](https://www.tryagentradar.com/sitemap.xml)
 
