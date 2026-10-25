@@ -1,9 +1,9 @@
 # Agent Radar
 
-> Agent Radar is a directory of 37 AI tools (coding agents, app builders, databases and backends, agent frameworks, LLM APIs, automation) with pricing summaries and free-tier information taken from each tool's official site, plus a Prompt Vault of 31 original copy-ready prompts. Data last checked 2026-10-25. Pricing changes often; confirm on the official pricing page.
+> Agent Radar is a directory of 38 AI tools (coding agents, app builders, databases and backends, agent frameworks, LLM APIs, automation) with pricing summaries and free-tier information taken from each tool's official site, plus a Prompt Vault of 31 original copy-ready prompts. Data last checked 2026-10-25. Pricing changes often; confirm on the official pricing page.
 
 ## Main pages
-- [Tools directory](https://www.tryagentradar.com/index.html): all 37 tools
+- [Tools directory](https://www.tryagentradar.com/index.html): all 38 tools
 - [Prompt Vault](https://www.tryagentradar.com/vault.html): 31 prompts
 - [Advertise](https://www.tryagentradar.com/advertise.html): featured listings (labeled "Sponsored")
 - [Disclosure](https://www.tryagentradar.com/disclosure.html): affiliate links and sponsored listings policy
@@ -14,7 +14,7 @@
 ## Categories
 - [Agent Frameworks](https://www.tryagentradar.com/category/agent-frameworks.html): 4 tools
 - [App Builders](https://www.tryagentradar.com/category/app-builders.html): 6 tools
-- [Automation](https://www.tryagentradar.com/category/automation.html): 3 tools
+- [Automation](https://www.tryagentradar.com/category/automation.html): 4 tools
 - [Coding Agents](https://www.tryagentradar.com/category/coding-agents.html): 9 tools
 - [Databases & Backends](https://www.tryagentradar.com/category/databases-backends.html): 9 tools
 - [LLM APIs & Inference](https://www.tryagentradar.com/category/llm-apis-inference.html): 6 tools
@@ -64,3 +64,4 @@
 - [n8n](https://www.tryagentradar.com/tools/n8n.html): Workflow automation platform with AI capabilities, hosted or self-hosted. Free tier unverified.
 - [Zapier](https://www.tryagentradar.com/tools/zapier.html): No-code automation connecting thousands of apps, with AI features. Free tier available.
 - [Make](https://www.tryagentradar.com/tools/make.html): Visual automation platform for building scenarios across apps. Free tier available.
+- [agent-qa](https://www.tryagentradar.com/tools/agent-qa.html): Natural-language QA for web, Android and iOS through CLI and MCP, with persistent memidex memory and validated self-improvement. Free tier available.
