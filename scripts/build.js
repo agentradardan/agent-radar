@@ -1,12 +1,14 @@
 #!/usr/bin/env node
 // Static generator: node scripts/build.js
-// Reads data/tools.json + data/prompts.json; writes tools/*.html, category/*.html,
+// Reads data/tools.json + data/prompts.json + data/compare.json; writes tools/*.html, category/*.html, compare/*.html, best/*.html,
 // sitemap.xml, robots.txt, llms.txt, and updates marked regions in index.html / vault.html.
 const fs = require('fs'), path = require('path');
 const ROOT = path.join(__dirname, '..');
 const SITE = 'https://www.tryagentradar.com'; // canonical host (apex 308-redirects here)
 const tools = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/tools.json'), 'utf8'));
 const prompts = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/prompts.json'), 'utf8'));
+// comparison ("/compare/<slug>.html") and best-of ("/best/<slug>.html") pages; see data/compare.json
+const guides = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/compare.json'), 'utf8'));
 const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const slugify = s => s.toLowerCase().replace(/&/g, ' ').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 const write = (rel, txt) => { const f = path.join(ROOT, rel); fs.mkdirSync(path.dirname(f), { recursive: true }); fs.writeFileSync(f, txt); };
@@ -35,6 +37,21 @@ for (const t of tools) {
   if (t.featured != null && !(t.featured && isDate(t.featured.until))) throw new Error(`${t.id}: featured must be {"until": "YYYY-MM-DD"}`);
   if (t.affiliateUrl != null && !/^https:\/\/[^\s"<>]+$/.test(t.affiliateUrl)) throw new Error(`${t.id}: affiliateUrl must be an https:// URL`);
 }
+const GUIDE_FIELDS = ['slug', 'type', 'title', 'h1', 'description', 'category', 'tools', 'updated', 'answer', 'rows', 'pick', 'faqs'];
+for (const g of guides) {
+  for (const k of GUIDE_FIELDS) if (g[k] == null) throw new Error(`compare.json ${g.slug || '?'}: missing ${k}`);
+  if (!['compare', 'best'].includes(g.type)) throw new Error(`${g.slug}: type must be compare or best`);
+  if (!/^[a-z0-9-]+$/.test(g.slug) || !isDate(g.updated)) throw new Error(`${g.slug}: bad slug or updated date`);
+  for (const r of g.rows) {
+    if (!tools.some(t => t.id === r.id)) throw new Error(`${g.slug}: unknown tool ${r.id}`);
+    if (!/^https:\/\/[^\s"<>]+$/.test(r.source || '')) throw new Error(`${g.slug}/${r.id}: source must be an https:// URL`);
+  }
+  if (g.faqs.length < 3 || g.faqs.length > 4) throw new Error(`${g.slug}: needs 3-4 FAQs`);
+}
+const guidePath = g => `/${g.type}/${g.slug}.html`;
+const guidesFor = id => guides.filter(g => g.tools.includes(id));
+const guidesForCat = c => guides.filter(g => g.category === c || g.tools.some(id => (tools.find(t => t.id === id) || {}).category === c));
+const guideLinks = list => list.map(g => `<li><a href="${guidePath(g)}">${esc(g.h1)}</a></li>`).join('');
 const isFeatured = t => !!(t.featured && t.featured.until >= TODAY);
 const visitUrl = t => t.affiliateUrl || t.url;
 const visitRel = t => (t.affiliateUrl || isFeatured(t)) ? 'sponsored noopener' : 'noopener';
@@ -118,7 +135,7 @@ ${t.affiliateUrl ? `<p class="note aff">Affiliate link: if you sign up through t
 </dl>
 <p class="note">Pricing changes often — confirm on the <a href="${esc(t.pricing_url)}" target="_blank" rel="noopener">official pricing page</a>.</p>
 </article>
-<section><h2>Related tools</h2><ul class="links">${rel.map(o => `<li><a href="/tools/${o.id}.html">${esc(o.name)}</a> — ${esc(o.category)}</li>`).join('')}</ul>
+${guidesFor(t.id).length ? `<section><h2>Comparisons</h2><ul class="links">${guideLinks(guidesFor(t.id))}</ul></section>\n` : ''}<section><h2>Related tools</h2><ul class="links">${rel.map(o => `<li><a href="/tools/${o.id}.html">${esc(o.name)}</a> — ${esc(o.category)}</li>`).join('')}</ul>
 <p><a href="/category/${slugify(t.category)}.html">All ${esc(t.category)} tools</a> · <a href="/index.html">Full directory</a></p></section>
 </main>
 ` + footer;
@@ -142,9 +159,50 @@ ${crumbNav(bc)}
 <div class="grid" data-featsort>
 ${list.map(t => card(t, orig.indexOf(t))).join('\n')}
 </div>
-<p class="note">Other categories: ${cats.filter(x => x !== c).map(x => `<a href="/category/${slugify(x)}.html">${esc(x)}</a>`).join(' · ')}</p>
+${guidesForCat(c).length ? `<section><h2>Comparisons &amp; guides</h2><ul class="links">${guideLinks(guidesForCat(c))}</ul></section>\n` : ''}<p class="note">Other categories: ${cats.filter(x => x !== c).map(x => `<a href="/category/${slugify(x)}.html">${esc(x)}</a>`).join(' · ')}</p>
 </main>
 ` + footer);
+}
+
+// ---- comparison + best-of pages (data/compare.json)
+const fmtMonth = d => new Date(d + 'T12:00:00Z').toLocaleDateString('en-US', { month: 'short', year: 'numeric', timeZone: 'UTC' });
+const fmtDay = d => new Date(d + 'T12:00:00Z').toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
+for (const g of guides) {
+  const p = guidePath(g), url = SITE + p, asOf = fmtMonth(g.updated);
+  const rowTools = g.rows.map(r => [r, tools.find(t => t.id === r.id)]);
+  const bc = [['Agent Radar', SITE + '/index.html'], [g.category, catUrl(g.category)], [g.h1, url]];
+  const faq = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: g.faqs.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
+  const art = { '@context': 'https://schema.org', '@type': 'Article', headline: g.h1, description: g.description, url, dateModified: g.updated, author: { '@type': 'Organization', name: 'Agent Radar' }, about: rowTools.map(([, t]) => ({ '@type': 'SoftwareApplication', name: t.name, url: t.url })) };
+  const summary = `${g.answer} Tools covered: ${rowTools.map(([r, t]) => `${t.name} (${r.price})`).join('; ')}. Prices as of ${asOf} from each vendor's official pricing page; check the vendor's site for current pricing.`;
+  const others = guides.filter(o => o !== g && o.tools.some(id => g.tools.includes(id)));
+  const html = head({ title: `${g.title} | Agent Radar`, desc: g.description, path: p, type: 'article', extra: ld(art) + '\n' + ld(faq) + '\n' + crumbs(bc) + '\n' }) +
+    header('tools', 'Comparisons built from official pricing pages.') + `<main class="page wide">
+${crumbNav(bc)}
+<article class="guide">
+<h1 class="tool-h">${esc(g.h1)}</h1>
+<p class="note">Updated <time datetime="${esc(g.updated)}">${esc(fmtDay(g.updated))}</time>. Prices and limits are as of ${esc(asOf)}, taken from each vendor's official pricing page (linked below). Check the vendor's site for current pricing.</p>
+<div class="sr-only" id="page-summary"><h2>Summary</h2><p>${esc(summary)}</p></div>
+<p class="lead">${esc(g.answer)}</p>
+<h2>At a glance</h2>
+<div class="tbl"><table class="cmp">
+<thead><tr><th scope="col">Tool</th><th scope="col">Price / free tier (as of ${esc(asOf)})</th><th scope="col">Best for</th><th scope="col">Key strength</th><th scope="col">Key drawback</th></tr></thead>
+<tbody>
+${rowTools.map(([r, t]) => `<tr><th scope="row"><a href="/tools/${esc(t.id)}.html">${esc(t.name)}</a></th><td>${esc(r.price)} <a class="src" href="${esc(r.source)}" target="_blank" rel="noopener">Source</a> <span class="asof">(as of ${esc(asOf)})</span></td><td>${esc(r.bestFor)}</td><td>${esc(r.strength)}</td><td>${esc(r.drawback)}</td></tr>`).join('\n')}
+</tbody></table></div>
+<p class="note">Check the vendor's site for current pricing. Plans and limits change often. Statements marked “In our view” are our opinions, not facts about the products; see our <a href="/disclaimer.html">Disclaimer</a>.</p>
+<h2>Which should you pick?</h2>
+<ul class="links">${g.pick.map(x => `<li>${esc(x)}</li>`).join('')}</ul>
+<h2>FAQ</h2>
+${g.faqs.map(f => `<h3>${esc(f.q)}</h3>\n<p>${esc(f.a)}</p>`).join('\n')}
+<h2>Sources</h2>
+<ul class="links">${rowTools.map(([r, t]) => `<li>${esc(t.name)}: <a href="${esc(r.source)}" target="_blank" rel="noopener">${esc(r.source)}</a> (fetched ${esc(fmtDay(g.updated))})</li>`).join('')}</ul>
+<p class="visit">${rowTools.map(([, t]) => `<a class="btn" href="${esc(visitUrl(t))}" target="_blank" rel="${visitRel(t)}">Visit ${esc(t.name)} ↗</a>`).join(' ')}</p>
+${rowTools.some(([, t]) => t.affiliateUrl) ? `<p class="note aff">Some Visit buttons above are affiliate links: we may earn a commission at no cost to you. It doesn't affect this comparison. <a href="/disclosure.html">Disclosure</a></p>\n` : ''}</article>
+<section><h2>Tool pages</h2><ul class="links">${rowTools.map(([, t]) => `<li><a href="/tools/${esc(t.id)}.html">${esc(t.name)} pricing &amp; free tier</a></li>`).join('')}</ul>
+${others.length ? `<h2>More comparisons</h2><ul class="links">${guideLinks(others)}</ul>\n` : ''}<p><a href="/category/${slugify(g.category)}.html">All ${esc(g.category)} tools</a> · <a href="/index.html">Full directory</a></p></section>
+</main>
+` + footer;
+  write(p.slice(1), html);
 }
 
 // ---- marked region helper for index/vault
@@ -322,7 +380,7 @@ legalPage('disclaimer.html', 'Disclaimer | Agent Radar', 'Agent Radar is editori
 // ---- sitemap, robots, llms
 const urls = [['/', maxDate], ['/index.html', maxDate], ['/vault.html', maxDate], ['/advertise.html', PAGES_UPDATED], ['/disclosure.html', PAGES_UPDATED],
   ['/terms.html', LEGAL_UPDATED], ['/privacy.html', LEGAL_UPDATED], ['/refunds.html', LEGAL_UPDATED], ['/disclaimer.html', LEGAL_UPDATED],
-  ...cats.map(c => [`/category/${slugify(c)}.html`, maxDate]), ...tools.map(t => [`/tools/${t.id}.html`, t.verified_on])];
+  ...cats.map(c => [`/category/${slugify(c)}.html`, maxDate]), ...guides.map(g => [guidePath(g), g.updated]), ...tools.map(t => [`/tools/${t.id}.html`, t.verified_on])];
 // '/' and '/index.html' are the same page; list only the canonical one used in <link rel=canonical>
 const smUrls = urls.filter(u => u[0] !== '/');
 write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${smUrls.map(u => `<url><loc>${SITE}${u[0]}</loc><lastmod>${u[1]}</lastmod></url>`).join('\n')}\n</urlset>\n`);
@@ -343,10 +401,13 @@ write('llms.txt', `# Agent Radar
 ## Categories
 ${cats.map(c => `- [${c}](${catUrl(c)}): ${byCat(c).length} tools`).join('\n')}
 
+## Comparisons and guides
+${guides.map(g => `- [${g.h1}](${SITE}${guidePath(g)}): ${g.description}`).join('\n')}
+
 ## Tools
 ${tools.map(t => `- [${t.name}](${toolUrl(t)}): ${t.description} ${freeTxt(t)}.${isFeatured(t) ? ' (Sponsored listing.)' : ''}`).join('\n')}
 `);
-console.log(`built ${tools.length} tool pages, ${cats.length} category pages, advertise + disclosure + 4 policy pages, sitemap with ${smUrls.length} URLs; ${featured.length} featured (as of ${TODAY}), ${nAff} affiliate`);
+console.log(`built ${tools.length} tool pages, ${cats.length} category pages, ${guides.length} compare/best pages, advertise + disclosure + 4 policy pages, sitemap with ${smUrls.length} URLs; ${featured.length} featured (as of ${TODAY}), ${nAff} affiliate`);
 
 // ---- ensure Vercel Web Analytics on every HTML page (hand-written pages included)
 (function walk(dir) {

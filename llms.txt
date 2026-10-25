@@ -1,9 +1,9 @@
 # Agent Radar
 
-> Agent Radar is a directory of 33 AI tools (coding agents, app builders, databases and backends, agent frameworks, LLM APIs, automation) with pricing summaries and free-tier information taken from each tool's official site, plus a Prompt Vault of 31 original copy-ready prompts. Data last checked 2026-10-15. Pricing changes often; confirm on the official pricing page.
+> Agent Radar is a directory of 37 AI tools (coding agents, app builders, databases and backends, agent frameworks, LLM APIs, automation) with pricing summaries and free-tier information taken from each tool's official site, plus a Prompt Vault of 31 original copy-ready prompts. Data last checked 2026-10-25. Pricing changes often; confirm on the official pricing page.
 
 ## Main pages
-- [Tools directory](https://www.tryagentradar.com/index.html): all 33 tools
+- [Tools directory](https://www.tryagentradar.com/index.html): all 37 tools
 - [Prompt Vault](https://www.tryagentradar.com/vault.html): 31 prompts
 - [Advertise](https://www.tryagentradar.com/advertise.html): featured listings (labeled "Sponsored")
 - [Disclosure](https://www.tryagentradar.com/disclosure.html): affiliate links and sponsored listings policy
@@ -13,11 +13,18 @@
 
 ## Categories
 - [Agent Frameworks](https://www.tryagentradar.com/category/agent-frameworks.html): 4 tools
-- [App Builders](https://www.tryagentradar.com/category/app-builders.html): 4 tools
+- [App Builders](https://www.tryagentradar.com/category/app-builders.html): 6 tools
 - [Automation](https://www.tryagentradar.com/category/automation.html): 3 tools
-- [Coding Agents](https://www.tryagentradar.com/category/coding-agents.html): 7 tools
+- [Coding Agents](https://www.tryagentradar.com/category/coding-agents.html): 9 tools
 - [Databases & Backends](https://www.tryagentradar.com/category/databases-backends.html): 9 tools
 - [LLM APIs & Inference](https://www.tryagentradar.com/category/llm-apis-inference.html): 6 tools
+
+## Comparisons and guides
+- [Claude Code vs OpenAI Codex](https://www.tryagentradar.com/compare/claude-code-vs-codex.html): Claude Code vs OpenAI Codex compared: plan prices and free access as of Oct 2026, best use cases, strengths, drawbacks and FAQs.
+- [Cursor vs Claude Code vs Codex](https://www.tryagentradar.com/compare/cursor-vs-claude-code-vs-codex.html): Cursor, Claude Code and OpenAI Codex compared side by side: plan prices and free access as of Oct 2026, best for, strengths, drawbacks and FAQs.
+- [n8n vs Make vs Zapier](https://www.tryagentradar.com/compare/n8n-vs-make-vs-zapier.html): n8n, Make and Zapier compared: free plans, starting prices and billing units as of Oct 2026, plus best for, strengths, drawbacks and FAQs.
+- [Lovable vs Base44 vs Replit](https://www.tryagentradar.com/compare/lovable-vs-base44-vs-replit.html): Lovable, Base44 and Replit compared as AI app builders: free plans and prices as of Oct 2026, best for, strengths, drawbacks and FAQs.
+- [Best vector database for RAG](https://www.tryagentradar.com/best/vector-database-for-rag.html): Pinecone, Qdrant, Weaviate and Chroma compared for RAG: free tiers, starting prices and limits as of Oct 2026, plus which to pick and FAQs.
 
 ## Tools
 - [Cursor](https://www.tryagentradar.com/tools/cursor.html): AI coding environment with an agent for building software, plus cloud agents on paid plans. Free tier available.
@@ -27,10 +34,14 @@
 - [Cline](https://www.tryagentradar.com/tools/cline.html): Open-source autonomous coding agent that runs in your editor and works with your own model API keys. Free tier available.
 - [Aider](https://www.tryagentradar.com/tools/aider.html): Open-source AI pair-programming tool that runs in your terminal and integrates with git. Free tier available.
 - [Windsurf](https://www.tryagentradar.com/tools/windsurf.html): AI coding tool with agents and tab completions, available as an editor and CLI. Free tier available.
+- [OpenCode](https://www.tryagentradar.com/tools/opencode.html): Open-source coding agent (MIT-licensed, GitHub: anomalyco/opencode) that runs as a terminal UI, desktop app or IDE extension and works with many model providers. Free tier available.
+- [Google Antigravity](https://www.tryagentradar.com/tools/antigravity.html): Google's agentic development platform: an AI IDE plus a desktop app, CLI and SDK for running coding agents. Free tier available.
 - [Lovable](https://www.tryagentradar.com/tools/lovable.html): AI software engineer that builds websites and web apps from chat prompts. Free tier available.
 - [Bolt](https://www.tryagentradar.com/tools/bolt.html): Prompt-to-app builder for creating and deploying web apps in the browser. Free tier available.
 - [v0](https://www.tryagentradar.com/tools/v0.html): Vercel's AI app and UI builder that deploys to Vercel and syncs with GitHub. Free tier available.
 - [Replit](https://www.tryagentradar.com/tools/replit.html): Browser-based platform where Replit Agent builds, hosts and deploys apps from prompts. Free tier available.
+- [Base44](https://www.tryagentradar.com/tools/base44.html): Prompt-to-app builder that generates apps with a built-in backend, database and user auth, with GitHub sync on higher plans. Free tier available.
+- [Emergent](https://www.tryagentradar.com/tools/emergent.html): Vibe-coding platform that builds web and mobile apps from a chat description, with built-in hosting. Free tier available.
 - [Supabase](https://www.tryagentradar.com/tools/supabase.html): Open-source-based Postgres backend platform with auth, storage and APIs. Free tier available.
 - [Neon](https://www.tryagentradar.com/tools/neon.html): Serverless Postgres with branching and usage-based pricing. Free tier available.
 - [Turso](https://www.tryagentradar.com/tools/turso.html): SQLite-compatible cloud database platform built for many lightweight databases. Free tier available.

@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<url><loc>https://www.tryagentradar.com/index.html</loc><lastmod>2026-10-15</lastmod></url>
-<url><loc>https://www.tryagentradar.com/vault.html</loc><lastmod>2026-10-15</lastmod></url>
+<url><loc>https://www.tryagentradar.com/index.html</loc><lastmod>2026-10-25</lastmod></url>
+<url><loc>https://www.tryagentradar.com/vault.html</loc><lastmod>2026-10-25</lastmod></url>
 <url><loc>https://www.tryagentradar.com/advertise.html</loc><lastmod>2026-10-19</lastmod></url>
 <url><loc>https://www.tryagentradar.com/disclosure.html</loc><lastmod>2026-10-19</lastmod></url>
 <url><loc>https://www.tryagentradar.com/terms.html</loc><lastmod>2026-10-25</lastmod></url>
 <url><loc>https://www.tryagentradar.com/privacy.html</loc><lastmod>2026-10-25</lastmod></url>
 <url><loc>https://www.tryagentradar.com/refunds.html</loc><lastmod>2026-10-25</lastmod></url>
 <url><loc>https://www.tryagentradar.com/disclaimer.html</loc><lastmod>2026-10-25</lastmod></url>
-<url><loc>https://www.tryagentradar.com/category/agent-frameworks.html</loc><lastmod>2026-10-15</lastmod></url>
-<url><loc>https://www.tryagentradar.com/category/app-builders.html</loc><lastmod>2026-10-15</lastmod></url>
-<url><loc>https://www.tryagentradar.com/category/automation.html</loc><lastmod>2026-10-15</lastmod></url>
-<url><loc>https://www.tryagentradar.com/category/coding-agents.html</loc><lastmod>2026-10-15</lastmod></url>
-<url><loc>https://www.tryagentradar.com/category/databases-backends.html</loc><lastmod>2026-10-15</lastmod></url>
-<url><loc>https://www.tryagentradar.com/category/llm-apis-inference.html</loc><lastmod>2026-10-15</lastmod></url>
+<url><loc>https://www.tryagentradar.com/category/agent-frameworks.html</loc><lastmod>2026-10-25</lastmod></url>
+<url><loc>https://www.tryagentradar.com/category/app-builders.html</loc><lastmod>2026-10-25</lastmod></url>
+<url><loc>https://www.tryagentradar.com/category/automation.html</loc><lastmod>2026-10-25</lastmod></url>
+<url><loc>https://www.tryagentradar.com/category/coding-agents.html</loc><lastmod>2026-10-25</lastmod></url>
+<url><loc>https://www.tryagentradar.com/category/databases-backends.html</loc><lastmod>2026-10-25</lastmod></url>
+<url><loc>https://www.tryagentradar.com/category/llm-apis-inference.html</loc><lastmod>2026-10-25</lastmod></url>
+<url><loc>https://www.tryagentradar.com/compare/claude-code-vs-codex.html</loc><lastmod>2026-10-25</lastmod></url>
+<url><loc>https://www.tryagentradar.com/compare/cursor-vs-claude-code-vs-codex.html</loc><lastmod>2026-10-25</lastmod></url>
+<url><loc>https://www.tryagentradar.com/compare/n8n-vs-make-vs-zapier.html</loc><lastmod>2026-10-25</lastmod></url>
+<url><loc>https://www.tryagentradar.com/compare/lovable-vs-base44-vs-replit.html</loc><lastmod>2026-10-25</lastmod></url>
+<url><loc>https://www.tryagentradar.com/best/vector-database-for-rag.html</loc><lastmod>2026-10-25</lastmod></url>
 <url><loc>https://www.tryagentradar.com/tools/cursor.html</loc><lastmod>2026-10-15</lastmod></url>
 <url><loc>https://www.tryagentradar.com/tools/claude-code.html</loc><lastmod>2026-10-15</lastmod></url>
 <url><loc>https://www.tryagentradar.com/tools/codex.html</loc><lastmod>2026-10-15</lastmod></url>
@@ -21,10 +26,14 @@
 <url><loc>https://www.tryagentradar.com/tools/cline.html</loc><lastmod>2026-10-15</lastmod></url>
 <url><loc>https://www.tryagentradar.com/tools/aider.html</loc><lastmod>2026-10-15</lastmod></url>
 <url><loc>https://www.tryagentradar.com/tools/windsurf.html</loc><lastmod>2026-10-15</lastmod></url>
+<url><loc>https://www.tryagentradar.com/tools/opencode.html</loc><lastmod>2026-10-25</lastmod></url>
+<url><loc>https://www.tryagentradar.com/tools/antigravity.html</loc><lastmod>2026-10-25</lastmod></url>
 <url><loc>https://www.tryagentradar.com/tools/lovable.html</loc><lastmod>2026-10-15</lastmod></url>
 <url><loc>https://www.tryagentradar.com/tools/bolt.html</loc><lastmod>2026-10-15</lastmod></url>
 <url><loc>https://www.tryagentradar.com/tools/v0.html</loc><lastmod>2026-10-15</lastmod></url>
 <url><loc>https://www.tryagentradar.com/tools/replit.html</loc><lastmod>2026-10-15</lastmod></url>
+<url><loc>https://www.tryagentradar.com/tools/base44.html</loc><lastmod>2026-10-25</lastmod></url>
+<url><loc>https://www.tryagentradar.com/tools/emergent.html</loc><lastmod>2026-10-25</lastmod></url>
 <url><loc>https://www.tryagentradar.com/tools/supabase.html</loc><lastmod>2026-10-15</lastmod></url>
 <url><loc>https://www.tryagentradar.com/tools/neon.html</loc><lastmod>2026-10-15</lastmod></url>
 <url><loc>https://www.tryagentradar.com/tools/turso.html</loc><lastmod>2026-10-15</lastmod></url>

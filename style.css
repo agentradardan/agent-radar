@@ -58,3 +58,7 @@ footer .disc{margin:.5rem 0 0;font-size:.8rem}
 main.page h2{font-size:1.15rem;margin-top:1.5rem}main.page p a,main.page li a{color:#8ab4ff}
 code{background:#242936;border-radius:4px;padding:0 .3rem;font-size:.85em}
 main.page .btn{color:#e8eaee}
+main.page.wide{max-width:1000px}.guide h2{margin-top:1.6rem}.guide h3{font-size:1rem;margin:1rem 0 .2rem}
+.tbl{overflow-x:auto;margin:.6rem 0}.cmp{border-collapse:collapse;width:100%;min-width:720px;font-size:.9rem}
+.cmp th,.cmp td{border:1px solid #2a2f3a;padding:.5rem .6rem;text-align:left;vertical-align:top}.cmp thead th{background:#181b22;color:#c9cfda}
+.cmp a{color:#8ab4ff}.cmp .asof{color:#9aa3b2;font-size:.8rem}

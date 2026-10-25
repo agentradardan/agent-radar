@@ -111,6 +111,38 @@
     "verified_on": "2026-10-15"
   },
   {
+    "id": "opencode",
+    "name": "OpenCode",
+    "url": "https://opencode.ai",
+    "category": "Coding Agents",
+    "description": "Open-source coding agent (MIT-licensed, GitHub: anomalyco/opencode) that runs as a terminal UI, desktop app or IDE extension and works with many model providers.",
+    "pricing_summary": "Free to use, with a set of free models included; connecting other providers (or its paid Zen model service) may cost extra. Can also use an existing ChatGPT Plus/Pro or GitHub Copilot subscription.",
+    "free_tier": true,
+    "pricing_url": "https://opencode.ai",
+    "tags": [
+      "open-source",
+      "cli",
+      "byok"
+    ],
+    "verified_on": "2026-10-25"
+  },
+  {
+    "id": "antigravity",
+    "name": "Google Antigravity",
+    "url": "https://antigravity.google",
+    "category": "Coding Agents",
+    "description": "Google's agentic development platform: an AI IDE plus a desktop app, CLI and SDK for running coding agents.",
+    "pricing_summary": "Individual plan $0/month with basic weekly rate limits; higher tiers add more rate limits and an AI credit pool; Business access via Google Cloud. Paid tier prices not shown on the fetched page.",
+    "free_tier": true,
+    "pricing_url": "https://antigravity.google/pricing",
+    "tags": [
+      "ide",
+      "agent",
+      "google"
+    ],
+    "verified_on": "2026-10-25"
+  },
+  {
     "id": "lovable",
     "name": "Lovable",
     "url": "https://lovable.dev",
@@ -172,6 +204,38 @@
       "agent"
     ],
     "verified_on": "2026-10-15"
+  },
+  {
+    "id": "base44",
+    "name": "Base44",
+    "url": "https://base44.com",
+    "category": "App Builders",
+    "description": "Prompt-to-app builder that generates apps with a built-in backend, database and user auth, with GitHub sync on higher plans.",
+    "pricing_summary": "Free plan: 25 message credits/month, up to 5 apps; paid plans from Starter $16/month billed annually (100 message credits) up to Elite $160/month billed annually; yearly billing saves 20%.",
+    "free_tier": true,
+    "pricing_url": "https://base44.com/pricing",
+    "tags": [
+      "no-code",
+      "web-apps",
+      "backend"
+    ],
+    "verified_on": "2026-10-25"
+  },
+  {
+    "id": "emergent",
+    "name": "Emergent",
+    "url": "https://emergent.sh",
+    "category": "App Builders",
+    "description": "Vibe-coding platform that builds web and mobile apps from a chat description, with built-in hosting.",
+    "pricing_summary": "Free plan available; Standard $20/month ($17/month billed annually, 100 credits/month); Pro $200/month ($167/month billed annually, 750 credits/month); Enterprise custom.",
+    "free_tier": true,
+    "pricing_url": "https://emergent.sh/pricing",
+    "tags": [
+      "no-code",
+      "web-apps",
+      "mobile"
+    ],
+    "verified_on": "2026-10-25"
   },
   {
     "id": "supabase",

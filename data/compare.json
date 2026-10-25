@@ -1,0 +1,247 @@
+[
+  {
+    "slug": "claude-code-vs-codex",
+    "type": "compare",
+    "title": "Claude Code vs Codex (2026): pricing, free tier and which to pick",
+    "h1": "Claude Code vs OpenAI Codex",
+    "description": "Claude Code vs OpenAI Codex compared: plan prices and free access as of Oct 2026, best use cases, strengths, drawbacks and FAQs.",
+    "category": "Coding Agents",
+    "tools": ["claude-code", "codex"],
+    "updated": "2026-10-25",
+    "answer": "Claude Code and OpenAI Codex are both coding agents that come bundled with their maker's chat subscription, so the real choice is usually which ecosystem you already pay for. As of Oct 2026, Codex has a $0 entry point through ChatGPT Free (one model, in the desktop app, subject to rollout), while Claude Code is not part of Claude's Free plan and starts with Claude Pro. At the $20/month level the two cost the same if you pay monthly, and both offer higher tiers from $100/month for heavy use. In our view, try each on a real task from your own codebase before committing, because usage limits on both depend on the model and task size rather than a fixed message count.",
+    "rows": [
+      {
+        "id": "claude-code",
+        "price": "Not on the Free plan. Claude Pro $17/month with annual billing ($200 up front) or $20 billed monthly; Max from $100/month.",
+        "source": "https://claude.com/pricing",
+        "bestFor": "In our view: developers who already use Claude and want one subscription for chat and coding.",
+        "strength": "Included in every paid Claude plan; coding and chat share one usage pool, and heavy users can switch to pay-as-you-go API credits.",
+        "drawback": "No free access. Usage resets in five-hour windows, with weekly limits on paid plans."
+      },
+      {
+        "id": "codex",
+        "price": "ChatGPT Free $0 and Go $8/month (one model, desktop app, subject to rollout); Plus $20/month; Pro from $100/month ($100, $200 or $500 options). API-key use billed at API rates.",
+        "source": "https://developers.openai.com/codex/pricing",
+        "bestFor": "In our view: ChatGPT subscribers, and teams that want to script an agent in CI with an API key.",
+        "strength": "A $0 way to try it; on Plus it runs on the web, in the CLI, in an IDE extension and on iOS, and an API-key mode suits automation.",
+        "drawback": "Free and Go get a single model in the desktop app only; API-key use has no cloud features such as GitHub code review or Slack."
+      }
+    ],
+    "pick": [
+      "Pick Claude Code if you already pay for Claude Pro or Max, or plan to, and want your coding work to draw from the same plan as your chats.",
+      "Pick Codex if you want to start for $0, already pay for ChatGPT Plus or Pro, or need an API-key setup for CI pipelines.",
+      "In our view, if neither ecosystem matters to you, run both on the same small feature for a week before choosing."
+    ],
+    "faqs": [
+      {"q": "Is Claude Code free?", "a": "No. As of Oct 2026, Claude's pricing page lists Claude Code as not included on the Free plan. It is included with Pro ($17/month billed annually or $20 monthly) and Max (from $100/month). Check the vendor's site for current pricing."},
+      {"q": "Is OpenAI Codex free?", "a": "There is a limited free option. As of Oct 2026, ChatGPT Free ($0) includes one model in the Codex desktop app, subject to rollout. Plus ($20/month) adds the web, CLI, IDE extension and iOS. Check the vendor's site for current pricing."},
+      {"q": "Can I use either one with an API key instead of a subscription?", "a": "Codex's pricing page describes an API-key mode billed at API rates, without the cloud features. Claude's pricing FAQ says heavy coding users can switch to pay-as-you-go API credits through a Console account."},
+      {"q": "Which is cheaper for daily use?", "a": "At list prices both are $20/month when billed monthly (Claude Pro, ChatGPT Plus), and both have tiers from $100/month. In our view the cheaper option is whichever one's usage limits fit your workload, which you can only learn by trying it."}
+    ]
+  },
+  {
+    "slug": "cursor-vs-claude-code-vs-codex",
+    "type": "compare",
+    "title": "Cursor vs Claude Code vs Codex (2026): pricing and which to pick",
+    "h1": "Cursor vs Claude Code vs Codex",
+    "description": "Cursor, Claude Code and OpenAI Codex compared side by side: plan prices and free access as of Oct 2026, best for, strengths, drawbacks and FAQs.",
+    "category": "Coding Agents",
+    "tools": ["cursor", "claude-code", "codex"],
+    "updated": "2026-10-25",
+    "answer": "Cursor is an AI-first code editor with a built-in agent, while Claude Code and OpenAI Codex are agents tied to the Claude and ChatGPT subscriptions. As of Oct 2026, Cursor and Codex both have a $0 plan with limited usage, and Claude Code starts with Claude Pro. Cursor's paid plans start at $8/month (Grok models only) and its Premium plan is $30/month, with third-party models billed separately at API list price. In our view, choose Cursor if you want the agent built into your editor, and Claude Code or Codex if you prefer a model maker's own agent bundled with chat. In our view, using an editor and a separate agent together is also a reasonable setup.",
+    "rows": [
+      {
+        "id": "cursor",
+        "price": "Free $0 (limited agent and chat requests); Plus $8/month (Grok models only); Premium $30/month; Super $100/month; Ultra $200/month; Teams from $30/user/month. Third-party models billed separately at API list price.",
+        "source": "https://cursor.com/pricing",
+        "bestFor": "In our view: developers who want the agent inside an editor rather than in a separate tool.",
+        "strength": "The agent is on every plan, including Free; Premium and up add cloud agents and automations, code hosting and AI code reviews.",
+        "drawback": "Plan prices cover Grok models; other providers' models cost extra at API list price, so totals can be harder to predict."
+      },
+      {
+        "id": "claude-code",
+        "price": "Not on the Free plan. Claude Pro $17/month with annual billing or $20 monthly; Max from $100/month.",
+        "source": "https://claude.com/pricing",
+        "bestFor": "In our view: Claude users who want one subscription for chat and coding.",
+        "strength": "Included in all paid Claude plans and shares a usage pool with Claude chat; pay-as-you-go API credits are an option for heavy use.",
+        "drawback": "No free access; usage resets in five-hour windows, with weekly limits on paid plans."
+      },
+      {
+        "id": "codex",
+        "price": "ChatGPT Free $0 and Go $8/month (one model, desktop app, subject to rollout); Plus $20/month; Pro from $100/month. API-key use billed at API rates.",
+        "source": "https://developers.openai.com/codex/pricing",
+        "bestFor": "In our view: ChatGPT subscribers and teams automating coding tasks in CI.",
+        "strength": "Runs on the web, CLI, IDE extension and iOS on Plus, plus an API-key mode for scripts and CI.",
+        "drawback": "Free and Go are limited to one model in the desktop app; API-key use has no cloud features."
+      }
+    ],
+    "pick": [
+      "Pick Cursor if you want an editor-first workflow and like having cloud agents and code reviews in the same product.",
+      "Pick Claude Code if you already pay for Claude, or want coding and chat on one Anthropic plan.",
+      "Pick Codex if you want a $0 starting point inside ChatGPT, or need API-key automation in CI.",
+      "In our view, an editor plus one agent is a common and reasonable setup, so this doesn't have to be an either-or decision."
+    ],
+    "faqs": [
+      {"q": "Which of the three has a free plan?", "a": "As of Oct 2026, Cursor has a Free plan with limited agent and chat requests, and Codex is available on ChatGPT Free with one model in the desktop app. Claude's Free plan does not include Claude Code. Check the vendor's site for current pricing."},
+      {"q": "What is the cheapest paid option?", "a": "At list prices as of Oct 2026: Cursor Plus and ChatGPT Go are both $8/month, but Cursor Plus is limited to Grok models and Go is limited to one model in the Codex desktop app. Claude Pro is $17/month billed annually."},
+      {"q": "Can I use Claude or OpenAI models inside Cursor?", "a": "Cursor's pricing page says third-party models are available on Premium and above at API list price, billed separately by usage. The Plus plan includes Grok models only."},
+      {"q": "Do I need an editor if I use Claude Code or Codex?", "a": "Not necessarily, but in our view most people still review and edit code in an editor. Codex lists an IDE extension on its Plus plan."}
+    ]
+  },
+  {
+    "slug": "n8n-vs-make-vs-zapier",
+    "type": "compare",
+    "title": "n8n vs Make vs Zapier (2026): pricing, free plans and which to pick",
+    "h1": "n8n vs Make vs Zapier",
+    "description": "n8n, Make and Zapier compared: free plans, starting prices and billing units as of Oct 2026, plus best for, strengths, drawbacks and FAQs.",
+    "category": "Automation",
+    "tools": ["n8n", "make", "zapier"],
+    "updated": "2026-10-25",
+    "answer": "All three build automated workflows between apps, but they bill differently. n8n charges per full workflow run (an execution) no matter how many steps it has, and offers a free self-hosted Community Edition. Make bills in credits, with most actions using one credit and 1,000 free credits a month. Zapier bills in tasks, with each successful step using a task, and its Free plan gives 100 tasks a month for two-step Zaps. In our view, n8n suits technical users who want self-hosting or long multi-step workflows, Make suits people who like a visual canvas and a usable free plan, and Zapier suits those who want the widest choice of ready-made app connections with the least setup.",
+    "rows": [
+      {
+        "id": "n8n",
+        "price": "Free self-hosted Community Edition. Cloud: Starter €20/month and Pro €50/month (billed annually); Business €667/month billed annually (self-hosted). Cloud free trial includes 1,000 executions, no card needed.",
+        "source": "https://n8n.io/pricing/",
+        "bestFor": "In our view: developers and technical teams who want to self-host or run complex AI and agent workflows.",
+        "strength": "Priced per complete workflow run regardless of step count; all plans include unlimited users, workflows and integrations.",
+        "drawback": "No free hosted plan beyond the trial. In our view the learning curve is steeper for non-technical users."
+      },
+      {
+        "id": "make",
+        "price": "Free plan with 1,000 credits/month; paid Core, Pro, Teams and Enterprise plans priced by credit volume, cheaper when paid annually. We couldn't verify paid plan prices on the pricing page today.",
+        "source": "https://www.make.com/en/pricing",
+        "bestFor": "In our view: visual thinkers building multi-step scenarios on a budget.",
+        "strength": "A free plan with monthly credits, a visual scenario builder, and integrations with more than 1,000 apps.",
+        "drawback": "Each module action uses credits, so one complex run can use many; scenarios pause when credits run out."
+      },
+      {
+        "id": "zapier",
+        "price": "Free $0 (100 tasks/month, two-step Zaps); Professional from $19.99/month billed annually ($29.99 monthly) for 750 tasks; Team from $69/month billed annually for 2,000 tasks; Enterprise custom.",
+        "source": "https://zapier.com/pricing",
+        "bestFor": "In our view: non-technical teams that need to connect many popular apps quickly.",
+        "strength": "Connects 9,000+ apps; a 14-day Professional trial needs no card; triggers and built-in tools like Filter and Formatter don't use tasks.",
+        "drawback": "The Free plan is limited to two-step Zaps, and costs rise with task volume since each successful action step counts."
+      }
+    ],
+    "pick": [
+      "Pick n8n if you are comfortable with a technical tool and want self-hosting, or your workflows have many steps and you'd rather pay per run.",
+      "Pick Make if you want a visual builder and a free plan with enough monthly credits to run real scenarios.",
+      "Pick Zapier if you need a specific app integration that the others lack, or want the simplest setup for a non-technical team.",
+      "In our view, estimate how many steps and runs your main workflow needs per month, then price it on each vendor's pricing page before deciding."
+    ],
+    "faqs": [
+      {"q": "Is n8n free?", "a": "The self-hosted Community Edition is available on GitHub at no cost. As of Oct 2026, n8n's cloud plans start at €20/month billed annually, with a free trial. Check the vendor's site for current pricing."},
+      {"q": "Which has the best free plan?", "a": "It depends on your workflow. As of Oct 2026, Make's Free plan includes 1,000 credits a month, and Zapier's Free plan includes 100 tasks a month for two-step Zaps. n8n's free option is self-hosting. In our view Make's free plan is the most generous for multi-step workflows."},
+      {"q": "How do executions, credits and tasks differ?", "a": "n8n counts one execution per full workflow run. Make counts credits per module action, with most actions using one credit. Zapier counts a task for each successful action step, while triggers and its built-in tools don't count."},
+      {"q": "Can I self-host Make or Zapier?", "a": "Neither pricing page describes a self-hosted option. n8n offers self-hosting through its Community Edition and its Business plan."}
+    ]
+  },
+  {
+    "slug": "lovable-vs-base44-vs-replit",
+    "type": "compare",
+    "title": "Lovable vs Base44 vs Replit (2026): free plans, pricing and which to pick",
+    "h1": "Lovable vs Base44 vs Replit",
+    "description": "Lovable, Base44 and Replit compared as AI app builders: free plans and prices as of Oct 2026, best for, strengths, drawbacks and FAQs.",
+    "category": "App Builders",
+    "tools": ["lovable", "base44", "replit"],
+    "updated": "2026-10-25",
+    "answer": "Lovable, Base44 and Replit all turn a chat prompt into a working web app, and all three have a free plan as of Oct 2026. Lovable gives 5 build credits a day on its free plan and prices paid plans by credits rather than seats. Base44 includes a backend, database and user auth on every plan, with paid plans from $16/month billed annually. Replit runs a full browser-based development environment with hosting, with Core at $20/month ($18 billed annually). In our view, Lovable and Base44 suit people who want to stay in chat and avoid code, while Replit suits people who expect to look at and edit the code themselves.",
+    "rows": [
+      {
+        "id": "lovable",
+        "price": "Free: 5 build credits/day (up to 30/month) plus 20 Cloud credits/month. Paid Pro and Business plans are priced by credits; we couldn't verify their prices on the pricing page today.",
+        "source": "https://lovable.dev/pricing",
+        "bestFor": "In our view: non-developers and small teams building websites and web apps by chat.",
+        "strength": "No per-seat pricing: unlimited workspace members share one credit pool, and you own the code you build.",
+        "drawback": "Credit cost per message varies with task complexity, so spend can be hard to predict; unused credits expire."
+      },
+      {
+        "id": "base44",
+        "price": "Free: 25 message credits/month, up to 5 apps. Paid plans from Starter $16/month billed annually (100 message credits) up to Elite $160/month billed annually; yearly billing saves 20%.",
+        "source": "https://base44.com/pricing",
+        "bestFor": "In our view: founders and teams building internal tools or customer portals that need login and data.",
+        "strength": "Backend, database, authentication and analytics are included on every plan, including Free.",
+        "drawback": "The free plan is small (25 message credits a month), and GitHub integration starts above the Starter plan."
+      },
+      {
+        "id": "replit",
+        "price": "Free Starter plan (daily Agent credits up to a monthly cap); Core $20/month ($18 billed annually); Pro $100/month ($90 billed annually); Enterprise via sales.",
+        "source": "https://replit.com/pricing",
+        "bestFor": "In our view: builders who want an agent plus a full coding environment they can take over.",
+        "strength": "Building, databases and publishing live in one browser workspace; Pro supports up to 15 collaborators.",
+        "drawback": "The free plan only offers Lite build and one published app that goes offline after 30 days; third-party connectors need Core."
+      }
+    ],
+    "pick": [
+      "Pick Lovable if you want to build websites and web apps purely by chat, especially as a team sharing one credit balance.",
+      "Pick Base44 if your app needs sign-in, a database and integrations from day one and you'd rather not set them up yourself.",
+      "Pick Replit if you want to see and edit the code, or plan to grow the project into a fuller software build.",
+      "In our view, build the same small app on each free plan first; the free tiers are enough to see which workflow you prefer."
+    ],
+    "faqs": [
+      {"q": "Which has the most generous free plan?", "a": "They measure usage differently. As of Oct 2026, Lovable's free plan gives 5 build credits a day (up to 30 a month), Base44's gives 25 message credits a month for up to 5 apps, and Replit's Starter plan gives daily Agent credits up to a monthly cap plus one published app. Check the vendor's site for current pricing."},
+      {"q": "Do I own the code?", "a": "Lovable and Base44 both state on their pricing pages that you own what you build, and Base44 describes two-way GitHub sync for exporting source code. Replit projects are code you can open and edit in the workspace."},
+      {"q": "Which is best for apps with user accounts and a database?", "a": "In our view Base44 makes this easiest, since its pricing page lists authentication and database features on every plan. Replit includes production databases among its cloud credits, and Lovable apps run on its Cloud with an included monthly grant."},
+      {"q": "Do any of them charge per seat?", "a": "Lovable says it doesn't charge per seat; workspaces have unlimited members sharing credits. Base44 and Replit price by plan; Replit's Pro plan supports up to 15 collaborators."}
+    ]
+  },
+  {
+    "slug": "vector-database-for-rag",
+    "type": "best",
+    "title": "Best vector database for RAG (2026): Pinecone vs Qdrant vs Weaviate vs Chroma",
+    "h1": "Best vector database for RAG",
+    "description": "Pinecone, Qdrant, Weaviate and Chroma compared for RAG: free tiers, starting prices and limits as of Oct 2026, plus which to pick and FAQs.",
+    "category": "Databases & Backends",
+    "tools": ["pinecone", "qdrant", "weaviate", "chroma"],
+    "updated": "2026-10-25",
+    "answer": "There is no single best vector database for retrieval-augmented generation (RAG); the right one depends on whether you want to run servers, how much data you have and how much you want to spend. All four here have a free option as of Oct 2026. Pinecone is fully managed with a free Starter plan and paid plans from $20/month. Qdrant and Weaviate are open source with managed clouds that each have a free tier. Chroma is open source and its cloud bills purely by usage after a $0 Starter plan. In our view, Chroma is the quickest way to prototype, Pinecone is the simplest if you never want to manage infrastructure, and Qdrant or Weaviate are strong picks if you want the option to self-host later.",
+    "rows": [
+      {
+        "id": "pinecone",
+        "price": "Starter free (up to 2 GB storage, 2M write units and 1M read units a month); Builder $20/month flat; Standard $50/month minimum usage, with a 3-week trial including $300 credits; Enterprise $500/month minimum.",
+        "source": "https://www.pinecone.io/pricing/",
+        "bestFor": "In our view: teams that want a managed service with no servers to run.",
+        "strength": "Fully managed, with dense, sparse and full-text indexes plus hosted embedding and reranking models on every plan.",
+        "drawback": "The free Starter plan runs only on AWS us-east-1 with up to 5 indexes; production costs on Standard are usage-based."
+      },
+      {
+        "id": "qdrant",
+        "price": "Open-source version available. Cloud Free tier 'free forever' (single node, 0.5 vCPU, 1 GB RAM, 4 GB disk); Standard tier usage-based, billed hourly; Premium tier has a minimum spend.",
+        "source": "https://qdrant.tech/pricing/",
+        "bestFor": "In our view: developers who want open source today with a managed or hybrid cloud path later.",
+        "strength": "Run it yourself, in Qdrant's cloud, or as managed clusters in your own infrastructure (Hybrid Cloud).",
+        "drawback": "The free tier is a single node without high availability, and resource-based cloud pricing takes some estimating."
+      },
+      {
+        "id": "weaviate",
+        "price": "Free $0/month (1 cluster per user, 100,000 objects, 1 GB memory, 10 GB disk, 1 collection); Flex from $45/month pay-as-you-go; Premium prepaid, from $400/month.",
+        "source": "https://weaviate.io/pricing",
+        "bestFor": "In our view: RAG apps that need hybrid search and multi-tenancy.",
+        "strength": "Hybrid search and multi-tenancy on every plan, including Free, plus a built-in embeddings service.",
+        "drawback": "The free tier allows one collection and 100,000 objects; pricing by vector dimensions takes some math to estimate."
+      },
+      {
+        "id": "chroma",
+        "price": "Open source. Cloud Starter $0/month plus usage, with $5 free credits; Team $250/month plus usage ($100 credits). Usage: $2.50/GiB written, $0.33/GiB-month stored, $0.0075/TiB queried.",
+        "source": "https://www.trychroma.com/pricing",
+        "bestFor": "In our view: prototypes and small projects, especially running locally.",
+        "strength": "Open source, and in our view easy to start with; the cloud has no fixed fee on Starter, just usage.",
+        "drawback": "In our view, scaling a self-hosted setup takes work, and the jump from Starter to Team ($250/month) is steep for small teams."
+      }
+    ],
+    "pick": [
+      "Pick Chroma if you're prototyping a RAG app and want something you can run locally in minutes.",
+      "Pick Pinecone if you want a hosted service and don't want to think about servers, clusters or scaling.",
+      "Pick Qdrant if you want open source with a clear path to managed, hybrid or private cloud deployments.",
+      "Pick Weaviate if hybrid search, multi-tenancy or built-in embeddings matter for your app.",
+      "In our view, all four handle typical RAG workloads, so try your own data on two free tiers before you commit."
+    ],
+    "faqs": [
+      {"q": "Which vector database is free?", "a": "All four have a free option as of Oct 2026: Pinecone's Starter plan, Qdrant's Free tier, Weaviate's Free plan and Chroma's $0 Starter plan (plus usage, with free credits). Qdrant, Weaviate and Chroma can also be self-hosted. Check the vendor's site for current pricing."},
+      {"q": "Which is best for RAG in production?", "a": "In our view, any of the four can serve production RAG. Pinecone, Qdrant, Weaviate and Chroma each list uptime or support SLAs on at least some paid tiers. Choose based on whether you want fully managed or self-hostable, and on your data size."},
+      {"q": "Can I self-host?", "a": "Qdrant, Weaviate and Chroma are open source and can be self-hosted. Pinecone offers a Bring Your Own Cloud option that runs Pinecone in your cloud account, which is a managed service rather than self-hosting."},
+      {"q": "What's the cheapest way to start?", "a": "Use a free tier. As of Oct 2026, Pinecone's Starter includes up to 2 GB storage, Qdrant's Free tier includes 4 GB disk, Weaviate's Free plan allows 100,000 objects, and Chroma's Starter plan includes $5 in free credits."}
+    ]
+  }
+]
