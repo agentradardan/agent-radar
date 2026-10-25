@@ -35,15 +35,15 @@
 - [Neon](https://www.tryagentradar.com/tools/neon.html): Serverless Postgres with branching and usage-based pricing. Free tier available.
 - [Turso](https://www.tryagentradar.com/tools/turso.html): SQLite-compatible cloud database platform built for many lightweight databases. Free tier available.
 - [PlanetScale](https://www.tryagentradar.com/tools/planetscale.html): Managed MySQL (Vitess) and Postgres databases. No free tier found.
-- [Pinecone](https://www.tryagentradar.com/tools/pinecone.html): Fully managed vector database for search and AI applications. Free tier available.
+- [Pinecone](https://www.tryagentradar.com/tools/pinecone.html): Hosted vector store queried over an API, for teams that would rather not run servers; costs scale with usage. Free tier available.
 - [Qdrant](https://www.tryagentradar.com/tools/qdrant.html): Open-source vector search engine with a managed cloud. Free tier available.
 - [Weaviate](https://www.tryagentradar.com/tools/weaviate.html): Vector database with managed cloud clusters. Free tier available.
-- [Chroma](https://www.tryagentradar.com/tools/chroma.html): Open-source search infrastructure for AI with a hosted cloud. Free tier available.
+- [Chroma](https://www.tryagentradar.com/tools/chroma.html): Open-source embedding store you can self-host or use as a paid cloud; in our view best for prototypes, as scaling it yourself takes work. Free tier available.
 - [Firebase](https://www.tryagentradar.com/tools/firebase.html): Google's app development platform with databases, auth, hosting and functions. Free tier available.
 - [LangChain](https://www.tryagentradar.com/tools/langchain.html): Framework (MIT-licensed on GitHub) for building agents and LLM apps, with LangSmith for observability. Free tier available.
 - [LlamaIndex](https://www.tryagentradar.com/tools/llamaindex.html): Data framework (MIT-licensed on GitHub) and LlamaCloud for document parsing and retrieval for LLM apps. Free tier available.
 - [CrewAI](https://www.tryagentradar.com/tools/crewai.html): Framework (MIT-licensed on GitHub) and platform for building multi-agent workflows. Free tier available.
-- [AutoGen](https://www.tryagentradar.com/tools/autogen.html): Microsoft's open-source framework for creating multi-agent AI applications. Free tier available.
+- [AutoGen](https://www.tryagentradar.com/tools/autogen.html): Microsoft-backed Python library for coordinating LLM agents that hand tasks to each other; in our view setup is heavier than simpler options. Free tier available.
 - [OpenAI API](https://www.tryagentradar.com/tools/openai-api.html): OpenAI's developer API for GPT models, embeddings, audio and image generation. Free tier unverified.
 - [Anthropic API (Claude Platform)](https://www.tryagentradar.com/tools/anthropic-api.html): Anthropic's developer platform for building with Claude models. Free tier unverified.
 - [Google Gemini API](https://www.tryagentradar.com/tools/gemini-api.html): Google's Gemini Developer API for building with Gemini models. Free tier available.
