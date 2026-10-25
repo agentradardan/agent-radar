@@ -7,6 +7,7 @@
 - [Prompt Vault](https://www.tryagentradar.com/vault.html): 31 prompts
 - [Advertise](https://www.tryagentradar.com/advertise.html): featured listings (labeled "Sponsored")
 - [Disclosure](https://www.tryagentradar.com/disclosure.html): affiliate links and sponsored listings policy
+- [Terms of Use](https://www.tryagentradar.com/terms.html), [Privacy](https://www.tryagentradar.com/privacy.html), [Refunds](https://www.tryagentradar.com/refunds.html), [Disclaimer](https://www.tryagentradar.com/disclaimer.html)
 - [tools.json](https://www.tryagentradar.com/data/tools.json): raw tool data
 - [Sitemap](https://www.tryagentradar.com/sitemap.xml)
 

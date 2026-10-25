@@ -28,6 +28,8 @@ const maxDate = tools.map(t => t.verified_on).sort().pop();
 const TODAY = new Date().toLocaleDateString('en-CA'); // local YYYY-MM-DD
 const PAGES_UPDATED = '2026-10-19'; // lastmod for advertise/disclosure pages
 const CONTACT = 'agentradar.dan@gmail.com';
+const LEGAL_UPDATED = '2026-10-25'; // lastmod for terms/privacy/refunds/disclaimer pages
+const LEGAL_UPDATED_TXT = 'October 25, 2026';
 const isDate = s => typeof s === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(s) && !isNaN(Date.parse(s));
 for (const t of tools) {
   if (t.featured != null && !(t.featured && isDate(t.featured.until))) throw new Error(`${t.id}: featured must be {"until": "YYYY-MM-DD"}`);
@@ -59,7 +61,7 @@ ${extra}<link rel="stylesheet" href="/style.css">
 `;
 const header = (active, sub) => `<header><h1><a href="/index.html" class="brand">📡 Agent Radar</a></h1>${nav(active)}<p>${sub}</p></header>\n`;
 // shared footer links + disclosure (also injected into index.html / vault.html via <!--footer--> markers)
-const footInner = `<a href="/index.html">Tools directory</a> · <a href="/vault.html">Prompt Vault</a> · <a href="/advertise.html">Advertise</a> · <a href="/disclosure.html">Disclosure</a> · <a href="/data/tools.json">tools.json</a> · <a href="/llms.txt">llms.txt</a><p class="disc">Some links are affiliate links; we may earn a commission at no cost to you. Sponsored listings are labeled. <a href="/disclosure.html">Learn more</a>.</p>`;
+const footInner = `<a href="/index.html">Tools directory</a> · <a href="/vault.html">Prompt Vault</a> · <a href="/advertise.html">Advertise</a> · <a href="/disclosure.html">Disclosure</a> · <a href="/data/tools.json">tools.json</a> · <a href="/llms.txt">llms.txt</a><p class="legal"><a href="/terms.html">Terms</a> · <a href="/privacy.html">Privacy</a> · <a href="/refunds.html">Refunds</a> · <a href="/disclaimer.html">Disclaimer</a></p><p class="disc">Some links are affiliate links; we may earn a commission at no cost to you. Sponsored listings are labeled. <a href="/disclosure.html">Learn more</a>.</p>`;
 const footer = `<footer>Pricing changes often — always confirm on the tool's official pricing page. ${footInner}</footer>\n<script src="/featured.js"></script>\n</body></html>\n`;
 const crumbs = items => ld({ '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: items.map((it, i) => ({ '@type': 'ListItem', position: i + 1, name: it[0], item: it[1] })) });
 const crumbNav = items => `<nav class="crumbs" aria-label="Breadcrumb">${items.map((it, i) => i < items.length - 1 ? `<a href="${it[1].replace(SITE, '')}">${esc(it[0])}</a>` : `<span aria-current="page">${esc(it[0])}</span>`).join(' › ')}</nav>`;
@@ -168,7 +170,7 @@ write('advertise.html', head({ title: 'Advertise – feature your AI tool | Agen
 <dl class="facts">
 <dt>What you get</dt><dd>Top position on your category page and within your category in the directory, plus a card in the homepage “Featured” strip</dd>
 <dt>Duration</dt><dd>30 days from the start date we agree on</dd>
-<dt>Price</dt><dd>$100 one-time. No subscription, no auto-renewal</dd>
+<dt>Price</dt><dd>$100 one-time. No subscription, no auto-renewal. By paying you agree to our <a href="/terms.html#sponsored">Terms</a> and <a href="/refunds.html">Refund policy</a></dd>
 <dt>Labeling</dt><dd>Featured listings carry a visible “Sponsored” badge and their links use <code>rel="sponsored"</code></dd>
 </dl>
 <h2>Honest note</h2>
@@ -178,7 +180,7 @@ write('advertise.html', head({ title: 'Advertise – feature your AI tool | Agen
 <h2>How to get featured</h2>
 <p>For now, email <a href="mailto:${CONTACT}?subject=${encodeURIComponent('Featured listing on Agent Radar')}">${CONTACT}</a> with your tool's name, website and preferred start date. We'll confirm availability and send payment details.</p>
 <p class="visit"><a class="btn" href="mailto:${CONTACT}?subject=${encodeURIComponent('Featured listing on Agent Radar')}">Contact ${CONTACT}</a> <a class="btn" id="pay" href="#" target="_blank" rel="noopener" hidden>Pay $100 securely</a></p>
-<p class="note">See our <a href="/disclosure.html">disclosure policy</a> for how sponsored listings and affiliate links work.</p>
+<p class="note">By paying you agree to our <a href="/terms.html#sponsored">Terms</a> and <a href="/refunds.html">Refund policy</a>. See our <a href="/disclosure.html">disclosure policy</a> for how sponsored listings and affiliate links work.</p>
 </main>
 <script src="/advertise.js"></script>
 ` + footer);
@@ -197,8 +199,118 @@ write('disclosure.html', head({ title: 'Disclosure – affiliate links & sponsor
 </main>
 ` + footer);
 
+// ---- terms, privacy, refunds, disclaimer (plain-English policies)
+const mail = `<a href="mailto:${CONTACT}">${CONTACT}</a>`;
+const updated = `<p class="note">Last updated: <time datetime="${LEGAL_UPDATED}">${LEGAL_UPDATED_TXT}</time></p>`;
+const legalPage = (file, title, desc, sub, h1, body) => write(file, head({ title, desc, path: '/' + file }) +
+  header('', sub) + `<main class="page">
+<h1 class="tool-h">${h1}</h1>
+${updated}
+${body.trim()}
+</main>
+` + footer);
+
+legalPage('terms.html', 'Terms of Use | Agent Radar', 'The terms for using Agent Radar, including the tools directory, Prompt Vault, newsletter and sponsored listings.',
+  'The ground rules for using Agent Radar.', 'Terms of Use', `
+<p class="lead">Agent Radar (tryagentradar.com) is a small independent website run by Dan, a sole proprietor based in Florida, USA (“we”, “us”). By using the site, the Prompt Vault, the newsletter or buying a sponsored listing, you agree to these terms. If you don't agree, please don't use the site.</p>
+<h2>The site is provided as-is</h2>
+<p>Agent Radar is a free directory of AI tools with pricing summaries, free-tier info and copy-ready prompts. We try hard to keep it accurate, but tools change their pricing, plans and features often. Information on the site may be incomplete, inaccurate or out of date. Always confirm details on the tool's official website before you rely on them or buy anything.</p>
+<p>The site and everything on it are provided “as is” and “as available”, without warranties of any kind, express or implied, including warranties of accuracy, fitness for a particular purpose, merchantability or non-infringement. We don't promise that the site will always be available or error-free.</p>
+<h2>Limitation of liability</h2>
+<p>To the fullest extent allowed by law, we aren't liable for any indirect, incidental, special or consequential damages, or for lost profits, data or business, arising from your use of the site, the information on it, or any third-party tool you find through it. If we are found liable for anything, our total liability is limited to the greater of the amount you paid us in the 12 months before the claim, or $100.</p>
+<h2>Third-party tools and links</h2>
+<p>Agent Radar lists and links to tools and websites run by other companies. Listing or linking to a tool doesn't mean we endorse it, and we aren't responsible for its content, products, pricing, privacy practices or availability. Your use of any third-party tool is governed by that company's own terms and policies. Some links are affiliate links and some listings are sponsored; see our <a href="/disclosure.html">Disclosure</a>.</p>
+<h2>Prompts and AI output</h2>
+<p>Prompts in the Prompt Vault are starting points. You're free to copy and use them in your own work. You're responsible for reviewing anything an AI tool produces before relying on it.</p>
+<h2>Using the site</h2>
+<p>Please don't: break the law using the site; try to disrupt, overload or gain unauthorized access to the site or its systems; scrape it in a way that harms its performance; sign up other people for the newsletter without their permission; or misrepresent your affiliation with Agent Radar. We may block access for anyone who does.</p>
+<h2 id="sponsored">Sponsored (featured) listings</h2>
+<ul class="links">
+<li>A featured listing is a paid placement: your tool appears at the top of its category and in the homepage Featured strip for the agreed period (currently 30 days). See <a href="/advertise.html">Advertise</a> for current details and price.</li>
+<li>Placement only. We don't guarantee any amount of traffic, clicks, sign-ups, sales or other results.</li>
+<li>Featured listings are always labeled “Sponsored”, and their links use <code>rel="sponsored"</code>. This label can't be removed.</li>
+<li>Sponsorship doesn't change pricing summaries, free-tier info or descriptions, which stay based on the tool's official site.</li>
+<li>We may decline or remove any listing that is illegal, misleading, harmful, or not a fit for the site. Refunds work as described in our <a href="/refunds.html">Refund policy</a>.</li>
+<li>Payments are one-time and processed by Stripe. Nothing renews automatically.</li>
+<li>You confirm you have the right to promote the tool and that any information you give us is accurate.</li>
+</ul>
+<h2>Intellectual property</h2>
+<p>The original text, summaries, prompts and design of Agent Radar belong to us. Tool names, product names, logos and trademarks belong to their respective owners and are used only to identify the tools. Their use doesn't imply any affiliation with or endorsement by those owners. If you believe something on the site infringes your rights, email ${mail} and we'll look into it promptly.</p>
+<h2>Governing law</h2>
+<p>These terms are governed by the laws of the State of Florida, USA, without regard to its conflict-of-law rules. Any dispute will be handled in the state or federal courts located in Florida.</p>
+<h2>Changes to these terms</h2>
+<p>We may update these terms from time to time. When we do, we'll change the “Last updated” date above. Continuing to use the site after a change means you accept the updated terms. Changes don't affect a sponsored listing you already paid for.</p>
+<h2>Contact</h2>
+<p>Questions about these terms: ${mail}.</p>
+<p class="note">See also: <a href="/privacy.html">Privacy policy</a> · <a href="/refunds.html">Refund policy</a> · <a href="/disclaimer.html">Disclaimer</a> · <a href="/disclosure.html">Disclosure</a></p>`);
+
+legalPage('privacy.html', 'Privacy Policy | Agent Radar', 'What Agent Radar collects (just your email if you subscribe), how it is used, who processes it, and how to unsubscribe or ask for deletion.',
+  "What we collect, and what we don't.", 'Privacy Policy', `
+<p class="lead">Agent Radar is run by Dan, a sole proprietor in Florida, USA. We collect as little as possible. You can browse the directory and the Prompt Vault without an account and without giving us any personal information.</p>
+<h2>What we collect</h2>
+<ul class="links">
+<li><strong>Newsletter:</strong> if you subscribe, we collect your email address. That's the only thing the signup form asks for.</li>
+<li><strong>Sponsored listings:</strong> if you buy a featured listing, we receive your name, email and the details you send us about your tool. Payments are processed by Stripe. We never see or store your full card details.</li>
+<li><strong>Emails you send us:</strong> if you email us, we keep the message so we can reply.</li>
+<li><strong>Server logs:</strong> our hosting provider, Vercel, automatically processes standard technical data such as IP address, browser type and the pages requested, to deliver the site and keep it secure.</li>
+<li><strong>Analytics:</strong> if enabled, we use Vercel Web Analytics, which is cookieless and gives us aggregate stats (such as page views and referrers) without identifying individual visitors.</li>
+</ul>
+<p>We don't use advertising trackers or tracking cookies.</p>
+<h2>How we use it</h2>
+<p>We use your email only to send the Agent Radar newsletter and related messages (like the welcome email). We use sponsor details only to set up, run and bill the featured listing and to keep business records. Technical data is used to run, secure and improve the site.</p>
+<h2>Who processes it</h2>
+<p>We rely on a few service providers, each with its own privacy policy:</p>
+<ul class="links">
+<li><a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener">Vercel</a>: website hosting, server logs and (if enabled) Web Analytics</li>
+<li><a href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener">Resend</a>: storing the newsletter list and sending emails</li>
+<li><a href="https://stripe.com/privacy" target="_blank" rel="noopener">Stripe</a>: processing payments for featured listings</li>
+</ul>
+<h2>We don't sell your data</h2>
+<p>We don't sell, rent or trade your personal information, and we don't share it with anyone except the service providers above, or when required by law.</p>
+<h2>Unsubscribing and deletion</h2>
+<p>Every newsletter email has an unsubscribe link. Click it and you won't get any more newsletters. To have your email address deleted completely, or to ask what we hold about you, email ${mail} and we'll handle it promptly. We keep payment and business records as long as tax and accounting rules require.</p>
+<h2>Children</h2>
+<p>Agent Radar is not directed at children under 13, and we don't knowingly collect personal information from them. If you think a child has given us their email, contact us and we'll delete it.</p>
+<h2>Changes</h2>
+<p>If we change this policy, we'll update the “Last updated” date above. If a change is significant, we'll mention it in the newsletter.</p>
+<h2>Contact</h2>
+<p>Privacy questions or requests: ${mail}.</p>
+<p class="note">See also: <a href="/terms.html">Terms of Use</a> · <a href="/refunds.html">Refund policy</a> · <a href="/disclaimer.html">Disclaimer</a></p>`);
+
+legalPage('refunds.html', 'Refund Policy – featured listings | Agent Radar', 'Refund policy for Agent Radar featured (sponsored) listings: full refund before the listing goes live, no auto-renewal.',
+  'Refunds for featured listings.', 'Refund Policy', `
+<p class="lead">This policy covers paid featured (sponsored) listings. Everything else on Agent Radar, including the directory, Prompt Vault and newsletter, is free.</p>
+<h2>Before your listing goes live</h2>
+<p>If you change your mind before your featured listing goes live, you'll get a full refund. Just email us.</p>
+<h2>After your listing goes live</h2>
+<p>Once the listing is live, the payment is non-refundable, with one exception: if we remove your listing early for reasons not caused by you (for example, we stop offering featured listings), we may give a pro-rated refund for the unused days, at our discretion.</p>
+<p>If we remove a listing because it breaks our <a href="/terms.html#sponsored">Terms</a> (for example, it is illegal or misleading), no refund is due.</p>
+<h2>No auto-renewal</h2>
+<p>Featured listings are a one-time payment for a fixed period. Nothing renews or charges you again automatically. If you want another period, you buy it separately.</p>
+<h2>How to request a refund</h2>
+<p>Email ${mail} from the address you used to buy the listing, with your tool's name and the date you paid. Approved refunds go back to your original payment method through Stripe. Your bank may take several business days to show it.</p>
+<p class="note">See also: <a href="/terms.html">Terms of Use</a> · <a href="/advertise.html">Advertise</a> · <a href="/disclosure.html">Disclosure</a></p>`);
+
+legalPage('disclaimer.html', 'Disclaimer | Agent Radar', 'Agent Radar is editorially independent. Our takes are opinions, pricing changes often, and nothing here is professional advice.',
+  "How to read what's on Agent Radar.", 'Disclaimer', `
+<p class="lead">Agent Radar is an independent directory run by one person. Here's how to read what you find on it.</p>
+<h2>Editorial independence</h2>
+<p>We decide which tools to list and what to say about them. Tool makers can't pay to change their pricing summary, free-tier badge or description, and sponsorship doesn't buy a review or a better ranking outside the clearly labeled featured spot.</p>
+<h2>Opinions are opinions</h2>
+<p>Any verdicts, recommendations or comparisons on the site are our honest opinions, based on our own research at the time, and are labeled as such. They aren't statements of fact about a product, and your experience may differ.</p>
+<h2>Information changes</h2>
+<p>Pricing, plans, free tiers and features of AI tools change often, sometimes weekly. Each tool page shows when it was last checked. Always verify details with the vendor on its official website before you sign up, buy or make a decision.</p>
+<h2>Affiliate links and sponsored listings</h2>
+<p>Some links are affiliate links: if you sign up through them we may earn a commission, at no extra cost to you. Some listings are paid placements and always carry a “Sponsored” label. Neither affects the pricing or free-tier info we show. Full details: <a href="/disclosure.html">Disclosure</a>.</p>
+<h2>Not professional advice</h2>
+<p>Nothing on Agent Radar, including the Prompt Vault and the newsletter, is legal, financial, tax, security or other professional advice. Review AI output and talk to a qualified professional before relying on it for important decisions.</p>
+<h2>Trademarks</h2>
+<p>Tool names and trademarks belong to their owners and are used only to identify the tools. Listing a tool doesn't mean its maker endorses or is affiliated with Agent Radar.</p>
+<p class="note">Questions: ${mail}. See also: <a href="/terms.html">Terms of Use</a> · <a href="/privacy.html">Privacy policy</a></p>`);
+
 // ---- sitemap, robots, llms
 const urls = [['/', maxDate], ['/index.html', maxDate], ['/vault.html', maxDate], ['/advertise.html', PAGES_UPDATED], ['/disclosure.html', PAGES_UPDATED],
+  ['/terms.html', LEGAL_UPDATED], ['/privacy.html', LEGAL_UPDATED], ['/refunds.html', LEGAL_UPDATED], ['/disclaimer.html', LEGAL_UPDATED],
   ...cats.map(c => [`/category/${slugify(c)}.html`, maxDate]), ...tools.map(t => [`/tools/${t.id}.html`, t.verified_on])];
 // '/' and '/index.html' are the same page; list only the canonical one used in <link rel=canonical>
 const smUrls = urls.filter(u => u[0] !== '/');
@@ -213,6 +325,7 @@ write('llms.txt', `# Agent Radar
 - [Prompt Vault](${SITE}/vault.html): ${prompts.length} prompts
 - [Advertise](${SITE}/advertise.html): featured listings (labeled "Sponsored")
 - [Disclosure](${SITE}/disclosure.html): affiliate links and sponsored listings policy
+- [Terms of Use](${SITE}/terms.html), [Privacy](${SITE}/privacy.html), [Refunds](${SITE}/refunds.html), [Disclaimer](${SITE}/disclaimer.html)
 - [tools.json](${SITE}/data/tools.json): raw tool data
 - [Sitemap](${SITE}/sitemap.xml)
 
@@ -222,4 +335,4 @@ ${cats.map(c => `- [${c}](${catUrl(c)}): ${byCat(c).length} tools`).join('\n')}
 ## Tools
 ${tools.map(t => `- [${t.name}](${toolUrl(t)}): ${t.description} ${freeTxt(t)}.${isFeatured(t) ? ' (Sponsored listing.)' : ''}`).join('\n')}
 `);
-console.log(`built ${tools.length} tool pages, ${cats.length} category pages, advertise + disclosure, sitemap with ${smUrls.length} URLs; ${featured.length} featured (as of ${TODAY}), ${nAff} affiliate`);
+console.log(`built ${tools.length} tool pages, ${cats.length} category pages, advertise + disclosure + 4 policy pages, sitemap with ${smUrls.length} URLs; ${featured.length} featured (as of ${TODAY}), ${nAff} affiliate`);

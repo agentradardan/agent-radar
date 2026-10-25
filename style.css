@@ -53,6 +53,7 @@ section.featured h2{font-size:1rem;margin:1rem 0 .5rem;color:#9aa3b2;text-transf
 .btn{display:inline-block;padding:.6rem 1.1rem;border-radius:8px;border:1px solid #2a2f3a;background:#242936;color:#e8eaee;text-decoration:none;margin:.2rem .3rem .2rem 0}
 .btn:hover{background:#2f3547}.btn[hidden]{display:none}
 .visit{margin:.8rem 0}.note.aff,.note.sp-note{font-size:.82rem;margin-top:-.3rem}
+footer .legal{margin:.5rem 0 0}
 footer .disc{margin:.5rem 0 0;font-size:.8rem}
 main.page h2{font-size:1.15rem;margin-top:1.5rem}main.page p a,main.page li a{color:#8ab4ff}
 code{background:#242936;border-radius:4px;padding:0 .3rem;font-size:.85em}
