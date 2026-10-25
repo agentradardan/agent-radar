@@ -577,5 +577,23 @@
       "integrations"
     ],
     "verified_on": "2026-10-15"
+  },
+  {
+    "id": "agent-qa",
+    "name": "agent-qa",
+    "url": "https://vostride.com",
+    "category": "Automation",
+    "description": "Natural-language QA for web, Android and iOS through CLI and MCP, with persistent memidex memory and validated self-improvement.",
+    "pricing_summary": "The local package is available under FSL-1.1-ALv2 without a software subscription. Requires configured model access; your model provider may charge for usage.",
+    "free_tier": true,
+    "pricing_url": "https://vostride.com/license",
+    "tags": [
+      "testing",
+      "mcp",
+      "memory",
+      "web",
+      "mobile"
+    ],
+    "verified_on": "2026-10-25"
   }
 ]
