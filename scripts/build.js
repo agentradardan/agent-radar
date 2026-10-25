@@ -47,6 +47,16 @@ const nAff = tools.filter(t => t.affiliateUrl).length;
 
 const navA = (href, key, label, active) => `<a href="${href}"${active === key ? ' class="active" aria-current="page"' : ''}>${label}</a>`;
 const nav = active => `<nav>${navA('/index.html', 'tools', 'Tools directory', active)}${navA('/vault.html', 'vault', 'Prompt Vault', active)}${navA('/advertise.html', 'advertise', 'Advertise', active)}</nav>`;
+// Vercel Web Analytics (static-site snippet). Added to every generated page via head(), and
+// ensured in hand-written pages by ensureAnalytics() below (idempotent, no duplicates).
+const ANALYTICS = `<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+<script defer src="/_vercel/insights/script.js"></script>`;
+function ensureAnalytics(file) {
+  const f = path.join(ROOT, file); const s = fs.readFileSync(f, 'utf8');
+  if (s.includes('/_vercel/insights/script.js')) return;
+  if (!s.includes('</head>')) throw new Error(`${file} missing </head>`);
+  fs.writeFileSync(f, s.replace('</head>', () => ANALYTICS + '\n</head>'));
+}
 const head = ({ title, desc, path: p, type = 'website', extra = '' }) => `<!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -57,6 +67,7 @@ const head = ({ title, desc, path: p, type = 'website', extra = '' }) => `<!doct
 <meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(desc)}"><meta property="og:url" content="${SITE}${p}">
 <meta name="twitter:card" content="summary"><meta name="twitter:title" content="${esc(title)}"><meta name="twitter:description" content="${esc(desc)}">
 ${extra}<link rel="stylesheet" href="/style.css">
+${ANALYTICS}
 </head><body>
 `;
 const header = (active, sub) => `<header><h1><a href="/index.html" class="brand">📡 Agent Radar</a></h1>${nav(active)}<p>${sub}</p></header>\n`;
@@ -253,7 +264,7 @@ legalPage('privacy.html', 'Privacy Policy | Agent Radar', 'What Agent Radar coll
 <li><strong>Sponsored listings:</strong> if you buy a featured listing, we receive your name, email and the details you send us about your tool. Payments are processed by Stripe. We never see or store your full card details.</li>
 <li><strong>Emails you send us:</strong> if you email us, we keep the message so we can reply.</li>
 <li><strong>Server logs:</strong> our hosting provider, Vercel, automatically processes standard technical data such as IP address, browser type and the pages requested, to deliver the site and keep it secure.</li>
-<li><strong>Analytics:</strong> if enabled, we use Vercel Web Analytics, which is cookieless and gives us aggregate stats (such as page views and referrers) without identifying individual visitors.</li>
+<li><strong>Analytics:</strong> we use Vercel Web Analytics, a privacy-friendly service that doesn't use cookies and collects aggregated page-view data.</li>
 </ul>
 <p>We don't use advertising trackers or tracking cookies.</p>
 <h2>How we use it</h2>
@@ -261,7 +272,7 @@ legalPage('privacy.html', 'Privacy Policy | Agent Radar', 'What Agent Radar coll
 <h2>Who processes it</h2>
 <p>We rely on a few service providers, each with its own privacy policy:</p>
 <ul class="links">
-<li><a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener">Vercel</a>: website hosting, server logs and (if enabled) Web Analytics</li>
+<li><a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener">Vercel</a>: website hosting, server logs and Web Analytics</li>
 <li><a href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener">Resend</a>: storing the newsletter list and sending emails</li>
 <li><a href="https://stripe.com/privacy" target="_blank" rel="noopener">Stripe</a>: processing payments for featured listings</li>
 </ul>
@@ -336,3 +347,12 @@ ${cats.map(c => `- [${c}](${catUrl(c)}): ${byCat(c).length} tools`).join('\n')}
 ${tools.map(t => `- [${t.name}](${toolUrl(t)}): ${t.description} ${freeTxt(t)}.${isFeatured(t) ? ' (Sponsored listing.)' : ''}`).join('\n')}
 `);
 console.log(`built ${tools.length} tool pages, ${cats.length} category pages, advertise + disclosure + 4 policy pages, sitemap with ${smUrls.length} URLs; ${featured.length} featured (as of ${TODAY}), ${nAff} affiliate`);
+
+// ---- ensure Vercel Web Analytics on every HTML page (hand-written pages included)
+(function walk(dir) {
+  for (const e of fs.readdirSync(path.join(ROOT, dir), { withFileTypes: true })) {
+    if (e.name.startsWith('.') || e.name === 'node_modules') continue;
+    const rel = path.join(dir, e.name);
+    if (e.isDirectory()) walk(rel); else if (e.name.endsWith('.html')) ensureAnalytics(rel);
+  }
+})('');
