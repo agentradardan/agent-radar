@@ -47,6 +47,7 @@ for (const g of guides) {
     if (!/^https:\/\/[^\s"<>]+$/.test(r.source || '')) throw new Error(`${g.slug}/${r.id}: source must be an https:// URL`);
   }
   if (g.faqs.length < 3 || g.faqs.length > 4) throw new Error(`${g.slug}: needs 3-4 FAQs`);
+  for (const x of g.extraSources || []) if (!x.label || !/^https:\/\/[^\s"<>]+$/.test(x.url || '')) throw new Error(`${g.slug}: extraSources need a label and an https:// url`);
 }
 const guidePath = g => `/${g.type}/${g.slug}.html`;
 const guidesFor = id => guides.filter(g => g.tools.includes(id));
@@ -62,8 +63,11 @@ const spBadge = '<span class="badge b-sp" title="Paid placement">Sponsored</span
 const featured = tools.filter(isFeatured);
 const nAff = tools.filter(t => t.affiliateUrl).length;
 
+// The homepage's canonical URL is "/" (what visitors and Google land on), not "/index.html".
+// Use HOME for every internal link, breadcrumb, sitemap and llms.txt entry so all signals agree.
+const HOME = '/';
 const navA = (href, key, label, active) => `<a href="${href}"${active === key ? ' class="active" aria-current="page"' : ''}>${label}</a>`;
-const nav = active => `<nav>${navA('/index.html', 'tools', 'Tools directory', active)}${navA('/vault.html', 'vault', 'Prompt Vault', active)}${navA('/advertise.html', 'advertise', 'Advertise', active)}</nav>`;
+const nav = active => `<nav>${navA(HOME, 'tools', 'Tools directory', active)}${navA('/vault.html', 'vault', 'Prompt Vault', active)}${navA('/advertise.html', 'advertise', 'Advertise', active)}</nav>`;
 // Vercel Web Analytics (static-site snippet). Added to every generated page via head(), and
 // ensured in hand-written pages by ensureAnalytics() below (idempotent, no duplicates).
 const ANALYTICS = `<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
@@ -87,9 +91,9 @@ ${extra}<link rel="stylesheet" href="/style.css">
 ${ANALYTICS}
 </head><body>
 `;
-const header = (active, sub) => `<header><h1><a href="/index.html" class="brand">📡 Agent Radar</a></h1>${nav(active)}<p>${sub}</p></header>\n`;
+const header = (active, sub) => `<header><h1><a href="${HOME}" class="brand">📡 Agent Radar</a></h1>${nav(active)}<p>${sub}</p></header>\n`;
 // shared footer links + disclosure (also injected into index.html / vault.html via <!--footer--> markers)
-const footInner = `<a href="/index.html">Tools directory</a> · <a href="/vault.html">Prompt Vault</a> · <a href="/advertise.html">Advertise</a> · <a href="/disclosure.html">Disclosure</a> · <a href="/data/tools.json">tools.json</a> · <a href="/llms.txt">llms.txt</a><p class="legal"><a href="/terms.html">Terms</a> · <a href="/privacy.html">Privacy</a> · <a href="/refunds.html">Refunds</a> · <a href="/disclaimer.html">Disclaimer</a></p><p class="disc">Some links are affiliate links; we may earn a commission at no cost to you. Sponsored listings are labeled. <a href="/disclosure.html">Learn more</a>.</p>`;
+const footInner = `<a href="${HOME}">Tools directory</a> · <a href="/vault.html">Prompt Vault</a> · <a href="/advertise.html">Advertise</a> · <a href="/disclosure.html">Disclosure</a> · <a href="/data/tools.json">tools.json</a> · <a href="/llms.txt">llms.txt</a><p class="legal"><a href="/terms.html">Terms</a> · <a href="/privacy.html">Privacy</a> · <a href="/refunds.html">Refunds</a> · <a href="/disclaimer.html">Disclaimer</a></p><p class="disc">Some links are affiliate links; we may earn a commission at no cost to you. Sponsored listings are labeled. <a href="/disclosure.html">Learn more</a>.</p>`;
 const footer = `<footer>Pricing changes often — always confirm on the tool's official pricing page. ${footInner}</footer>\n<script src="/featured.js"></script>\n</body></html>\n`;
 const crumbs = items => ld({ '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: items.map((it, i) => ({ '@type': 'ListItem', position: i + 1, name: it[0], item: it[1] })) });
 const crumbNav = items => `<nav class="crumbs" aria-label="Breadcrumb">${items.map((it, i) => i < items.length - 1 ? `<a href="${it[1].replace(SITE, '')}">${esc(it[0])}</a>` : `<span aria-current="page">${esc(it[0])}</span>`).join(' › ')}</nav>`;
@@ -112,7 +116,7 @@ for (const t of tools) {
   const title = `${t.name} pricing & free tier – ${t.category} | Agent Radar`;
   const desc = trunc(`${t.name}: ${t.description} ${freeTxt(t)}. ${t.pricing_summary}`, 200);
   const rel = related(t);
-  const bc = [['Agent Radar', SITE + '/index.html'], [t.category, catUrl(t.category)], [t.name, toolUrl(t)]];
+  const bc = [['Agent Radar', SITE + HOME], [t.category, catUrl(t.category)], [t.name, toolUrl(t)]];
   const sw = { '@context': 'https://schema.org', '@type': 'SoftwareApplication', name: t.name, description: t.description, url: t.url, applicationCategory: t.category, keywords: t.tags.join(', '), mainEntityOfPage: toolUrl(t), dateModified: t.verified_on };
   const b = freeBadge(t), f = isFeatured(t);
   const html = head({ title, desc: desc, path: p, type: 'article', extra: ld(sw) + '\n' + crumbs(bc) + '\n' }) +
@@ -136,7 +140,7 @@ ${t.affiliateUrl ? `<p class="note aff">Affiliate link: if you sign up through t
 <p class="note">Pricing changes often — confirm on the <a href="${esc(t.pricing_url)}" target="_blank" rel="noopener">official pricing page</a>.</p>
 </article>
 ${guidesFor(t.id).length ? `<section><h2>Comparisons</h2><ul class="links">${guideLinks(guidesFor(t.id))}</ul></section>\n` : ''}<section><h2>Related tools</h2><ul class="links">${rel.map(o => `<li><a href="/tools/${o.id}.html">${esc(o.name)}</a> — ${esc(o.category)}</li>`).join('')}</ul>
-<p><a href="/category/${slugify(t.category)}.html">All ${esc(t.category)} tools</a> · <a href="/index.html">Full directory</a></p></section>
+<p><a href="/category/${slugify(t.category)}.html">All ${esc(t.category)} tools</a> · <a href="${HOME}">Full directory</a></p></section>
 </main>
 ` + footer;
   write(p.slice(1), html);
@@ -148,7 +152,7 @@ for (const c of cats) {
   const nFree = list.filter(t => t.free_tier === true).length;
   const title = `${c} – ${list.length} AI tools with pricing | Agent Radar`;
   const desc = trunc(`${list.length} ${c} tools with pricing and free-tier details: ${list.map(t => t.name).join(', ')}.`, 300);
-  const bc = [['Agent Radar', SITE + '/index.html'], [c, catUrl(c)]];
+  const bc = [['Agent Radar', SITE + HOME], [c, catUrl(c)]];
   const il = { '@context': 'https://schema.org', '@type': 'ItemList', name: `${c} tools`, numberOfItems: list.length, itemListElement: list.map((t, i) => ({ '@type': 'ListItem', position: i + 1, url: toolUrl(t), name: t.name })) };
   const cp = { '@context': 'https://schema.org', '@type': 'CollectionPage', name: `${c} – Agent Radar`, url: SITE + p, description: desc, mainEntity: il };
   write(p.slice(1), head({ title, desc, path: p, extra: ld(cp) + '\n' + crumbs(bc) + '\n' }) +
@@ -170,7 +174,7 @@ const fmtDay = d => new Date(d + 'T12:00:00Z').toLocaleDateString('en-US', { mon
 for (const g of guides) {
   const p = guidePath(g), url = SITE + p, asOf = fmtMonth(g.updated);
   const rowTools = g.rows.map(r => [r, tools.find(t => t.id === r.id)]);
-  const bc = [['Agent Radar', SITE + '/index.html'], [g.category, catUrl(g.category)], [g.h1, url]];
+  const bc = [['Agent Radar', SITE + HOME], [g.category, catUrl(g.category)], [g.h1, url]];
   const faq = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: g.faqs.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
   const art = { '@context': 'https://schema.org', '@type': 'Article', headline: g.h1, description: g.description, url, dateModified: g.updated, author: { '@type': 'Organization', name: 'Agent Radar' }, about: rowTools.map(([, t]) => ({ '@type': 'SoftwareApplication', name: t.name, url: t.url })) };
   const summary = `${g.answer} Tools covered: ${rowTools.map(([r, t]) => `${t.name} (${r.price})`).join('; ')}. Prices as of ${asOf} from each vendor's official pricing page; check the vendor's site for current pricing.`;
@@ -195,11 +199,11 @@ ${rowTools.map(([r, t]) => `<tr><th scope="row"><a href="/tools/${esc(t.id)}.htm
 <h2>FAQ</h2>
 ${g.faqs.map(f => `<h3>${esc(f.q)}</h3>\n<p>${esc(f.a)}</p>`).join('\n')}
 <h2>Sources</h2>
-<ul class="links">${rowTools.map(([r, t]) => `<li>${esc(t.name)}: <a href="${esc(r.source)}" target="_blank" rel="noopener">${esc(r.source)}</a> (fetched ${esc(fmtDay(g.updated))})</li>`).join('')}</ul>
+<ul class="links">${rowTools.map(([r, t]) => `<li>${esc(t.name)}: <a href="${esc(r.source)}" target="_blank" rel="noopener">${esc(r.source)}</a> (fetched ${esc(fmtDay(g.updated))})</li>`).join('')}${(g.extraSources || []).map(x => `<li>${esc(x.label)}: <a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.url)}</a> (fetched ${esc(fmtDay(g.updated))})</li>`).join('')}</ul>
 <p class="visit">${rowTools.map(([, t]) => `<a class="btn" href="${esc(visitUrl(t))}" target="_blank" rel="${visitRel(t)}">Visit ${esc(t.name)} ↗</a>`).join(' ')}</p>
 ${rowTools.some(([, t]) => t.affiliateUrl) ? `<p class="note aff">Some Visit buttons above are affiliate links: we may earn a commission at no cost to you. It doesn't affect this comparison. <a href="/disclosure.html">Disclosure</a></p>\n` : ''}</article>
 <section><h2>Tool pages</h2><ul class="links">${rowTools.map(([, t]) => `<li><a href="/tools/${esc(t.id)}.html">${esc(t.name)} pricing &amp; free tier</a></li>`).join('')}</ul>
-${others.length ? `<h2>More comparisons</h2><ul class="links">${guideLinks(others)}</ul>\n` : ''}<p><a href="/category/${slugify(g.category)}.html">All ${esc(g.category)} tools</a> · <a href="/index.html">Full directory</a></p></section>
+${others.length ? `<h2>More comparisons</h2><ul class="links">${guideLinks(others)}</ul>\n` : ''}<p><a href="/category/${slugify(g.category)}.html">All ${esc(g.category)} tools</a> · <a href="${HOME}">Full directory</a></p></section>
 </main>
 ` + footer;
   write(p.slice(1), html);
@@ -378,19 +382,19 @@ legalPage('disclaimer.html', 'Disclaimer | Agent Radar', 'Agent Radar is editori
 <p class="note">Questions: ${mail}. See also: <a href="/terms.html">Terms of Use</a> · <a href="/privacy.html">Privacy policy</a></p>`);
 
 // ---- sitemap, robots, llms
-const urls = [['/', maxDate], ['/index.html', maxDate], ['/vault.html', maxDate], ['/advertise.html', PAGES_UPDATED], ['/disclosure.html', PAGES_UPDATED],
+const urls = [[HOME, maxDate], ['/vault.html', maxDate], ['/advertise.html', PAGES_UPDATED], ['/disclosure.html', PAGES_UPDATED],
   ['/terms.html', LEGAL_UPDATED], ['/privacy.html', LEGAL_UPDATED], ['/refunds.html', LEGAL_UPDATED], ['/disclaimer.html', LEGAL_UPDATED],
   ...cats.map(c => [`/category/${slugify(c)}.html`, maxDate]), ...guides.map(g => [guidePath(g), g.updated]), ...tools.map(t => [`/tools/${t.id}.html`, t.verified_on])];
-// '/' and '/index.html' are the same page; list only the canonical one used in <link rel=canonical>
-const smUrls = urls.filter(u => u[0] !== '/');
+// '/' and '/index.html' serve the same page; only the canonical '/' is listed (matches <link rel=canonical> in index.html)
+const smUrls = urls;
 write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${smUrls.map(u => `<url><loc>${SITE}${u[0]}</loc><lastmod>${u[1]}</lastmod></url>`).join('\n')}\n</urlset>\n`);
 write('robots.txt', `User-agent: *\nAllow: /\n\nUser-agent: GPTBot\nAllow: /\n\nUser-agent: ClaudeBot\nAllow: /\n\nUser-agent: PerplexityBot\nAllow: /\n\nUser-agent: Google-Extended\nAllow: /\n\nSitemap: ${SITE}/sitemap.xml\n`);
 write('llms.txt', `# Agent Radar
 
-> Agent Radar is a directory of ${tools.length} AI tools (coding agents, app builders, databases and backends, agent frameworks, LLM APIs, automation) with pricing summaries and free-tier information taken from each tool's official site, plus a Prompt Vault of ${prompts.length} original copy-ready prompts. Data last checked ${maxDate}. Pricing changes often; confirm on the official pricing page.
+> Agent Radar is a directory of ${tools.length} AI tools (coding agents, app builders, databases and backends, hosting and deployment, agent frameworks, LLM APIs, automation) with pricing summaries and free-tier information taken from each tool's official site, plus a Prompt Vault of ${prompts.length} original copy-ready prompts. Data last checked ${maxDate}. Pricing changes often; confirm on the official pricing page.
 
 ## Main pages
-- [Tools directory](${SITE}/index.html): all ${tools.length} tools
+- [Tools directory](${SITE}${HOME}): all ${tools.length} tools
 - [Prompt Vault](${SITE}/vault.html): ${prompts.length} prompts
 - [Advertise](${SITE}/advertise.html): featured listings (labeled "Sponsored")
 - [Disclosure](${SITE}/disclosure.html): affiliate links and sponsored listings policy

@@ -1,9 +1,9 @@
 # Agent Radar
 
-> Agent Radar is a directory of 37 AI tools (coding agents, app builders, databases and backends, agent frameworks, LLM APIs, automation) with pricing summaries and free-tier information taken from each tool's official site, plus a Prompt Vault of 31 original copy-ready prompts. Data last checked 2026-10-25. Pricing changes often; confirm on the official pricing page.
+> Agent Radar is a directory of 41 AI tools (coding agents, app builders, databases and backends, hosting and deployment, agent frameworks, LLM APIs, automation) with pricing summaries and free-tier information taken from each tool's official site, plus a Prompt Vault of 31 original copy-ready prompts. Data last checked 2026-11-02. Pricing changes often; confirm on the official pricing page.
 
 ## Main pages
-- [Tools directory](https://www.tryagentradar.com/index.html): all 37 tools
+- [Tools directory](https://www.tryagentradar.com/): all 41 tools
 - [Prompt Vault](https://www.tryagentradar.com/vault.html): 31 prompts
 - [Advertise](https://www.tryagentradar.com/advertise.html): featured listings (labeled "Sponsored")
 - [Disclosure](https://www.tryagentradar.com/disclosure.html): affiliate links and sponsored listings policy
@@ -16,7 +16,8 @@
 - [App Builders](https://www.tryagentradar.com/category/app-builders.html): 6 tools
 - [Automation](https://www.tryagentradar.com/category/automation.html): 3 tools
 - [Coding Agents](https://www.tryagentradar.com/category/coding-agents.html): 9 tools
-- [Databases & Backends](https://www.tryagentradar.com/category/databases-backends.html): 9 tools
+- [Databases & Backends](https://www.tryagentradar.com/category/databases-backends.html): 10 tools
+- [Hosting & Deployment](https://www.tryagentradar.com/category/hosting-deployment.html): 3 tools
 - [LLM APIs & Inference](https://www.tryagentradar.com/category/llm-apis-inference.html): 6 tools
 
 ## Comparisons and guides
@@ -25,9 +26,14 @@
 - [n8n vs Make vs Zapier](https://www.tryagentradar.com/compare/n8n-vs-make-vs-zapier.html): n8n, Make and Zapier compared: free plans, starting prices and billing units as of Oct 2026, plus best for, strengths, drawbacks and FAQs.
 - [Lovable vs Base44 vs Replit](https://www.tryagentradar.com/compare/lovable-vs-base44-vs-replit.html): Lovable, Base44 and Replit compared as AI app builders: free plans and prices as of Oct 2026, best for, strengths, drawbacks and FAQs.
 - [Best vector database for RAG](https://www.tryagentradar.com/best/vector-database-for-rag.html): Pinecone, Qdrant, Weaviate and Chroma compared for RAG: free tiers, starting prices and limits as of Oct 2026, plus which to pick and FAQs.
+- [Railway vs Vercel vs Render](https://www.tryagentradar.com/compare/railway-vs-vercel-vs-render.html): Railway, Vercel and Render compared for hosting apps and databases: free plans, plan fees and usage billing as of Nov 2026, plus best for, strengths, drawbacks and FAQs.
+- [Best Cursor alternatives](https://www.tryagentradar.com/best/cursor-alternatives.html): Cursor alternatives compared after Cursor's October 2026 move to The X Subscription: Windsurf, Claude Code, Codex, GitHub Copilot and Cline, with prices as of Nov 2026.
+- [Best vibe coding tools](https://www.tryagentradar.com/best/vibe-coding-tools.html): The best vibe coding tools for building apps from a prompt: Lovable, Bolt, v0, Replit and Emergent compared, with free plans and prices as of Nov 2026.
+- [Lovable vs Bolt](https://www.tryagentradar.com/compare/lovable-vs-bolt.html): Lovable vs Bolt compared as AI app builders: free plans, paid plans and how usage is metered as of Nov 2026, plus best for, strengths, drawbacks and FAQs.
+- [Supabase vs Firebase vs Convex](https://www.tryagentradar.com/compare/supabase-vs-firebase-vs-convex.html): Supabase, Firebase and Convex compared as app backends: free tiers, paid plans and data models as of Nov 2026, plus best for, strengths, drawbacks and FAQs.
 
 ## Tools
-- [Cursor](https://www.tryagentradar.com/tools/cursor.html): AI coding environment with an agent for building software, plus cloud agents on paid plans. Free tier available.
+- [Cursor](https://www.tryagentradar.com/tools/cursor.html): AI coding environment with an agent for building software, plus cloud agents on Premium and above. Since October 2026 it is sold as part of The X Subscription. Free tier available.
 - [Claude Code](https://www.tryagentradar.com/tools/claude-code.html): Anthropic's coding agent, included with Claude paid plans. No free tier found.
 - [OpenAI Codex](https://www.tryagentradar.com/tools/codex.html): OpenAI's coding agent available in the CLI, IDE extension, web and desktop app. Free tier available.
 - [GitHub Copilot](https://www.tryagentradar.com/tools/github-copilot.html): GitHub's AI coding assistant for editors, the CLI and GitHub itself. Free tier available.
@@ -51,6 +57,10 @@
 - [Weaviate](https://www.tryagentradar.com/tools/weaviate.html): Vector database with managed cloud clusters. Free tier available.
 - [Chroma](https://www.tryagentradar.com/tools/chroma.html): Open-source embedding store you can self-host or use as a paid cloud; in our view best for prototypes, as scaling it yourself takes work. Free tier available.
 - [Firebase](https://www.tryagentradar.com/tools/firebase.html): Google's app development platform with databases, auth, hosting and functions. Free tier available.
+- [Convex](https://www.tryagentradar.com/tools/convex.html): Reactive backend platform where database queries, mutations and server functions are written in TypeScript, with file storage, search, crons and auth built in. Free tier available.
+- [Vercel](https://www.tryagentradar.com/tools/vercel.html): Cloud platform for deploying frontends and serverless backends from Git, with a global CDN, functions, preview deployments and AI tooling. Free tier available.
+- [Railway](https://www.tryagentradar.com/tools/railway.html): Usage-billed platform for hosting apps, background workers and databases, metered per second for CPU, memory and disk. Free tier available.
+- [Render](https://www.tryagentradar.com/tools/render.html): Cloud platform for web services, workers, cron jobs, static sites and managed Postgres and Redis-compatible Key Value, deployed from Git. Free tier available.
 - [LangChain](https://www.tryagentradar.com/tools/langchain.html): Framework (MIT-licensed on GitHub) for building agents and LLM apps, with LangSmith for observability. Free tier available.
 - [LlamaIndex](https://www.tryagentradar.com/tools/llamaindex.html): Data framework (MIT-licensed on GitHub) and LlamaCloud for document parsing and retrieval for LLM apps. Free tier available.
 - [CrewAI](https://www.tryagentradar.com/tools/crewai.html): Framework (MIT-licensed on GitHub) and platform for building multi-agent workflows. Free tier available.
