@@ -33,10 +33,10 @@ Optional fields on a tool entry:
 Add an entry to `data/tools.json` with a verified URL and pricing link. Never include unverified claims.
 
 ## Deploy
-Canonical site: https://www.tryagentradar.com (apex 308-redirects to www). Any static host works: serve the repo root.
+Canonical site: https://www.tryagentradar.com (apex 308-redirects to www). The homepage's canonical URL is `https://www.tryagentradar.com/` (not `/index.html`): canonical, og:url, sitemap, llms.txt, breadcrumbs and internal "home" links all use `/`. Every other page's canonical is its `.html` URL on the www host, matching the sitemap. Any static host works: serve the repo root.
 
 ## SEO build
 `node scripts/build.js` (no dependencies) regenerates `tools/<id>.html`, `category/<slug>.html`, `sitemap.xml`, `robots.txt`, `llms.txt`, and the marked `<!--...:start/end-->` regions in `index.html` / `vault.html` (static tool list, JSON-LD, summary). Re-run and commit after editing `data/tools.json`, `data/prompts.json` or `data/compare.json`.
 
 ### Comparison and best-of pages
-`data/compare.json` drives `/compare/<slug>.html` (`"type": "compare"`) and `/best/<slug>.html` (`"type": "best"`). Each entry: `slug, type, title, h1, description, category, tools, updated, answer, rows[{id, price, source, bestFor, strength, drawback}], pick[], faqs[{q, a}]` (3-4 FAQs). Every price must come from the vendor's official pricing page (`source`), fetched on the `updated` date; label opinions "In our view". The build adds FAQ JSON-LD, a hidden summary, sitemap and llms.txt entries, and links from the related tool and category pages.
+`data/compare.json` drives `/compare/<slug>.html` (`"type": "compare"`) and `/best/<slug>.html` (`"type": "best"`). Each entry: `slug, type, title, h1, description, category, tools, updated, answer, rows[{id, price, source, bestFor, strength, drawback}], pick[], faqs[{q, a}]` (3-4 FAQs), plus optional `extraSources[{label, url}]` (https) for non-pricing citations such as announcements or labeled user reports. Every price must come from the vendor's official pricing page (`source`), fetched on the `updated` date; label opinions "In our view". The build adds FAQ JSON-LD, a hidden summary, sitemap and llms.txt entries, and links from the related tool and category pages.

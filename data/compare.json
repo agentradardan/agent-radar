@@ -243,5 +243,282 @@
       {"q": "Can I self-host?", "a": "Qdrant, Weaviate and Chroma are open source and can be self-hosted. Pinecone offers a Bring Your Own Cloud option that runs Pinecone in your cloud account, which is a managed service rather than self-hosting."},
       {"q": "What's the cheapest way to start?", "a": "Use a free tier. As of Oct 2026, Pinecone's Starter includes up to 2 GB storage, Qdrant's Free tier includes 4 GB disk, Weaviate's Free plan allows 100,000 objects, and Chroma's Starter plan includes $5 in free credits."}
     ]
+  },
+  {
+    "slug": "railway-vs-vercel-vs-render",
+    "type": "compare",
+    "title": "Railway vs Vercel vs Render (2026): pricing, free plans and which to pick",
+    "h1": "Railway vs Vercel vs Render",
+    "description": "Railway, Vercel and Render compared for hosting apps and databases: free plans, plan fees and usage billing as of Nov 2026, plus best for, strengths, drawbacks and FAQs.",
+    "category": "Hosting & Deployment",
+    "tools": ["railway", "vercel", "render"],
+    "updated": "2026-11-02",
+    "answer": "All three deploy your code from Git, but they are built around different workloads. Vercel centers on frontends and serverless functions with a global CDN, Railway runs long-lived services and databases billed per second for the resources they use, and Render offers web services, workers, cron jobs and managed Postgres on fixed-size instances. As of Nov 2026, each has a $0 entry point: Vercel Hobby (personal, non-commercial use only), Railway's Free plan with $1 of monthly usage, and Render's Hobby workspace with free compute instances. Paid plans start at $5/month on Railway (Hobby), $20/month on Vercel Pro and $25/month on Render Pro, before usage or compute. In our view, Vercel fits frontend-heavy web apps, Railway fits small backends and side projects that need a database next to the app, and Render fits teams that want predictable per-instance prices.",
+    "rows": [
+      {
+        "id": "railway",
+        "price": "Free Trial: $5 one-time credit for 30 days, no card. Free $0/month with $1 of monthly usage. Hobby $5/month including $5 of usage. Pro $20/month per workspace including $20 of usage. Usage above the included amount is billed per second.",
+        "source": "https://railway.com/pricing",
+        "bestFor": "In our view: solo developers and small teams running APIs, workers and databases side by side.",
+        "strength": "Per-second billing for CPU, memory and disk, so stopped services cost nothing; Pro seats are included in the workspace fee.",
+        "drawback": "Costs move with usage, so bills are less predictable than a fixed instance price; the Free plan allows one project and no custom domains."
+      },
+      {
+        "id": "vercel",
+        "price": "Hobby $0/month (personal, non-commercial use). Pro $20/month with a $20 monthly usage credit; developer seats are listed at $20/month each. Enterprise custom.",
+        "source": "https://vercel.com/pricing",
+        "bestFor": "In our view: frontend and full-stack web apps (for example Next.js) that benefit from a global CDN and preview deployments.",
+        "strength": "Git-based deploys with preview URLs, a built-in CDN and serverless functions, with included Hobby quotas such as 100 GB/month of data transfer.",
+        "drawback": "Hobby is limited to personal, non-commercial use, and it doesn't host a database itself; databases come from Marketplace integrations."
+      },
+      {
+        "id": "render",
+        "price": "Hobby workspace $0/month plus compute, with free web service, Postgres and Key Value instances (usage limits apply). Pro $25/month plus compute; Scale $499/month plus compute. Paid web services from $7/month; paid Postgres from $6/month.",
+        "source": "https://render.com/pricing",
+        "bestFor": "In our view: teams that want web services, workers, cron jobs and Postgres on one platform with fixed instance prices.",
+        "strength": "Clear per-instance prices for services, Postgres and Key Value, plus cron jobs, background workers and infrastructure-as-code blueprints on every plan.",
+        "drawback": "You pay a workspace fee and compute separately; horizontal autoscaling and full-stack previews require Pro or above."
+      }
+    ],
+    "pick": [
+      "Pick Vercel if your app is mostly frontend plus serverless functions and you want preview deployments on every push.",
+      "Pick Railway if you want an app server and its database in one project and prefer paying only for the resources you actually use.",
+      "Pick Render if you want fixed monthly prices per service and a managed Postgres without usage-based surprises.",
+      "In our view, combining them is common: for example a Vercel frontend talking to an API and database hosted on Railway or Render."
+    ],
+    "faqs": [
+      {"q": "Which of the three is free?", "a": "As of Nov 2026, all three have a $0 option. Vercel Hobby is free for personal, non-commercial projects. Railway's Free plan includes $1 of usage a month, and new users get a one-time $5 trial credit. Render's Hobby workspace is $0 and offers free web service, Postgres and Key Value instances with usage limits. Check each vendor's site for current pricing."},
+      {"q": "Can I host a database on each of them?", "a": "Render offers managed Postgres and Redis-compatible Key Value. Railway runs databases as services billed by the same CPU, memory and volume rates as your app. Vercel doesn't host a database itself; its pricing page lists storage such as Blob, and databases are added through Marketplace integrations."},
+      {"q": "Can I use Vercel Hobby for a commercial site?", "a": "No. Vercel's pricing FAQ says Hobby is for personal, non-commercial use, and Pro is meant for professional and business use."},
+      {"q": "How does Railway billing differ from Render?", "a": "Railway meters CPU, memory and disk per second and subtracts your plan's included usage. Render charges a fixed monthly price per instance size, prorated by the second, on top of the workspace plan fee."}
+    ]
+  },
+  {
+    "slug": "cursor-alternatives",
+    "type": "best",
+    "title": "Best Cursor alternatives (Nov 2026): after the X Subscription pricing change",
+    "h1": "Best Cursor alternatives",
+    "description": "Cursor alternatives compared after Cursor's October 2026 move to The X Subscription: Windsurf, Claude Code, Codex, GitHub Copilot and Cline, with prices as of Nov 2026.",
+    "category": "Coding Agents",
+    "tools": ["cursor", "windsurf", "claude-code", "codex", "github-copilot", "cline"],
+    "updated": "2026-11-02",
+    "answer": "In October 2026, Cursor became part of The X Subscription, a combined plan for Grok, Cursor and X. On the new plans, third-party models such as Claude, GPT and Gemini are no longer part of the included usage: Plus ($8/month) is limited to Cursor's own Grok and Composer models, and Premium ($30/month) and above can use third-party models only at API list price from prepaid credit. Existing subscribers can keep their legacy Cursor plans for now. If you want a bundled allowance for other vendors' models, the main alternatives as of Nov 2026 are Windsurf (Pro $20/month, includes frontier models from several providers), Claude Code (with Claude Pro, $20/month or $17/month billed annually), OpenAI Codex (included in ChatGPT, including Free and Go), GitHub Copilot (Pro $10/month) and Cline (free, open-source, you pay your model provider). In our view, the right choice depends on whether you want an editor like Cursor or a separate agent, and which model vendor you prefer.",
+    "rows": [
+      {
+        "id": "windsurf",
+        "price": "Free $0/month (light quota); Pro $20/month; Max $200/month; Teams $80/month plus $40/month per full developer seat.",
+        "source": "https://windsurf.com/pricing",
+        "bestFor": "In our view: people who want the closest thing to Cursor, an AI editor with tab completions, but with other vendors' models in the plan.",
+        "strength": "Pro includes access to frontier models from OpenAI, Anthropic, Google and SpaceXAI, plus unlimited Tab completions on every plan.",
+        "drawback": "Usage beyond the plan's daily and weekly allowance is bought at API pricing, and the Free plan has limited model availability."
+      },
+      {
+        "id": "claude-code",
+        "price": "Not on the Free plan. Claude Pro $17/month billed annually ($200 up front) or $20 monthly; Max $100/month; Ultra $200/month.",
+        "source": "https://claude.com/pricing",
+        "bestFor": "In our view: developers who mainly want Claude models and are comfortable with a terminal-first agent.",
+        "strength": "Included in every paid Claude plan, sharing one usage pool with Claude chat; Max and Ultra add monthly API credits.",
+        "drawback": "No free access, and usage limits reset on five-hour and weekly windows rather than a fixed message count."
+      },
+      {
+        "id": "codex",
+        "price": "ChatGPT Free $0 and Go $8/month (one model in the desktop app, subject to rollout); Plus $20/month; Pro from $100/month ($100, $200 or $500). API-key use billed at API rates.",
+        "source": "https://developers.openai.com/codex/pricing",
+        "bestFor": "In our view: ChatGPT subscribers and anyone who wants a $0 or $8 way to try a coding agent.",
+        "strength": "Runs on the web, in the CLI, in an IDE extension and on iOS on Plus, plus an API-key mode for CI and scripts.",
+        "drawback": "Free and Go are limited to one model in the desktop app; API-key mode has no cloud features such as GitHub code review."
+      },
+      {
+        "id": "github-copilot",
+        "price": "Free $0 (limited chat and agent usage); Pro $10/month; Pro+ $39/month; Max $100/month. Chat and agents use monthly GitHub AI Credits.",
+        "source": "https://github.com/features/copilot/plans",
+        "bestFor": "In our view: developers who want to stay in their existing editor and work closely with GitHub.",
+        "strength": "Code completions and next-edit suggestions don't use credits, and the Free plan supports the CLI and agent mode.",
+        "drawback": "Chat and agent work draws down AI Credits at $0.01 each, so heavy agent use can need a paid budget on top of the plan."
+      },
+      {
+        "id": "cline",
+        "price": "Free open-source extension for individual developers; you pay only for AI inference, with your own API keys or the Cline provider. Enterprise is via sales.",
+        "source": "https://cline.bot/pricing",
+        "bestFor": "In our view: developers who want full control over which model they use and what they pay for it.",
+        "strength": "No subscription or seat fee for individuals, and it works with many providers including Anthropic, OpenAI, Google and OpenRouter.",
+        "drawback": "Costs depend entirely on your model usage, which can be hard to predict on long agent runs."
+      }
+    ],
+    "extraSources": [
+      {"label": "Cursor pricing (Plus $8/month, Grok models only)", "url": "https://cursor.com/pricing"},
+      {"label": "Cursor docs: Models & Pricing (third-party models, legacy plans)", "url": "https://cursor.com/docs/models-and-pricing"},
+      {"label": "Cursor forum announcement: Introducing The X Subscription (posted October 12, 2026 UTC)", "url": "https://forum.cursor.com/t/introducing-the-x-subscription/174450"},
+      {"label": "SpaceXSI: Introducing The X Subscription", "url": "https://x.ai/news/x-subscription"},
+      {"label": "User reports summarized by last30days.ai (Cursor IDE, community discussion)", "url": "https://last30days.ai/research/cursor-ide"}
+    ],
+    "pick": [
+      "Stay on Cursor if you're happy with Cursor's own Grok and Composer models, or you're on a legacy plan that still includes third-party usage.",
+      "Pick Windsurf if you want another AI editor with other vendors' models included in a $20/month plan.",
+      "Pick Claude Code or Codex if you already pay for Claude or ChatGPT and want the model maker's own agent.",
+      "Pick GitHub Copilot if you want to keep your current editor, or Cline if you'd rather bring your own API keys and pay only for usage.",
+      "User reports (not verified by us): in recent Reddit and Hacker News threads collected by last30days.ai, some long-time Cursor users say they cancelled over the plan and model changes, while others say the cheaper plans still cover their daily use. In our view, try an alternative on a real task before switching."
+    ],
+    "faqs": [
+      {"q": "What changed in Cursor's plans in October 2026?", "a": "Cursor's forum announcement (posted October 12, 2026, UTC) introduced The X Subscription, which bundles Grok, Cursor and X. On these plans, included usage covers Cursor's own models; third-party models are not included and are available on Premium ($30/month) and above at API list price from prepaid credit. Existing Cursor subscribers can keep their current plans."},
+      {"q": "Is there a Cursor Plus plan, and what does it include?", "a": "Yes. As of Nov 2026, Cursor's pricing page lists Plus at $8/month. It includes Cursor's agent with Grok and Composer models only, at fixed settings, plus Grok and X features. Cloud agents, Bugbot code reviews and third-party models need Premium or above."},
+      {"q": "Which Cursor alternative is cheapest?", "a": "At list prices as of Nov 2026: Cline is free (you pay your model provider), Codex is included in ChatGPT Free and Go ($8/month) with one model in the desktop app, and GitHub Copilot has a Free plan and Pro at $10/month. Check each vendor's site for current pricing."},
+      {"q": "Are people really leaving Cursor?", "a": "We can't measure that. The last30days.ai summary of recent Reddit, Hacker News and GitHub posts shows mostly negative sentiment, including users who say they cancelled; these are individual user reports, not verified data."}
+    ]
+  },
+  {
+    "slug": "vibe-coding-tools",
+    "type": "best",
+    "title": "Best vibe coding tools (Nov 2026): prompt-to-app builders compared",
+    "h1": "Best vibe coding tools",
+    "description": "The best vibe coding tools for building apps from a prompt: Lovable, Bolt, v0, Replit and Emergent compared, with free plans and prices as of Nov 2026.",
+    "category": "App Builders",
+    "tools": ["lovable", "bolt", "v0", "replit", "emergent"],
+    "updated": "2026-11-02",
+    "answer": "Vibe coding means describing an app in plain language and letting an AI agent write, run and deploy the code while you steer by chat. Lovable, Bolt, v0, Replit and Emergent all work this way in the browser. As of Nov 2026, Lovable, Bolt, v0 and Emergent have $0 plans; Bolt Pro is $25/month, Emergent Standard is $20/month ($17 billed annually), Replit Core is $20/month ($18 billed annually), and v0 Business is $100/user/month. Most of them meter usage in credits or tokens, so the real cost depends on how much you build. In our view, Lovable and Bolt are the easiest starting points for non-developers, v0 suits React and Next.js projects headed for Vercel, Replit suits people who want a full coding workspace, and Emergent suits builders who want web and mobile apps from one tool.",
+    "rows": [
+      {
+        "id": "lovable",
+        "price": "Free: 5 build credits/day (up to 30/month) plus 20 Cloud credits/month. Paid plans are priced by credits; we couldn't verify their prices on the pricing page today.",
+        "source": "https://lovable.dev/pricing",
+        "bestFor": "In our view: non-developers building websites and web apps by chat.",
+        "strength": "No per-seat pricing: everyone in a workspace shares one credit pool, and you own the code you build.",
+        "drawback": "Credit cost per message varies with task complexity, and unused monthly credits expire."
+      },
+      {
+        "id": "bolt",
+        "price": "Free: 1M tokens/month with a 300K daily limit. Pro $25/month billed monthly (10M tokens/month, rollover). Teams $30/month per member. Enterprise custom.",
+        "source": "https://bolt.new/pricing",
+        "bestFor": "In our view: quick prototypes and small web apps with hosting included.",
+        "strength": "Free plan includes hosting and unlimited databases; Pro adds custom domains and rolls unused tokens over.",
+        "drawback": "Free sites carry Bolt branding, and the free daily token limit can cut long sessions short."
+      },
+      {
+        "id": "v0",
+        "price": "Free $0/month with a 7 message/day limit; paid Plus plan; Business $100/user/month. Model usage billed per token from included credits.",
+        "source": "https://v0.app/pricing",
+        "bestFor": "In our view: React and Next.js UIs and apps that will be deployed on Vercel.",
+        "strength": "Free plan includes deploying to Vercel, GitHub sync and visual editing with Design Mode.",
+        "drawback": "The Free plan's 7 messages a day is tight for real projects, and paid usage is token-based."
+      },
+      {
+        "id": "replit",
+        "price": "Core $20/month ($18 billed annually); Pro $100/month ($90 billed annually); Enterprise via sales.",
+        "source": "https://replit.com/pricing",
+        "bestFor": "In our view: builders who want an agent plus a full coding environment they can take over.",
+        "strength": "Building, databases and publishing live in one browser workspace, and you can edit the code directly.",
+        "drawback": "We couldn't confirm a $0 plan on the pricing page today; Core includes $20 and Pro $100 toward more powerful models, so heavy use can cost more."
+      },
+      {
+        "id": "emergent",
+        "price": "Free $0/month with 10 credits/month; Standard $20/month ($17/month billed annually, 100 credits/month); Pro $200/month ($167/month billed annually, 750 credits/month); Enterprise custom.",
+        "source": "https://emergent.sh/pricing",
+        "bestFor": "In our view: founders who want web and mobile apps from the same chat-based builder.",
+        "strength": "Standard adds private project hosting, GitHub integration and the ability to buy extra credits.",
+        "drawback": "The Free plan's 10 credits a month is small, and the next step up after Standard is $200/month."
+      }
+    ],
+    "pick": [
+      "Pick Lovable if you've never coded and want the simplest chat-to-website path.",
+      "Pick Bolt if you want a generous free token allowance and hosting for quick prototypes.",
+      "Pick v0 if you're building React or Next.js and plan to deploy on Vercel.",
+      "Pick Replit if you expect to open the code and keep developing it yourself, or Emergent if you need a mobile app too.",
+      "In our view, vibe-coded apps still need a human review of security, data handling and costs before real users touch them."
+    ],
+    "faqs": [
+      {"q": "What is vibe coding?", "a": "It's building software by describing what you want in plain language and letting an AI agent write and change the code, while you test the result and give feedback by chat rather than editing code line by line."},
+      {"q": "Which vibe coding tools are free?", "a": "As of Nov 2026, Lovable (5 build credits a day), Bolt (1M tokens a month), v0 (7 messages a day) and Emergent (10 credits a month) all list a $0 plan. Check each vendor's site for current pricing."},
+      {"q": "Can I export the code?", "a": "Lovable's pricing FAQ says you own the code you build, v0 lists GitHub sync on its Free plan, Replit gives you the full project in its workspace, and Emergent lists GitHub integration on Standard and above. Bolt's pricing page doesn't cover code export, so check its docs."},
+      {"q": "How is this page different from Lovable vs Base44 vs Replit?", "a": "That page is a three-way head-to-head. This page is a broader shortlist of five prompt-to-app builders, including Bolt, v0 and Emergent."}
+    ]
+  },
+  {
+    "slug": "lovable-vs-bolt",
+    "type": "compare",
+    "title": "Lovable vs Bolt (2026): free plans, pricing and which to pick",
+    "h1": "Lovable vs Bolt",
+    "description": "Lovable vs Bolt compared as AI app builders: free plans, paid plans and how usage is metered as of Nov 2026, plus best for, strengths, drawbacks and FAQs.",
+    "category": "App Builders",
+    "tools": ["lovable", "bolt"],
+    "updated": "2026-11-02",
+    "answer": "Lovable and Bolt both build web apps from a chat prompt in the browser and both have free plans, but they meter usage differently. As of Nov 2026, Lovable's free plan gives 5 build credits a day (up to 30 a month) plus 20 Cloud credits a month, and its paid plans are priced by shared workspace credits rather than seats. Bolt's free plan gives 1M tokens a month with a 300K daily limit, Pro is $25/month with 10M tokens and rollover, and Teams is $30/month per member. In our view, Lovable suits non-technical builders and teams who want one shared credit pool, while Bolt suits people who like a token allowance they can see and carry over, and who may want to pick their own database provider.",
+    "rows": [
+      {
+        "id": "lovable",
+        "price": "Free: 5 build credits/day (up to 30/month) plus 20 Cloud credits/month. Paid plans are priced by credits; we couldn't verify their prices on the pricing page today.",
+        "source": "https://lovable.dev/pricing",
+        "bestFor": "In our view: non-developers and teams building websites and web apps by chat.",
+        "strength": "Unlimited workspace members share one credit pool, so adding people doesn't add seat fees; Plan Mode costs 1 credit per message.",
+        "drawback": "Default-mode credit cost varies with task complexity; monthly plan credits expire two months after issue."
+      },
+      {
+        "id": "bolt",
+        "price": "Free: 1M tokens/month with a 300K daily limit. Pro $25/month billed monthly (10M tokens/month, rollover). Teams $30/month per member. Enterprise custom.",
+        "source": "https://bolt.new/pricing",
+        "bestFor": "In our view: makers who want a visible token budget and hosting included from the free plan.",
+        "strength": "Free plan includes website hosting and unlimited databases; Pro adds a custom domain, no Bolt branding, connectors and MCPs, and a choice of database provider.",
+        "drawback": "Teams is priced per member, and the free plan shows Bolt branding and caps daily tokens."
+      }
+    ],
+    "pick": [
+      "Pick Lovable if you're non-technical, want the simplest chat-first experience, or need many teammates on one plan.",
+      "Pick Bolt if you want a larger free allowance to experiment with, token rollover on Pro, or your own choice of database provider.",
+      "In our view, build the same small app in both free plans and compare the result and the usage it took before paying."
+    ],
+    "faqs": [
+      {"q": "Which is cheaper, Lovable or Bolt?", "a": "It depends on usage. As of Nov 2026, Bolt Pro is $25/month for 10M tokens. Lovable's paid plans are priced by credits, and we couldn't verify their prices on its pricing page today, so check lovable.dev/pricing for current pricing."},
+      {"q": "Do both have a free plan?", "a": "Yes. As of Nov 2026, Lovable's free plan gives 5 build credits a day (up to 30 a month) plus 20 Cloud credits a month, and Bolt's free plan gives 1M tokens a month with a 300K daily limit."},
+      {"q": "Can I use a custom domain?", "a": "On Bolt, custom domains start at Pro; the free plan shows Bolt branding. Check Lovable's pricing page for which of its plans include custom domains."},
+      {"q": "Who owns the code?", "a": "Lovable's pricing FAQ says you own the code and projects you build. Bolt's pricing page doesn't address ownership, so check its terms."}
+    ]
+  },
+  {
+    "slug": "supabase-vs-firebase-vs-convex",
+    "type": "compare",
+    "title": "Supabase vs Firebase vs Convex (2026): free tiers, pricing and which to pick",
+    "h1": "Supabase vs Firebase vs Convex",
+    "description": "Supabase, Firebase and Convex compared as app backends: free tiers, paid plans and data models as of Nov 2026, plus best for, strengths, drawbacks and FAQs.",
+    "category": "Databases & Backends",
+    "tools": ["supabase", "firebase", "convex"],
+    "updated": "2026-11-02",
+    "answer": "Supabase, Firebase and Convex are all backend platforms that give an app a database, auth, file storage and server functions, but their data models differ. Supabase is built on Postgres (SQL), Firebase centers on the NoSQL Firestore and Realtime Database from Google, and Convex is a reactive database where queries and server functions are written in TypeScript. As of Nov 2026, all three have a free tier: Supabase Free ($0, 500 MB database, paused after a week of inactivity), Firebase's no-cost Spark plan, and Convex Free & Starter. Paid entry points are Supabase Pro from $25/month, Firebase's pay-as-you-go Blaze plan, and Convex Professional at $25 per developer/month. In our view, Supabase fits teams that want SQL and Postgres tools, Firebase fits mobile apps already using Google services, and Convex fits TypeScript apps that need live-updating data.",
+    "rows": [
+      {
+        "id": "supabase",
+        "price": "Free $0/month (500 MB database, 50,000 MAUs; projects paused after 1 week of inactivity; 2 active projects). Pro from $25/month including $10 of compute credits. Team from $599/month. Enterprise custom.",
+        "source": "https://supabase.com/pricing",
+        "bestFor": "In our view: apps that want a real Postgres database with SQL, plus auth and storage in one place.",
+        "strength": "A standard Postgres database you can connect to with any Postgres client or ORM; unlimited API requests on every plan; can be self-hosted.",
+        "drawback": "Free projects pause after a week of inactivity, and each extra project on a paid plan adds its own compute cost."
+      },
+      {
+        "id": "firebase",
+        "price": "Spark plan: no cost, no payment method needed, with quotas (for example Firestore 1 GiB stored, 50K reads/day, 20K writes/day). Blaze plan: pay as you go above the no-cost usage; eligible new users can get $300 in Google Cloud credit.",
+        "source": "https://firebase.google.com/pricing",
+        "bestFor": "In our view: mobile and web apps that want Google's SDKs, push messaging, analytics and crash reporting alongside the database.",
+        "strength": "Many products are no-cost on both plans, including Analytics, Crashlytics and Cloud Messaging, and Blaze keeps the Spark no-cost usage.",
+        "drawback": "Usage is billed per read, write and GB, so costs need monitoring; Cloud Functions and some other products need the Blaze plan."
+      },
+      {
+        "id": "convex",
+        "price": "Free & Starter $0/month (Starter is pay-as-you-go beyond the free limits, e.g. 1M function calls and 0.5 GB database storage included). Professional $25 per developer/month. Business & Enterprise from a $2,500 monthly minimum.",
+        "source": "https://www.convex.dev/pricing",
+        "bestFor": "In our view: TypeScript and React apps that need data to update live on screen without extra plumbing.",
+        "strength": "Reactive queries, file storage, text and vector search, crons and auth are included on every plan, with no charge for query and mutation compute.",
+        "drawback": "Priced per developer on Professional, and it uses its own database model rather than SQL, so moving away takes more work."
+      }
+    ],
+    "pick": [
+      "Pick Supabase if you want Postgres and SQL, or the option to self-host later.",
+      "Pick Firebase if you're building a mobile app and want Google's analytics, messaging and crash reporting in the same console.",
+      "Pick Convex if you write TypeScript and want real-time, reactive data with backend logic in the same codebase.",
+      "In our view, the data model matters more than the free tier: relational data leans Supabase, document data leans Firebase, and live-updating app state leans Convex."
+    ],
+    "faqs": [
+      {"q": "Which has the best free tier?", "a": "They limit different things. As of Nov 2026, Supabase Free includes a 500 MB database and 50,000 monthly active users but pauses inactive projects after a week; Firebase Spark has daily quotas such as 50K Firestore reads; Convex Free includes 1M function calls and 0.5 GB of database storage a month. Check each vendor's site for current pricing."},
+      {"q": "Which uses SQL?", "a": "Supabase, because each project is a Postgres database. Firebase's Firestore and Realtime Database are NoSQL, though Firebase also offers SQL Connect backed by Cloud SQL for PostgreSQL. Convex uses its own document database queried from TypeScript functions."},
+      {"q": "Do they include authentication?", "a": "Yes, all three list auth. Supabase Free includes 50,000 MAUs, Firebase Authentication is available on both plans with phone auth billed per SMS on Blaze, and Convex lists Auth on every plan."},
+      {"q": "Can I self-host any of them?", "a": "Supabase's pricing FAQ says you can self-host it for free with Docker or the Supabase CLI. Firebase is a Google-hosted service. Convex's pricing page doesn't cover self-hosting, so check its docs."}
+    ]
   }
 ]
