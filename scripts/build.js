@@ -30,13 +30,38 @@ const maxDate = tools.map(t => t.verified_on).sort().pop();
 const TODAY = new Date().toLocaleDateString('en-CA'); // local YYYY-MM-DD
 const PAGES_UPDATED = '2026-10-19'; // lastmod for advertise/disclosure pages
 const CONTACT = 'agentradar.dan@gmail.com';
-const LEGAL_UPDATED = '2026-10-25'; // lastmod for terms/privacy/refunds/disclaimer pages
-const LEGAL_UPDATED_TXT = 'October 25, 2026';
+const LEGAL_UPDATED = '2026-11-09'; // lastmod for terms/privacy/refunds/disclaimer pages
+const LEGAL_UPDATED_TXT = 'November 9, 2026';
 const isDate = s => typeof s === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(s) && !isNaN(Date.parse(s));
 for (const t of tools) {
   if (t.featured != null && !(t.featured && isDate(t.featured.until))) throw new Error(`${t.id}: featured must be {"until": "YYYY-MM-DD"}`);
   if (t.affiliateUrl != null && !/^https:\/\/[^\s"<>]+$/.test(t.affiliateUrl)) throw new Error(`${t.id}: affiliateUrl must be an https:// URL`);
 }
+// ---- ADHD section (/adhd/). Tools tagged "adhd" carry "adhd": { "struggles": [...], "helps": "..." }
+const ADHD_HUB = '/adhd/', ADHD_GROK = '/adhd/grok-bot.html', ADHD_UPDATED = '2026-11-09';
+const STRUGGLES = [
+  ['planning', 'Planning & time blindness', 'Seeing the shape of the day, guessing how long things take, and fitting tasks into real time.',
+    "In our view: try a free visual planner (Tiimo's or Structured's free version) before paying for an auto-scheduler. Motion and Sunsama make more sense once you know you'll stick with a daily planning habit."],
+  ['start', 'Getting started on tasks', 'Breaking a task that feels too big into a first step small enough to begin.',
+    "In our view: Goblin Tools' Magic ToDo is the lowest-effort place to start, because the website needs no account."],
+  ['focus', 'Focus sessions', 'Setting up a block of time to work on one thing, with sound or another person to anchor it.',
+    'In our view: the Focusmate free plan (3 sessions a week) is enough to find out whether working alongside someone helps you.'],
+  ['capture', 'Capturing thoughts (brain dump)', 'Getting ideas and to-dos out of your head quickly, before they slip away.',
+    'In our view: the best capture tool is the one already on your phone. Voice capture (Todoist Ramble or ChatGPT voice) skips the typing step.'],
+  ['reminders', 'Reminders & routines', 'Nudges at the right moment and repeatable routines, so fewer things depend on memory.',
+    'In our view: a few well-timed reminders beat a flood of them. Set up one daily routine before adding more.'],
+  ['admin', 'Email & admin', 'Inbox overload, replies and paperwork-style tasks that pile up.',
+    'In our view: AI help with email works best as drafts you review and send yourself, not messages sent for you.'],
+];
+const STRUGGLE_IDS = STRUGGLES.map(x => x[0]);
+const adhdTools = tools.filter(t => t.tags.includes('adhd'));
+for (const t of adhdTools) {
+  if (!t.adhd || !Array.isArray(t.adhd.struggles) || !t.adhd.struggles.length || !t.adhd.helps) throw new Error(`${t.id}: adhd tools need adhd.struggles and adhd.helps`);
+  for (const x of t.adhd.struggles) if (!STRUGGLE_IDS.includes(x)) throw new Error(`${t.id}: unknown struggle ${x}`);
+}
+const ADHD_DISC = `<aside class="note adhd-disc" role="note"><strong>Not medical advice.</strong> Agent Radar reviews software. Nothing here diagnoses, treats or cures ADHD or any other condition, and these tools are not a substitute for care from a qualified clinician. If you have questions about ADHD, symptoms or treatment, talk to a doctor or other licensed professional.</aside>`;
+const REVIEW_NOTE = `<p class="note">Video review from Dan (who runs Agent Radar and has ADHD): coming soon. Until it's posted, this page lists only facts from the tool's official site, plus clearly labeled opinions.</p>`;
+const struggleName = id => STRUGGLES.find(x => x[0] === id)[1];
 const GUIDE_FIELDS = ['slug', 'type', 'title', 'h1', 'description', 'category', 'tools', 'updated', 'answer', 'rows', 'pick', 'faqs'];
 for (const g of guides) {
   for (const k of GUIDE_FIELDS) if (g[k] == null) throw new Error(`compare.json ${g.slug || '?'}: missing ${k}`);
@@ -67,7 +92,7 @@ const nAff = tools.filter(t => t.affiliateUrl).length;
 // Use HOME for every internal link, breadcrumb, sitemap and llms.txt entry so all signals agree.
 const HOME = '/';
 const navA = (href, key, label, active) => `<a href="${href}"${active === key ? ' class="active" aria-current="page"' : ''}>${label}</a>`;
-const nav = active => `<nav>${navA(HOME, 'tools', 'Tools directory', active)}${navA('/vault.html', 'vault', 'Prompt Vault', active)}${navA('/advertise.html', 'advertise', 'Advertise', active)}</nav>`;
+const nav = active => `<nav>${navA(HOME, 'tools', 'Tools directory', active)}${navA(ADHD_HUB, 'adhd', 'ADHD tools', active)}${navA('/vault.html', 'vault', 'Prompt Vault', active)}${navA('/advertise.html', 'advertise', 'Advertise', active)}</nav>`;
 // Vercel Web Analytics (static-site snippet). Added to every generated page via head(), and
 // ensured in hand-written pages by ensureAnalytics() below (idempotent, no duplicates).
 const ANALYTICS = `<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
@@ -93,7 +118,7 @@ ${ANALYTICS}
 `;
 const header = (active, sub) => `<header><h1><a href="${HOME}" class="brand">📡 Agent Radar</a></h1>${nav(active)}<p>${sub}</p></header>\n`;
 // shared footer links + disclosure (also injected into index.html / vault.html via <!--footer--> markers)
-const footInner = `<a href="${HOME}">Tools directory</a> · <a href="/vault.html">Prompt Vault</a> · <a href="/advertise.html">Advertise</a> · <a href="/disclosure.html">Disclosure</a> · <a href="/data/tools.json">tools.json</a> · <a href="/llms.txt">llms.txt</a><p class="legal"><a href="/terms.html">Terms</a> · <a href="/privacy.html">Privacy</a> · <a href="/refunds.html">Refunds</a> · <a href="/disclaimer.html">Disclaimer</a></p><p class="disc">Some links are affiliate links; we may earn a commission at no cost to you. Sponsored listings are labeled. <a href="/disclosure.html">Learn more</a>.</p>`;
+const footInner = `<a href="${HOME}">Tools directory</a> · <a href="/adhd/">ADHD tools</a> · <a href="/vault.html">Prompt Vault</a> · <a href="/advertise.html">Advertise</a> · <a href="/disclosure.html">Disclosure</a> · <a href="/data/tools.json">tools.json</a> · <a href="/llms.txt">llms.txt</a><p class="legal"><a href="/terms.html">Terms</a> · <a href="/privacy.html">Privacy</a> · <a href="/refunds.html">Refunds</a> · <a href="/disclaimer.html">Disclaimer</a></p><p class="disc">Some links are affiliate links; we may earn a commission at no cost to you. Sponsored listings are labeled. <a href="/disclosure.html">Learn more</a>.</p>`;
 const footer = `<footer>Pricing changes often — always confirm on the tool's official pricing page. ${footInner}</footer>\n<script src="/featured.js"></script>\n</body></html>\n`;
 const crumbs = items => ld({ '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: items.map((it, i) => ({ '@type': 'ListItem', position: i + 1, name: it[0], item: it[1] })) });
 const crumbNav = items => `<nav class="crumbs" aria-label="Breadcrumb">${items.map((it, i) => i < items.length - 1 ? `<a href="${it[1].replace(SITE, '')}">${esc(it[0])}</a>` : `<span aria-current="page">${esc(it[0])}</span>`).join(' › ')}</nav>`;
@@ -119,6 +144,14 @@ for (const t of tools) {
   const bc = [['Agent Radar', SITE + HOME], [t.category, catUrl(t.category)], [t.name, toolUrl(t)]];
   const sw = { '@context': 'https://schema.org', '@type': 'SoftwareApplication', name: t.name, description: t.description, url: t.url, applicationCategory: t.category, keywords: t.tags.join(', '), mainEntityOfPage: toolUrl(t), dateModified: t.verified_on };
   const b = freeBadge(t), f = isFeatured(t);
+  const adhdSec = t.adhd ? `<section class="adhd"><h2>For ADHD-related struggles</h2>
+<div class="sr-only" id="page-summary"><h2>Summary</h2><p>${esc(`${t.name} is listed in the Agent Radar ADHD section under: ${t.adhd.struggles.map(struggleName).join(', ')}. ${t.adhd.helps} Pricing: ${t.pricing_summary} Checked ${t.verified_on} on the official site. Not medical advice; software does not treat ADHD.`)}</p></div>
+<p>Listed under: ${t.adhd.struggles.map(x => `<a href="${ADHD_HUB}#${x}">${esc(struggleName(x))}</a>`).join(' · ')}</p>
+<p>${esc(t.adhd.helps)}</p>
+${REVIEW_NOTE}
+${ADHD_DISC}
+<p><a href="${ADHD_HUB}">All ADHD tools</a> · <a href="${ADHD_GROK}">How a Grok Bot assistant can help</a></p></section>
+` : '';
   const html = head({ title, desc: desc, path: p, type: 'article', extra: ld(sw) + '\n' + crumbs(bc) + '\n' }) +
     header('tools', 'Pricing details checked on official sites.') + `<main class="page">
 ${crumbNav(bc)}
@@ -139,7 +172,7 @@ ${t.affiliateUrl ? `<p class="note aff">Affiliate link: if you sign up through t
 </dl>
 <p class="note">Pricing changes often — confirm on the <a href="${esc(t.pricing_url)}" target="_blank" rel="noopener">official pricing page</a>.</p>
 </article>
-${guidesFor(t.id).length ? `<section><h2>Comparisons</h2><ul class="links">${guideLinks(guidesFor(t.id))}</ul></section>\n` : ''}<section><h2>Related tools</h2><ul class="links">${rel.map(o => `<li><a href="/tools/${o.id}.html">${esc(o.name)}</a> — ${esc(o.category)}</li>`).join('')}</ul>
+${adhdSec}${guidesFor(t.id).length ? `<section><h2>Comparisons</h2><ul class="links">${guideLinks(guidesFor(t.id))}</ul></section>\n` : ''}<section><h2>Related tools</h2><ul class="links">${rel.map(o => `<li><a href="/tools/${o.id}.html">${esc(o.name)}</a> — ${esc(o.category)}</li>`).join('')}</ul>
 <p><a href="/category/${slugify(t.category)}.html">All ${esc(t.category)} tools</a> · <a href="${HOME}">Full directory</a></p></section>
 </main>
 ` + footer;
@@ -160,7 +193,7 @@ for (const c of cats) {
 ${crumbNav(bc)}
 <h1 class="tool-h">${esc(c)}</h1>
 <p class="lead">${list.length} tools in this category; ${nFree} with a verified free tier. Data last checked ${esc(maxDate)}.</p>
-<div class="grid" data-featsort>
+${list.some(t => t.adhd) ? `<p>These tools are also organized by struggle in our <a href="${ADHD_HUB}">ADHD tools section</a>.</p>\n${ADHD_DISC}\n` : ''}<div class="grid" data-featsort>
 ${list.map(t => card(t, orig.indexOf(t))).join('\n')}
 </div>
 ${guidesForCat(c).length ? `<section><h2>Comparisons &amp; guides</h2><ul class="links">${guideLinks(guidesForCat(c))}</ul></section>\n` : ''}<p class="note">Other categories: ${cats.filter(x => x !== c).map(x => `<a href="/category/${slugify(x)}.html">${esc(x)}</a>`).join(' · ')}</p>
@@ -376,22 +409,110 @@ legalPage('disclaimer.html', 'Disclaimer | Agent Radar', 'Agent Radar is editori
 <h2>Affiliate links and sponsored listings</h2>
 <p>Some links are affiliate links: if you sign up through them we may earn a commission, at no extra cost to you. Some listings are paid placements and always carry a “Sponsored” label. Neither affects the pricing or free-tier info we show. Full details: <a href="/disclosure.html">Disclosure</a>.</p>
 <h2>Not professional advice</h2>
-<p>Nothing on Agent Radar, including the Prompt Vault and the newsletter, is legal, financial, tax, security or other professional advice. Review AI output and talk to a qualified professional before relying on it for important decisions.</p>
+<p>Nothing on Agent Radar, including the Prompt Vault, the ADHD section and the newsletter, is medical, legal, financial, tax, security or other professional advice. Our ADHD pages review software that may help with everyday organization and focus. They don't diagnose, treat or cure ADHD or any other condition, and they don't cover diagnosis or treatment. Talk to a qualified clinician about your health. Review AI output and talk to a qualified professional before relying on it for important decisions.</p>
 <h2>Trademarks</h2>
 <p>Tool names and trademarks belong to their owners and are used only to identify the tools. Listing a tool doesn't mean its maker endorses or is affiliated with Agent Radar.</p>
 <p class="note">Questions: ${mail}. See also: <a href="/terms.html">Terms of Use</a> · <a href="/privacy.html">Privacy policy</a></p>`);
 
+// ---- ADHD hub (/adhd/index.html) and Grok Bot page (/adhd/grok-bot.html)
+{
+  const p = ADHD_HUB, url = SITE + p;
+  const h1 = 'AI tools that help with focus: tested by a dad with ADHD';
+  const desc = `${adhdTools.length} AI and productivity tools for people with ADHD, organized by struggle: planning and time blindness, getting started, focus sessions, brain dumps, reminders, and email. Prices checked on official sites. Not medical advice.`;
+  const bc = [['Agent Radar', SITE + HOME], ['ADHD tools', url]];
+  const nFree = adhdTools.filter(t => t.free_tier === true).length;
+  const summary = `The Agent Radar ADHD section lists ${adhdTools.length} software tools (${nFree} with a free plan) that may help with everyday organization and focus, organized by struggle: ${STRUGGLES.map(x => `${x[1]}: ${adhdTools.filter(t => t.adhd.struggles.includes(x[0])).map(t => t.name).join(', ')}`).join('; ')}. Pricing was checked on each tool's official site on ${ADHD_UPDATED}. Dan, who runs Agent Radar, has ADHD and plans video reviews; until those are posted, entries contain only facts from official sites plus labeled opinions. This is not medical advice: the tools do not diagnose, treat or cure ADHD. There are no affiliate links in this section.`;
+  const il = { '@context': 'https://schema.org', '@type': 'CollectionPage', name: h1, url, description: desc, dateModified: ADHD_UPDATED, mainEntity: { '@type': 'ItemList', numberOfItems: adhdTools.length, itemListElement: adhdTools.map((t, i) => ({ '@type': 'ListItem', position: i + 1, url: toolUrl(t), name: t.name })) } };
+  const row = t => { const b = freeBadge(t); return `<tr><th scope="row"><a href="/tools/${esc(t.id)}.html">${esc(t.name)}</a></th><td>${esc(t.adhd.helps)}</td><td><span class="badge ${b[0]}">${b[1]}</span> ${esc(t.pricing_summary)} <a class="src" href="${esc(t.pricing_url)}" target="_blank" rel="noopener">Source</a></td></tr>`; };
+  write('adhd/index.html', head({ title: 'AI tools for ADHD: focus, planning & brain dumps | Agent Radar', desc, path: p, extra: ld(il) + '\n' + crumbs(bc) + '\n' }) +
+    header('adhd', 'Software that may help with focus and organization. Not medical advice.') + `<main class="page wide">
+${crumbNav(bc)}
+<article class="guide">
+<h1 class="tool-h">${esc(h1)}</h1>
+<div class="sr-only" id="page-summary"><h2>Summary</h2><p>${esc(summary)}</p></div>
+<p class="lead">Dan, who runs Agent Radar, has ADHD. This section collects AI and productivity tools that may help with the everyday stuff: planning the day, starting tasks, staying on one thing, and not losing ideas. It's organized by struggle, not by brand.</p>
+${ADHD_DISC}
+<p class="note">Updated <time datetime="${ADHD_UPDATED}">${esc(fmtDay(ADHD_UPDATED))}</time>. Prices and free plans come from each tool's official site (linked as "Source"). Video reviews from Dan are coming soon; until they're posted, nothing here claims hands-on testing. Statements starting with "In our view" are opinions. There are no affiliate links in this section; if we add any later, they'll be labeled. See our <a href="/disclosure.html">Disclosure</a>.</p>
+<h2>Jump to a struggle</h2>
+<ul class="links">${STRUGGLES.map(x => `<li><a href="#${x[0]}">${esc(x[1])}</a> (${adhdTools.filter(t => t.adhd.struggles.includes(x[0])).length} tools)</li>`).join('')}<li><a href="${ADHD_GROK}">How a Grok Bot assistant can help with ADHD</a></li></ul>
+${STRUGGLES.map(x => `<section id="${x[0]}"><h2>${esc(x[1])}</h2>
+<p>${esc(x[2])}</p>
+<div class="tbl"><table class="cmp"><thead><tr><th scope="col">Tool</th><th scope="col">How it can help</th><th scope="col">Price / free plan (checked ${esc(fmtMonth(ADHD_UPDATED))})</th></tr></thead>
+<tbody>
+${adhdTools.filter(t => t.adhd.struggles.includes(x[0])).map(row).join('\n')}
+</tbody></table></div>
+<p class="note">${esc(x[3])}</p></section>`).join('\n')}
+<h2>Using an AI assistant for the rest</h2>
+<p>A general AI assistant can cover several struggles at once: reminders, brain dumps, weekly reviews and appointment prep. We wrote setup recipes for one option: <a href="${ADHD_GROK}">How a Grok Bot assistant can help with ADHD</a>.</p>
+<h2>How we pick and check tools</h2>
+<ul class="links"><li>Each tool's price and free plan come from its official site, with the date we checked. If we can't confirm a price, we say so or leave the tool out.</li><li>Descriptions are written by us in plain language. We don't copy vendor text or use their logos.</li><li>No tool paid to be listed here. Sponsored listings anywhere on Agent Radar are always labeled.</li><li>We don't list or promote diagnosis or treatment services; this section covers everyday software only.</li></ul>
+<p class="note">Pricing changes often. Confirm on the official pricing page before you sign up.</p>
+</article>
+</main>
+` + footer);
+}
+{
+  const p = ADHD_GROK, url = SITE + p;
+  const h1 = 'How a Grok Bot assistant can help with ADHD';
+  const desc = 'Practical Grok Bot setup recipes for people with ADHD: morning routine reminders, brain dump to task list, weekly review, appointment prep and body-doubling style check-ins. Not medical advice.';
+  const bc = [['Agent Radar', SITE + HOME], ['ADHD tools', SITE + ADHD_HUB], [h1, url]];
+  const recipes = [
+    ['morning', 'Morning routine reminders', 'A short checklist at the same time every weekday, so the routine is not something you have to remember.',
+      'Every weekday at 7:00 AM, send me my morning checklist: [TAKE KEYS, WALLET, PHONE CHARGER; KIDS\' BACKPACKS; ANYTHING ELSE]. Then list today\'s calendar events with the time I need to leave for each. End by asking me which one thing matters most today. Keep it under 10 lines.',
+      'Grok Bot turns a repeated request into a routine that runs on the schedule you set. Check the routine\'s schedule and your time zone after you create it.'],
+    ['brain-dump', 'Brain dump to task list', 'Say or type everything on your mind in one messy message, and get back a short, sorted list.',
+      'Here is my brain dump: [EVERYTHING ON YOUR MIND, IN ANY ORDER]. Sort it into Today, This week, Later and Not mine. For each Today item, give me one tiny first step that takes under 5 minutes. Don\'t add anything I didn\'t say. Keep it short.',
+      'You can send a voice note instead of typing. If you use a to-do app such as Todoist or Notion and have connected it, you can ask the Bot to add the Today items there.'],
+    ['weekly', 'Weekly review', 'A Sunday look at the week ahead, so Monday doesn\'t arrive as a surprise.',
+      'Every Sunday at 6:00 PM, read my Google Calendar for the coming week. Flag clashes, packed days and early starts. List anything I told you I would do this week. Then send me a short plan for Monday with no more than 3 priorities. Don\'t create, move or cancel any event without asking me.',
+      'This needs Google Calendar connected. Grok Bot\'s own docs describe a very similar Sunday-evening calendar routine.'],
+    ['appointments', 'Appointment prep', 'The evening before, a list of what\'s coming tomorrow and what to bring, so nothing gets missed at the door.',
+      'Every evening at 8:00 PM, look at tomorrow\'s calendar. For each appointment, tell me the time, when I need to leave, what to bring (paperwork, ID, payment) and any questions I wrote down for it. If something has no address or details, flag it. Don\'t change any event.',
+      'Keep sensitive details out of the reminder text if other people can see your phone. You decide what you share with the Bot.'],
+    ['check-ins', 'Body-doubling style check-ins', 'Short check-in messages during a work block, to help you notice when you have drifted.',
+      'Today from 1:00 PM to 3:00 PM, check in with me every 30 minutes. Ask in one line what I\'m working on and whether I\'m still on it. If I say I drifted, ask me for the next tiny step and nothing else. Stop at 3:00 PM.',
+      'These are messages from an AI, not a live person. If you want a real person working alongside you, see Focusmate in our tool list.'],
+  ];
+  const summary = `Grok Bot is an AI assistant that can chat, take voice notes, connect to apps such as Gmail and Google Calendar, and run repeated tasks as scheduled routines. This page gives ${recipes.length} copy-ready setup recipes for people with ADHD: ${recipes.map(r => r[1]).join(', ')}. Each recipe keeps the user in control: the Bot drafts and reminds, and changes to calendars or emails wait for approval. Not medical advice: Grok Bot is not a clinician and does not diagnose or treat ADHD.`;
+  const art = { '@context': 'https://schema.org', '@type': 'Article', headline: h1, description: desc, url, dateModified: ADHD_UPDATED, author: { '@type': 'Organization', name: 'Agent Radar' } };
+  write('adhd/grok-bot.html', head({ title: `${h1} | Agent Radar`, desc, path: p, type: 'article', extra: ld(art) + '\n' + crumbs(bc) + '\n' }) +
+    header('adhd', 'Setup recipes for an AI assistant. Not medical advice.') + `<main class="page wide">
+${crumbNav(bc)}
+<article class="guide">
+<h1 class="tool-h">${esc(h1)}</h1>
+<div class="sr-only" id="page-summary"><h2>Summary</h2><p>${esc(summary)}</p></div>
+<p class="lead">A lot of ADHD friction is remembering: the routine, the appointment, the thing you said you'd do. An AI assistant that can send you messages on a schedule can carry some of that load. Here are five setups for Grok Bot that you can copy and adjust.</p>
+${ADHD_DISC}
+<p class="note">Updated <time datetime="${ADHD_UPDATED}">${esc(fmtDay(ADHD_UPDATED))}</time>. Grok Bot is one option. Other assistants with scheduled tasks or reminders can run similar recipes; for example, ChatGPT lists scheduled tasks on its paid plans (<a href="https://chatgpt.com/pricing" target="_blank" rel="noopener">source</a>). Agent Radar itself is run with help from Grok Bot, and no one paid for this page. Dan's video walkthroughs are coming soon.</p>
+<h2>What Grok Bot can do (from its docs)</h2>
+<ul class="links"><li>Chat by text, voice note or voice call, on desktop, mobile, Slack or X.</li><li>Connect apps you already use, such as Gmail, Google Calendar, Notion, Slack and Google Drive.</li><li>Turn a task you ask for repeatedly into a routine that runs on a schedule you set.</li><li>Remember your preferences, so you don't have to re-explain your setup.</li><li>Draft emails and messages and leave them for you to approve and send.</li></ul>
+<p class="note">Source: <a href="https://docs.x.ai/grok-bot/overview" target="_blank" rel="noopener">Grok Bot overview (official docs)</a>, checked ${esc(fmtDay(ADHD_UPDATED))}. Features and plans can change; check the docs for current details.</p>
+<h2>Five setup recipes</h2>
+<p>Replace anything in [BRACKETS] with your own details, then send it to your Bot. For the scheduled ones, ask it to make the task a routine and check the saved schedule.</p>
+${recipes.map((r, i) => `<section id="${r[0]}"><h3>${i + 1}. ${esc(r[1])}</h3>
+<p>${esc(r[2])}</p>
+<pre class="prompt">${esc(r[3])}</pre>
+<p class="note">${esc(r[4])}</p></section>`).join('\n')}
+<h2>Good habits for any AI assistant</h2>
+<ul class="links"><li>Start with one recipe. Add another only after the first one sticks for a week or two.</li><li>Keep "ask me before sending, booking or changing anything" in your instructions.</li><li>Double-check important dates and times. AI assistants can make mistakes.</li><li>Think about what you share. Avoid pasting health records, passwords or financial account numbers into any chat.</li><li>An assistant can remind and organize. It isn't a doctor, coach or therapist.</li></ul>
+<p class="note">In our view: reminders and brain-dump sorting are the easiest wins to start with, because they take two minutes to set up and need no new app.</p>
+<p><a href="${ADHD_HUB}">Back to all ADHD tools</a></p>
+</article>
+</main>
+` + footer);
+}
+
 // ---- sitemap, robots, llms
 const urls = [[HOME, maxDate], ['/vault.html', maxDate], ['/advertise.html', PAGES_UPDATED], ['/disclosure.html', PAGES_UPDATED],
   ['/terms.html', LEGAL_UPDATED], ['/privacy.html', LEGAL_UPDATED], ['/refunds.html', LEGAL_UPDATED], ['/disclaimer.html', LEGAL_UPDATED],
-  ...cats.map(c => [`/category/${slugify(c)}.html`, maxDate]), ...guides.map(g => [guidePath(g), g.updated]), ...tools.map(t => [`/tools/${t.id}.html`, t.verified_on])];
+  [ADHD_HUB, ADHD_UPDATED], [ADHD_GROK, ADHD_UPDATED], ...cats.map(c => [`/category/${slugify(c)}.html`, maxDate]), ...guides.map(g => [guidePath(g), g.updated]), ...tools.map(t => [`/tools/${t.id}.html`, t.verified_on])];
 // '/' and '/index.html' serve the same page; only the canonical '/' is listed (matches <link rel=canonical> in index.html)
 const smUrls = urls;
 write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${smUrls.map(u => `<url><loc>${SITE}${u[0]}</loc><lastmod>${u[1]}</lastmod></url>`).join('\n')}\n</urlset>\n`);
 write('robots.txt', `User-agent: *\nAllow: /\n\nUser-agent: GPTBot\nAllow: /\n\nUser-agent: ClaudeBot\nAllow: /\n\nUser-agent: PerplexityBot\nAllow: /\n\nUser-agent: Google-Extended\nAllow: /\n\nSitemap: ${SITE}/sitemap.xml\n`);
 write('llms.txt', `# Agent Radar
 
-> Agent Radar is a directory of ${tools.length} AI tools (coding agents, app builders, databases and backends, hosting and deployment, agent frameworks, LLM APIs, automation) with pricing summaries and free-tier information taken from each tool's official site, plus a Prompt Vault of ${prompts.length} original copy-ready prompts. Data last checked ${maxDate}. Pricing changes often; confirm on the official pricing page.
+> Agent Radar is a directory of ${tools.length} AI tools (coding agents, app builders, databases and backends, hosting and deployment, agent frameworks, LLM APIs, automation, focus and planning) with pricing summaries and free-tier information taken from each tool's official site, plus a Prompt Vault of ${prompts.length} original copy-ready prompts. Data last checked ${maxDate}. Pricing changes often; confirm on the official pricing page.
 
 ## Main pages
 - [Tools directory](${SITE}${HOME}): all ${tools.length} tools
@@ -402,6 +523,11 @@ write('llms.txt', `# Agent Radar
 - [tools.json](${SITE}/data/tools.json): raw tool data
 - [Sitemap](${SITE}/sitemap.xml)
 
+## ADHD section
+- [AI tools that help with focus, by struggle](${SITE}${ADHD_HUB}): ${adhdTools.length} planning, focus, capture, reminder and email tools for people with ADHD, organized by struggle. Not medical advice; the tools don't treat ADHD.
+- [How a Grok Bot assistant can help with ADHD](${SITE}${ADHD_GROK}): setup recipes for morning reminders, brain dumps, weekly reviews, appointment prep and check-ins.
+${STRUGGLES.map(x => `- ${x[1]} (${SITE}${ADHD_HUB}#${x[0]}): ${adhdTools.filter(t => t.adhd.struggles.includes(x[0])).map(t => t.name).join(', ')}`).join('\n')}
+
 ## Categories
 ${cats.map(c => `- [${c}](${catUrl(c)}): ${byCat(c).length} tools`).join('\n')}
 
@@ -411,7 +537,7 @@ ${guides.map(g => `- [${g.h1}](${SITE}${guidePath(g)}): ${g.description}`).join(
 ## Tools
 ${tools.map(t => `- [${t.name}](${toolUrl(t)}): ${t.description} ${freeTxt(t)}.${isFeatured(t) ? ' (Sponsored listing.)' : ''}`).join('\n')}
 `);
-console.log(`built ${tools.length} tool pages, ${cats.length} category pages, ${guides.length} compare/best pages, advertise + disclosure + 4 policy pages, sitemap with ${smUrls.length} URLs; ${featured.length} featured (as of ${TODAY}), ${nAff} affiliate`);
+console.log(`built ${tools.length} tool pages (${adhdTools.length} ADHD), ADHD hub + Grok Bot page, ${cats.length} category pages, ${guides.length} compare/best pages, advertise + disclosure + 4 policy pages, sitemap with ${smUrls.length} URLs; ${featured.length} featured (as of ${TODAY}), ${nAff} affiliate`);
 
 // ---- ensure Vercel Web Analytics on every HTML page (hand-written pages included)
 (function walk(dir) {

@@ -642,5 +642,302 @@
       "integrations"
     ],
     "verified_on": "2026-10-15"
+  },
+  {
+    "id": "sunsama",
+    "name": "Sunsama",
+    "url": "https://www.sunsama.com",
+    "category": "Focus & Planning",
+    "description": "Daily planner that pulls tasks from your other work tools into one plan for the day, which you then time-block on your calendar.",
+    "pricing_summary": "Pro $17/month billed yearly or $22/month billed monthly. Enterprise: contact sales. Free trial with no credit card required; Sunsama says it has no free-forever plan.",
+    "free_tier": false,
+    "pricing_url": "https://www.sunsama.com/pricing",
+    "tags": [
+      "adhd",
+      "daily-planning",
+      "time-blocking"
+    ],
+    "verified_on": "2026-11-09",
+    "adhd": {
+      "struggles": [
+        "planning"
+      ],
+      "helps": "A guided daily planning step asks you to pick what fits in today, which can make an overloaded list easier to cut down."
+    }
+  },
+  {
+    "id": "motion",
+    "name": "Motion",
+    "url": "https://www.usemotion.com",
+    "category": "Focus & Planning",
+    "description": "AI calendar and project manager that places your tasks into open time on your calendar and reshuffles them when plans change.",
+    "pricing_summary": "Pricing page lists Pro AI at $19/month and Business AI at $29/month per seat, with annual billing shown as saving 33%. No free plan listed.",
+    "free_tier": false,
+    "pricing_url": "https://www.usemotion.com/pricing",
+    "tags": [
+      "adhd",
+      "auto-scheduling",
+      "calendar"
+    ],
+    "verified_on": "2026-11-09",
+    "adhd": {
+      "struggles": [
+        "planning"
+      ],
+      "helps": "Decides when tasks happen for you, so you spend less time building a schedule by hand."
+    }
+  },
+  {
+    "id": "akiflow",
+    "name": "Akiflow",
+    "url": "https://akiflow.com",
+    "category": "Focus & Planning",
+    "description": "Task and calendar app that collects tasks from email and other apps into one inbox, with quick capture, time blocking and a daily planning routine.",
+    "pricing_summary": "Pro $34/month billed monthly or $19/month billed yearly ($228/year). 7-day trial requires a card. No free plan.",
+    "free_tier": false,
+    "pricing_url": "https://akiflow.com/pricing",
+    "tags": [
+      "adhd",
+      "time-blocking",
+      "quick-capture"
+    ],
+    "verified_on": "2026-11-09",
+    "adhd": {
+      "struggles": [
+        "capture",
+        "planning",
+        "admin"
+      ],
+      "helps": "Turns emails and scattered to-dos into one list you can drag onto your calendar."
+    }
+  },
+  {
+    "id": "reclaim",
+    "name": "Reclaim.ai",
+    "url": "https://reclaim.ai",
+    "category": "Focus & Planning",
+    "description": "AI calendar assistant for Google and Outlook Calendar that automatically protects focus time, habits and breaks around your meetings.",
+    "pricing_summary": "Lite free for one user. Starter $10/seat/month and Business $15/seat/month billed yearly ($12 and $18 billed monthly). Enterprise $22/seat/month, yearly only.",
+    "free_tier": true,
+    "pricing_url": "https://reclaim.ai/pricing",
+    "tags": [
+      "adhd",
+      "calendar",
+      "habits"
+    ],
+    "verified_on": "2026-11-09",
+    "adhd": {
+      "struggles": [
+        "planning",
+        "reminders"
+      ],
+      "helps": "Puts recurring habits (like lunch or a daily review) on your calendar and moves them when meetings land."
+    }
+  },
+  {
+    "id": "saner-ai",
+    "name": "Saner.AI",
+    "url": "https://www.saner.ai",
+    "category": "Focus & Planning",
+    "description": "AI assistant that brings notes, tasks, email and calendar into one place and suggests what to work on next.",
+    "pricing_summary": "Free plan (30 AI messages/month, 100 notes). Starter $8/month; Standard $16/month with unlimited AI messages under a fair-use policy. Pricing page shows 20% off for yearly billing.",
+    "free_tier": true,
+    "pricing_url": "https://www.saner.ai/pricing",
+    "tags": [
+      "adhd",
+      "notes",
+      "ai-assistant"
+    ],
+    "verified_on": "2026-11-09",
+    "adhd": {
+      "struggles": [
+        "capture",
+        "admin"
+      ],
+      "helps": "Lets you dump notes and emails in one inbox and asks the AI what needs attention, instead of checking several apps."
+    }
+  },
+  {
+    "id": "todoist",
+    "name": "Todoist",
+    "url": "https://www.todoist.com",
+    "category": "Focus & Planning",
+    "description": "To-do list app with natural-language Quick Add, reminders, and Ramble, a voice feature that turns what you say into separate tasks with dates.",
+    "pricing_summary": "Beginner free (5 personal projects, limited Ramble sessions). Pro $5/month billed yearly ($60) or $7/month billed monthly. Business $8/user/month yearly or $10 monthly.",
+    "free_tier": true,
+    "pricing_url": "https://www.todoist.com/pricing",
+    "tags": [
+      "adhd",
+      "to-do",
+      "voice-capture"
+    ],
+    "verified_on": "2026-11-09",
+    "adhd": {
+      "struggles": [
+        "capture",
+        "reminders"
+      ],
+      "helps": "Ramble lets you say several things at once and get them back as separate tasks, which suits quick brain dumps."
+    }
+  },
+  {
+    "id": "focusmate",
+    "name": "Focusmate",
+    "url": "https://www.focusmate.com",
+    "category": "Focus & Planning",
+    "description": "Virtual coworking: you book a short video session with another person, each say your goal, and work side by side (often called body doubling).",
+    "pricing_summary": "Free: 3 sessions per week, no credit card. Plus $8/month billed annually or $12/month billed monthly for unlimited sessions. Business plans available.",
+    "free_tier": true,
+    "pricing_url": "https://www.focusmate.com/pricing/",
+    "tags": [
+      "adhd",
+      "body-doubling",
+      "coworking"
+    ],
+    "verified_on": "2026-11-09",
+    "adhd": {
+      "struggles": [
+        "focus",
+        "start"
+      ],
+      "helps": "A booked session with a real person gives you a set start time and someone working alongside you."
+    }
+  },
+  {
+    "id": "goblin-tools",
+    "name": "Goblin Tools",
+    "url": "https://goblin.tools",
+    "category": "Focus & Planning",
+    "description": "Collection of small single-task AI tools made mostly for neurodivergent people. Magic ToDo breaks a task into smaller steps; other tools help with tone, time estimates and more.",
+    "pricing_summary": "Website tools are free with no ads or paywalls. Mobile apps cost a small one-time price. Optional Goblin Tools Pro subscription for some advanced features (price shown at sign-up).",
+    "free_tier": true,
+    "pricing_url": "https://goblin.tools/About",
+    "tags": [
+      "adhd",
+      "task-breakdown",
+      "no-account"
+    ],
+    "verified_on": "2026-11-09",
+    "adhd": {
+      "struggles": [
+        "start",
+        "admin"
+      ],
+      "helps": "Paste in a task that feels too big and get a list of smaller first steps, with no account needed on the website."
+    }
+  },
+  {
+    "id": "tiimo",
+    "name": "Tiimo",
+    "url": "https://www.tiimoapp.com",
+    "category": "Focus & Planning",
+    "description": "Visual daily planner designed for neurodivergent people, with a timeline of your day, a focus timer, to-dos and AI help splitting tasks into subtasks.",
+    "pricing_summary": "Free version on iOS and Android (visual planner, focus timer, limited AI features). Tiimo Pro is monthly or yearly; Tiimo says the price varies by location and is shown at checkout. 7-day trial on the yearly plan.",
+    "free_tier": true,
+    "pricing_url": "https://www.tiimoapp.com/faq",
+    "tags": [
+      "adhd",
+      "visual-planner",
+      "neurodivergent"
+    ],
+    "verified_on": "2026-11-09",
+    "adhd": {
+      "struggles": [
+        "planning",
+        "start",
+        "reminders"
+      ],
+      "helps": "Shows the day as colored blocks on a timeline, so you can see how much time is left before the next thing."
+    }
+  },
+  {
+    "id": "structured",
+    "name": "Structured",
+    "url": "https://structured.app",
+    "category": "Focus & Planning",
+    "description": "Day planner that shows your tasks and calendar events together on a single visual timeline.",
+    "pricing_summary": "Free version covers most features with no ads. Structured Pro is monthly, yearly or a one-time lifetime purchase; price depends on your region and is shown in the app or app store.",
+    "free_tier": true,
+    "pricing_url": "https://help.structured.app/en/articles/324674",
+    "tags": [
+      "adhd",
+      "visual-planner",
+      "timeline"
+    ],
+    "verified_on": "2026-11-09",
+    "adhd": {
+      "struggles": [
+        "planning",
+        "reminders"
+      ],
+      "helps": "One timeline for tasks and appointments makes it easier to see the shape of the day at a glance."
+    }
+  },
+  {
+    "id": "brain-fm",
+    "name": "Brain.fm",
+    "url": "https://www.brain.fm",
+    "category": "Focus & Planning",
+    "description": "Music app with tracks made for focus, relaxation and sleep, sorted by activity such as deep work, light work or learning.",
+    "pricing_summary": "$14.99/month billed monthly or $99.99/year. Free trial offered; no free plan found.",
+    "free_tier": false,
+    "pricing_url": "https://www.brain.fm/pricing",
+    "tags": [
+      "adhd",
+      "focus-music",
+      "audio"
+    ],
+    "verified_on": "2026-11-09",
+    "adhd": {
+      "struggles": [
+        "focus"
+      ],
+      "helps": "Gives you a consistent background track to start a work session with, picked by the kind of work you are doing."
+    }
+  },
+  {
+    "id": "notion",
+    "name": "Notion",
+    "url": "https://www.notion.com",
+    "category": "Focus & Planning",
+    "description": "Workspace for notes, documents and databases, with Notion AI and Notion Agent for chat, drafting and autofill.",
+    "pricing_summary": "Free $0 (includes a trial of Notion AI). Plus $10/member/month. Business $20/member/month (includes Notion Agent and AI Meeting Notes). Enterprise: custom.",
+    "free_tier": true,
+    "pricing_url": "https://www.notion.com/pricing",
+    "tags": [
+      "adhd",
+      "notes",
+      "databases"
+    ],
+    "verified_on": "2026-11-09",
+    "adhd": {
+      "struggles": [
+        "capture"
+      ],
+      "helps": "One place to keep lists, notes and reference info, so things you capture have somewhere to live."
+    }
+  },
+  {
+    "id": "chatgpt",
+    "name": "ChatGPT",
+    "url": "https://chatgpt.com",
+    "category": "Focus & Planning",
+    "description": "OpenAI's AI assistant, with voice chat on web and mobile that you can use to talk through a brain dump and get it back as a list.",
+    "pricing_summary": "Free plan available. Paid Go, Plus and Pro plans for individuals (prices shown at checkout). Scheduled tasks are not included on the Free plan.",
+    "free_tier": true,
+    "pricing_url": "https://chatgpt.com/pricing",
+    "tags": [
+      "adhd",
+      "ai-assistant",
+      "voice"
+    ],
+    "verified_on": "2026-11-09",
+    "adhd": {
+      "struggles": [
+        "capture",
+        "start"
+      ],
+      "helps": "Talk out everything on your mind, then ask it to sort the mess into a short list with a first step for each item."
+    }
   }
 ]

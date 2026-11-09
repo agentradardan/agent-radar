@@ -62,3 +62,6 @@ main.page.wide{max-width:1000px}.guide h2{margin-top:1.6rem}.guide h3{font-size:
 .tbl{overflow-x:auto;margin:.6rem 0}.cmp{border-collapse:collapse;width:100%;min-width:720px;font-size:.9rem}
 .cmp th,.cmp td{border:1px solid #2a2f3a;padding:.5rem .6rem;text-align:left;vertical-align:top}.cmp thead th{background:#181b22;color:#c9cfda}
 .cmp a{color:#8ab4ff}.cmp .asof{color:#9aa3b2;font-size:.8rem}
+.adhd-disc{border:1px solid #3a3f4c;border-left:4px solid #e6d36a;background:#15171d;border-radius:8px;padding:.6rem .8rem;margin:.8rem 0;color:#c9cfda}
+.adhd-callout{background:#15171d;border:1px solid #2a2f3a;border-radius:8px;padding:.5rem .8rem;font-size:.92rem}.adhd-callout a{color:#8ab4ff}
+section.adhd{margin-top:1.2rem}

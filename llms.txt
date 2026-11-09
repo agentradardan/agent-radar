@@ -1,9 +1,9 @@
 # Agent Radar
 
-> Agent Radar is a directory of 41 AI tools (coding agents, app builders, databases and backends, hosting and deployment, agent frameworks, LLM APIs, automation) with pricing summaries and free-tier information taken from each tool's official site, plus a Prompt Vault of 31 original copy-ready prompts. Data last checked 2026-11-02. Pricing changes often; confirm on the official pricing page.
+> Agent Radar is a directory of 54 AI tools (coding agents, app builders, databases and backends, hosting and deployment, agent frameworks, LLM APIs, automation, focus and planning) with pricing summaries and free-tier information taken from each tool's official site, plus a Prompt Vault of 31 original copy-ready prompts. Data last checked 2026-11-09. Pricing changes often; confirm on the official pricing page.
 
 ## Main pages
-- [Tools directory](https://www.tryagentradar.com/): all 41 tools
+- [Tools directory](https://www.tryagentradar.com/): all 54 tools
 - [Prompt Vault](https://www.tryagentradar.com/vault.html): 31 prompts
 - [Advertise](https://www.tryagentradar.com/advertise.html): featured listings (labeled "Sponsored")
 - [Disclosure](https://www.tryagentradar.com/disclosure.html): affiliate links and sponsored listings policy
@@ -11,12 +11,23 @@
 - [tools.json](https://www.tryagentradar.com/data/tools.json): raw tool data
 - [Sitemap](https://www.tryagentradar.com/sitemap.xml)
 
+## ADHD section
+- [AI tools that help with focus, by struggle](https://www.tryagentradar.com/adhd/): 13 planning, focus, capture, reminder and email tools for people with ADHD, organized by struggle. Not medical advice; the tools don't treat ADHD.
+- [How a Grok Bot assistant can help with ADHD](https://www.tryagentradar.com/adhd/grok-bot.html): setup recipes for morning reminders, brain dumps, weekly reviews, appointment prep and check-ins.
+- Planning & time blindness (https://www.tryagentradar.com/adhd/#planning): Sunsama, Motion, Akiflow, Reclaim.ai, Tiimo, Structured
+- Getting started on tasks (https://www.tryagentradar.com/adhd/#start): Focusmate, Goblin Tools, Tiimo, ChatGPT
+- Focus sessions (https://www.tryagentradar.com/adhd/#focus): Focusmate, Brain.fm
+- Capturing thoughts (brain dump) (https://www.tryagentradar.com/adhd/#capture): Akiflow, Saner.AI, Todoist, Notion, ChatGPT
+- Reminders & routines (https://www.tryagentradar.com/adhd/#reminders): Reclaim.ai, Todoist, Tiimo, Structured
+- Email & admin (https://www.tryagentradar.com/adhd/#admin): Akiflow, Saner.AI, Goblin Tools
+
 ## Categories
 - [Agent Frameworks](https://www.tryagentradar.com/category/agent-frameworks.html): 4 tools
 - [App Builders](https://www.tryagentradar.com/category/app-builders.html): 6 tools
 - [Automation](https://www.tryagentradar.com/category/automation.html): 3 tools
 - [Coding Agents](https://www.tryagentradar.com/category/coding-agents.html): 9 tools
 - [Databases & Backends](https://www.tryagentradar.com/category/databases-backends.html): 10 tools
+- [Focus & Planning](https://www.tryagentradar.com/category/focus-planning.html): 13 tools
 - [Hosting & Deployment](https://www.tryagentradar.com/category/hosting-deployment.html): 3 tools
 - [LLM APIs & Inference](https://www.tryagentradar.com/category/llm-apis-inference.html): 6 tools
 
@@ -74,3 +85,16 @@
 - [n8n](https://www.tryagentradar.com/tools/n8n.html): Workflow automation platform with AI capabilities, hosted or self-hosted. Free tier unverified.
 - [Zapier](https://www.tryagentradar.com/tools/zapier.html): No-code automation connecting thousands of apps, with AI features. Free tier available.
 - [Make](https://www.tryagentradar.com/tools/make.html): Visual automation platform for building scenarios across apps. Free tier available.
+- [Sunsama](https://www.tryagentradar.com/tools/sunsama.html): Daily planner that pulls tasks from your other work tools into one plan for the day, which you then time-block on your calendar. No free tier found.
+- [Motion](https://www.tryagentradar.com/tools/motion.html): AI calendar and project manager that places your tasks into open time on your calendar and reshuffles them when plans change. No free tier found.
+- [Akiflow](https://www.tryagentradar.com/tools/akiflow.html): Task and calendar app that collects tasks from email and other apps into one inbox, with quick capture, time blocking and a daily planning routine. No free tier found.
+- [Reclaim.ai](https://www.tryagentradar.com/tools/reclaim.html): AI calendar assistant for Google and Outlook Calendar that automatically protects focus time, habits and breaks around your meetings. Free tier available.
+- [Saner.AI](https://www.tryagentradar.com/tools/saner-ai.html): AI assistant that brings notes, tasks, email and calendar into one place and suggests what to work on next. Free tier available.
+- [Todoist](https://www.tryagentradar.com/tools/todoist.html): To-do list app with natural-language Quick Add, reminders, and Ramble, a voice feature that turns what you say into separate tasks with dates. Free tier available.
+- [Focusmate](https://www.tryagentradar.com/tools/focusmate.html): Virtual coworking: you book a short video session with another person, each say your goal, and work side by side (often called body doubling). Free tier available.
+- [Goblin Tools](https://www.tryagentradar.com/tools/goblin-tools.html): Collection of small single-task AI tools made mostly for neurodivergent people. Magic ToDo breaks a task into smaller steps; other tools help with tone, time estimates and more. Free tier available.
+- [Tiimo](https://www.tryagentradar.com/tools/tiimo.html): Visual daily planner designed for neurodivergent people, with a timeline of your day, a focus timer, to-dos and AI help splitting tasks into subtasks. Free tier available.
+- [Structured](https://www.tryagentradar.com/tools/structured.html): Day planner that shows your tasks and calendar events together on a single visual timeline. Free tier available.
+- [Brain.fm](https://www.tryagentradar.com/tools/brain-fm.html): Music app with tracks made for focus, relaxation and sleep, sorted by activity such as deep work, light work or learning. No free tier found.
+- [Notion](https://www.tryagentradar.com/tools/notion.html): Workspace for notes, documents and databases, with Notion AI and Notion Agent for chat, drafting and autofill. Free tier available.
+- [ChatGPT](https://www.tryagentradar.com/tools/chatgpt.html): OpenAI's AI assistant, with voice chat on web and mobile that you can use to talk through a brain dump and get it back as a list. Free tier available.
