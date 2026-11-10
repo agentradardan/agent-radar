@@ -1,6 +1,123 @@
 {
-  "redirects": [
-    { "source": "/(.*)", "has": [{ "type": "host", "value": "scattereddad.com" }], "destination": "https://www.tryagentradar.com/adhd/", "permanent": true },
-    { "source": "/(.*)", "has": [{ "type": "host", "value": "www.scattereddad.com" }], "destination": "https://www.tryagentradar.com/adhd/", "permanent": true }
-  ]
+ "routes": [
+  {
+   "src": "^/(.*)$",
+   "has": [
+    {
+     "type": "host",
+     "value": "www.scattereddad.com"
+    }
+   ],
+   "status": 308,
+   "headers": {
+    "Location": "https://scattereddad.com/$1"
+   }
+  },
+  {
+   "src": "^/index(?:\\.html)?$",
+   "has": [
+    {
+     "type": "host",
+     "value": "(?:scattereddad\\.com|agent-radar-git-sdtest-.*\\.vercel\\.app)"
+    }
+   ],
+   "status": 308,
+   "headers": {
+    "Location": "/"
+   }
+  },
+  {
+   "src": "^/(about|start-here|tools|grok-bot-for-adhd|videos|newsletter|affiliate-disclosure|disclaimer|privacy|terms)(?:\\.html|/)$",
+   "has": [
+    {
+     "type": "host",
+     "value": "(?:scattereddad\\.com|agent-radar-git-sdtest-.*\\.vercel\\.app)"
+    }
+   ],
+   "status": 308,
+   "headers": {
+    "Location": "/$1"
+   }
+  },
+  {
+   "src": "^/$",
+   "has": [
+    {
+     "type": "host",
+     "value": "(?:scattereddad\\.com|agent-radar-git-sdtest-.*\\.vercel\\.app)"
+    }
+   ],
+   "dest": "/scattereddad/index.html"
+  },
+  {
+   "src": "^/(about|start-here|tools|grok-bot-for-adhd|videos|newsletter|affiliate-disclosure|disclaimer|privacy|terms)$",
+   "has": [
+    {
+     "type": "host",
+     "value": "(?:scattereddad\\.com|agent-radar-git-sdtest-.*\\.vercel\\.app)"
+    }
+   ],
+   "dest": "/scattereddad/$1.html"
+  },
+  {
+   "src": "^/(robots\\.txt|sitemap\\.xml|llms\\.txt|favicon\\.svg|og\\.png|style\\.css|site\\.js|assets/[a-z0-9./_-]+)$",
+   "has": [
+    {
+     "type": "host",
+     "value": "(?:scattereddad\\.com|agent-radar-git-sdtest-.*\\.vercel\\.app)"
+    }
+   ],
+   "dest": "/scattereddad/$1"
+  },
+  {
+   "src": "^/(?!api/|_vercel/).*$",
+   "has": [
+    {
+     "type": "host",
+     "value": "(?:scattereddad\\.com|agent-radar-git-sdtest-.*\\.vercel\\.app)"
+    }
+   ],
+   "status": 404,
+   "dest": "/scattereddad/404.html"
+  },
+  {
+   "src": "^/scattereddad/?(?:index\\.html)?$",
+   "missing": [
+    {
+     "type": "host",
+     "value": "(?:scattereddad\\.com|agent-radar-git-sdtest-.*\\.vercel\\.app)"
+    }
+   ],
+   "status": 308,
+   "headers": {
+    "Location": "https://scattereddad.com/"
+   }
+  },
+  {
+   "src": "^/scattereddad/(about|start-here|tools|grok-bot-for-adhd|videos|newsletter|affiliate-disclosure|disclaimer|privacy|terms)\\.html$",
+   "missing": [
+    {
+     "type": "host",
+     "value": "(?:scattereddad\\.com|agent-radar-git-sdtest-.*\\.vercel\\.app)"
+    }
+   ],
+   "status": 308,
+   "headers": {
+    "Location": "https://scattereddad.com/$1"
+   }
+  },
+  {
+   "src": "^/scattereddad/(robots\\.txt|sitemap\\.xml|llms\\.txt|404\\.html)$",
+   "missing": [
+    {
+     "type": "host",
+     "value": "(?:scattereddad\\.com|agent-radar-git-sdtest-.*\\.vercel\\.app)"
+    }
+   ],
+   "status": 308,
+   "headers": {
+    "Location": "https://scattereddad.com/"
+   }
+  }
+ ]
 }

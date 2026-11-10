@@ -26,7 +26,10 @@ module.exports = async (req, res) => {
   const email = typeof body.email === 'string' ? body.email.trim().toLowerCase() : '';
   if (!email || email.length > 320 || !EMAIL_RE.test(email)) return send(400, { ok: false, error: 'Please enter a valid email address.' });
 
-  const key = process.env.RESEND_API_KEY, aud = process.env.RESEND_AUDIENCE_ID;
+  // source "scattereddad" (scattereddad.com) goes to its own Resend audience and gets no Agent Radar welcome email.
+  const isSD = body.source === 'scattereddad';
+  const key = process.env.RESEND_API_KEY;
+  const aud = isSD ? process.env.RESEND_AUDIENCE_ID_SCATTEREDDAD : process.env.RESEND_AUDIENCE_ID;
   if (!key || !aud) return send(500, { ok: false, error: 'Signup is not configured yet.' });
 
   try {
@@ -45,6 +48,7 @@ module.exports = async (req, res) => {
       body: JSON.stringify({ email, unsubscribed: false }),
     });
     if (!r.ok) { console.error('resend status', r.status); return send(502, { ok: false, error: 'Could not subscribe right now. Please try again later.' }); }
+    if (isSD) return send(200, { ok: true }); // no Agent Radar welcome for Scattered Dad signups
     // Welcome email (best effort: subscription already succeeded).
     try {
       const u = unsubUrl(email, key);
