@@ -8,7 +8,7 @@ const ROOT = path.join(__dirname, '..'), OUT = path.join(ROOT, 'scattereddad');
 const SITE = 'https://scattereddad.com';
 const UPDATED = '2026-11-09', UPDATED_TXT = 'November 9, 2026';
 const CONTACT = 'agentradar.dan@gmail.com';
-const V = '4'; // asset cache-buster
+const V = '5'; // asset cache-buster
 const tools = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/tools.json'), 'utf8')).filter(t => t.tags.includes('adhd'));
 const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const write = (rel, txt) => { const f = path.join(OUT, rel); fs.mkdirSync(path.dirname(f), { recursive: true }); fs.writeFileSync(f, txt); };

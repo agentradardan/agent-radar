@@ -134,3 +134,5 @@ section{padding:56px 0}.btn{flex:1 1 auto}.tool .btn,.chips a{flex:0 0 auto}
 .phead{padding:40px 0 32px}.steps>li{grid-template-columns:44px 1fr;gap:14px}.steps .n{font-size:2.6rem}
 .one,.recipe{padding:22px}.band{padding:48px 0}
 }
+/* inner pages: keep the reading column left-aligned with the page header */
+.wrap.narrow.prose{max-width:1120px}.prose>*{max-width:760px}
