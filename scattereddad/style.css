@@ -34,7 +34,7 @@ nav.main a:hover{color:var(--acx);text-decoration:underline}nav.main a[aria-curr
 .h1.sm{font-size:clamp(2.6rem,6vw,4.6rem);max-width:16ch}
 .lede{font-size:1.25rem;max-width:36ch;margin:0 0 32px}.lede strong{color:var(--acx)}
 .ctas,.cta-row{display:flex;gap:12px;flex-wrap:wrap}
-.photo-slot{margin:0;background:var(--sf);border:1px solid var(--line);border-radius:var(--r);padding:12px;box-shadow:0 0 0 1px rgba(242,107,29,.2),0 30px 80px -20px rgba(242,107,29,.35)}
+.photo-slot{margin:0;align-self:center;background:var(--sf);border:1px solid var(--line);border-radius:var(--r);padding:12px;box-shadow:0 0 0 1px rgba(242,107,29,.2),0 30px 80px -20px rgba(242,107,29,.35)}
 .photo-slot svg,.photo-slot img{display:block;width:100%;height:auto}
 .phead{padding:64px 0 48px;border-bottom:1px solid var(--line);background:radial-gradient(700px 300px at 90% 0%,rgba(242,107,29,.16),transparent 65%);position:relative}
 .phead::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:linear-gradient(90deg,var(--ac),transparent 50%)}
@@ -127,7 +127,7 @@ nav.main,.hdr-cta{display:none}
 .menu nav{position:absolute;right:0;top:52px;background:var(--sf);border:1px solid var(--line);display:flex;flex-direction:column;min-width:220px;box-shadow:0 20px 40px rgba(0,0,0,.5)}
 .menu nav a{color:var(--tx);padding:0 18px;min-height:48px;display:flex;align-items:center;text-decoration:none;font-weight:600;border-bottom:1px solid var(--line)}
 .menu nav a[aria-current]{color:var(--acx)}
-.hero{padding:32px 0 40px}.hero .wrap{grid-template-columns:1fr;gap:32px}
+.hero{padding:32px 0 40px}.h1{font-size:clamp(3.7rem,15vw,4.6rem)}.h1.sm{font-size:clamp(2.6rem,11vw,3.4rem)}.hero .wrap{grid-template-columns:1fr;gap:32px}
 .stats{grid-template-columns:1fr 1fr}.stat{padding:22px 18px}.stat:nth-child(2){border-right:0}.stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
 .cards,.cards.four,.split,.tools{grid-template-columns:1fr}.card{min-height:0}
 section{padding:56px 0}.btn{flex:1 1 auto}.tool .btn,.chips a{flex:0 0 auto}

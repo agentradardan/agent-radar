@@ -8,7 +8,7 @@ const ROOT = path.join(__dirname, '..'), OUT = path.join(ROOT, 'scattereddad');
 const SITE = 'https://scattereddad.com';
 const UPDATED = '2026-11-09', UPDATED_TXT = 'November 9, 2026';
 const CONTACT = 'agentradar.dan@gmail.com';
-const V = '3'; // asset cache-buster
+const V = '4'; // asset cache-buster
 const tools = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/tools.json'), 'utf8')).filter(t => t.tags.includes('adhd'));
 const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const write = (rel, txt) => { const f = path.join(OUT, rel); fs.mkdirSync(path.dirname(f), { recursive: true }); fs.writeFileSync(f, txt); };
@@ -85,7 +85,7 @@ const home = `<div class="hero"><div class="wrap">
 <div class="htext"><p class="eyebrow">New channel. Starting now.</p>
 <h1 class="h1">Scattered brain. <em>Still showing up.</em></h1>
 <p class="lede">48. Divorced dad. ADHD brain. Twin daughters heading to college. I'm documenting the messy rebuild: <strong>systems, weight loss, and the AI tools that keep the lights on.</strong></p>
-<div class="ctas"><a class="btn p" href="/videos">Watch the latest</a><a class="btn g" href="/start-here">Start here</a></div></div>
+<div class="ctas"><a class="btn p" href="/start-here">Start here</a><a class="btn g" href="/videos">Videos: coming soon</a></div></div>
 <!-- DAN PHOTO SLOT: when Dan supplies a real photo, save it as scattereddad/assets/dan.jpg and replace this figure's SVG with
      <img src="/assets/dan.jpg" alt="Dan, the Scattered Dad" width="960" height="900" fetchpriority="high"> (keep the figure). -->
 <figure class="photo-slot" data-photo-slot="hero">${art()}</figure>
