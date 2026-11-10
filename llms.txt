@@ -1,9 +1,9 @@
 # Agent Radar
 
-> Agent Radar is a directory of 54 AI tools (coding agents, app builders, databases and backends, hosting and deployment, agent frameworks, LLM APIs, automation, focus and planning) with pricing summaries and free-tier information taken from each tool's official site, plus a Prompt Vault of 31 original copy-ready prompts. Data last checked 2026-11-09. Pricing changes often; confirm on the official pricing page.
+> Agent Radar is a directory of 55 AI tools (coding agents, app builders, databases and backends, hosting and deployment, agent frameworks, LLM APIs, automation, focus and planning) with pricing summaries and free-tier information taken from each tool's official site, plus a Prompt Vault of 31 original copy-ready prompts. Data last checked 2026-11-10. Pricing changes often; confirm on the official pricing page.
 
 ## Main pages
-- [Tools directory](https://www.tryagentradar.com/): all 54 tools
+- [Tools directory](https://www.tryagentradar.com/): all 55 tools
 - [Prompt Vault](https://www.tryagentradar.com/vault.html): 31 prompts
 - [Advertise](https://www.tryagentradar.com/advertise.html): featured listings (labeled "Sponsored")
 - [Disclosure](https://www.tryagentradar.com/disclosure.html): affiliate links and sponsored listings policy
@@ -24,7 +24,7 @@
 ## Categories
 - [Agent Frameworks](https://www.tryagentradar.com/category/agent-frameworks.html): 4 tools
 - [App Builders](https://www.tryagentradar.com/category/app-builders.html): 6 tools
-- [Automation](https://www.tryagentradar.com/category/automation.html): 3 tools
+- [Automation](https://www.tryagentradar.com/category/automation.html): 4 tools
 - [Coding Agents](https://www.tryagentradar.com/category/coding-agents.html): 9 tools
 - [Databases & Backends](https://www.tryagentradar.com/category/databases-backends.html): 10 tools
 - [Focus & Planning](https://www.tryagentradar.com/category/focus-planning.html): 13 tools
@@ -98,3 +98,4 @@
 - [Brain.fm](https://www.tryagentradar.com/tools/brain-fm.html): Music app with tracks made for focus, relaxation and sleep, sorted by activity such as deep work, light work or learning. No free tier found.
 - [Notion](https://www.tryagentradar.com/tools/notion.html): Workspace for notes, documents and databases, with Notion AI and Notion Agent for chat, drafting and autofill. Free tier available.
 - [ChatGPT](https://www.tryagentradar.com/tools/chatgpt.html): OpenAI's AI assistant, with voice chat on web and mobile that you can use to talk through a brain dump and get it back as a list. Free tier available.
+- [agent-qa](https://www.tryagentradar.com/tools/agent-qa.html): Natural-language QA for web, Android and iOS through CLI and MCP, with persistent memidex memory and validated self-improvement. Free tier unverified.

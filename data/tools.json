@@ -939,5 +939,23 @@
       ],
       "helps": "Talk out everything on your mind, then ask it to sort the mess into a short list with a first step for each item."
     }
+  },
+  {
+    "id": "agent-qa",
+    "name": "agent-qa",
+    "url": "https://vostride.com",
+    "category": "Automation",
+    "description": "Natural-language QA for web, Android and iOS through CLI and MCP, with persistent memidex memory and validated self-improvement.",
+    "pricing_summary": "Local setup under FSL-1.1-ALv2 with bring-your-own-model access. Requires Node.js 24+ and a target browser/device environment; model and device runtime costs are separate.",
+    "free_tier": null,
+    "pricing_url": "https://vostride.com",
+    "tags": [
+      "testing",
+      "mcp",
+      "memory",
+      "web",
+      "mobile"
+    ],
+    "verified_on": "2026-11-10"
   }
 ]
