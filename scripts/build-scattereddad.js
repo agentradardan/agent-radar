@@ -8,7 +8,11 @@ const ROOT = path.join(__dirname, '..'), OUT = path.join(ROOT, 'scattereddad');
 const SITE = 'https://scattereddad.com';
 const UPDATED = '2026-11-09', UPDATED_TXT = 'November 9, 2026';
 const CONTACT = 'agentradar.dan@gmail.com';
-const V = '5'; // asset cache-buster
+const YT = 'https://www.youtube.com/@scattereddad';
+const XURL = 'https://x.com/ScatteredDad';
+const V = '6'; // asset cache-buster
+const ICON_YT = `<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="2" y="6" width="20" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 9.5v5l5-2.5z" fill="currentColor"/></svg>`;
+const ICON_X = `<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 4l16 16M20 4L4 20" stroke="currentColor" stroke-width="2.5" stroke-linecap="square"/></svg>`;
 const tools = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/tools.json'), 'utf8')).filter(t => t.tags.includes('adhd'));
 const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const write = (rel, txt) => { const f = path.join(OUT, rel); fs.mkdirSync(path.dirname(f), { recursive: true }); fs.writeFileSync(f, txt); };
@@ -52,6 +56,7 @@ ${body}
 </main>
 <footer><div class="wrap">
 <p class="disc">${DISC}</p>
+<nav class="social" aria-label="Social"><a href="${YT}" rel="noopener" target="_blank">${ICON_YT} YouTube<span class="sr"> (opens in a new tab)</span></a><a href="${XURL}" rel="noopener" target="_blank">${ICON_X} X<span class="sr"> (opens in a new tab)</span></a></nav>
 <nav aria-label="Footer"><a href="/about">About</a><a href="/newsletter">Newsletter</a><a href="/affiliate-disclosure">Affiliate disclosure</a><a href="/disclaimer">Disclaimer</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a></nav>
 <p class="fine">&copy; 2026 Scattered Dad. Run by Dan, one guy in Florida with a lot of tabs open.</p>
 </div></footer>
@@ -85,7 +90,7 @@ const home = `<div class="hero"><div class="wrap">
 <div class="htext"><p class="eyebrow">New channel. Starting now.</p>
 <h1 class="h1">Scattered brain. <em>Still showing up.</em></h1>
 <p class="lede">48. Divorced dad. ADHD brain. Twin daughters heading to college. I'm documenting the messy rebuild: <strong>systems, weight loss, and the AI tools that keep the lights on.</strong></p>
-<div class="ctas"><a class="btn p" href="/start-here">Start here</a><a class="btn g" href="/videos">Videos: coming soon</a></div></div>
+<div class="ctas"><a class="btn p" href="/start-here">Start here</a><a class="btn g" href="${YT}" rel="noopener" target="_blank">${ICON_YT} Subscribe on YouTube<span class="sr"> (opens in a new tab)</span></a></div></div>
 <!-- DAN PHOTO SLOT: when Dan supplies a real photo, save it as scattereddad/assets/dan.jpg and replace this figure's SVG with
      <img src="/assets/dan.jpg" alt="Dan, the Scattered Dad" width="960" height="900" fetchpriority="high"> (keep the figure). -->
 <figure class="photo-slot" data-photo-slot="hero">${art()}</figure>
@@ -189,7 +194,7 @@ ${RECIPES.map(([id, h, d, pr, tip], i) => `<div class="recipe" id="${id}"><p cla
 const SERIES = [['Tool test-drives', 'I try one focus or planning tool for real, on camera, and tell you if it survived past week two.'], ['Dad logistics', 'Two households, one calendar, college prep for two. The systems that keep it from falling apart.'], ['The weight log', 'My weight-loss journey, my numbers, my meals. Not a program. Not a promise. Just what I do.'], ['Grok Bot setups', 'Screen-share walkthroughs of the setups on this site, and what I changed after living with them.']];
 const videos = pageHead('Videos', 'First videos are coming soon.', "I'm not going to pretend there's a back catalog. Here's what's planned.") + `<div class="wrap">
 <div class="cards four">${SERIES.map(([h, d], i) => `<div class="card static"><span class="num">Series ${String(i + 1).padStart(2, '0')}</span><h3>${h}</h3><p>${d}</p><span class="tag">Planned</span></div>`).join('')}</div>
-<div class="narrow-l"><div class="box mt"><h3>Where to watch</h3><p>Channel links go here the day they're live. Want a heads-up when the first one drops?</p><a class="btn p" href="/newsletter">Get the newsletter</a></div>
+<div class="narrow-l"><div class="box mt"><h3>Where to watch</h3><p>The Scattered Dad channel is live. First videos are still coming; subscribe so you don't miss them.</p><p class="cta-row"><a class="btn p" href="${YT}" rel="noopener" target="_blank">${ICON_YT} Subscribe on YouTube<span class="sr"> (opens in a new tab)</span></a><a class="btn g" href="${XURL}" rel="noopener" target="_blank">${ICON_X} Follow on X<span class="sr"> (opens in a new tab)</span></a></p><p>Want a heads-up in your inbox when the first one drops?</p><a class="btn g" href="/newsletter">Get the newsletter</a></div>
 <p class="note">Anything I say on camera is personal experience, not medical, mental-health or nutrition advice. If a video ever includes a paid link or sponsor, I'll say so in the video and at the top of the description.</p></div>
 </div>`;
 
@@ -241,7 +246,7 @@ const notFound = pageHead('404', 'Lost the page. Classic.', 'Happens to the best
 
 const PAGES = [
   { p: '/', file: 'index.html', title: 'Scattered Dad: ADHD, divorced-dad life and the tools that keep me on track', desc: "Dan, 48, divorced dad with an ADHD brain, documenting the rebuild: systems, weight loss and the AI tools that help me focus. Not medical advice.", body: home, cur: '/', bodyClass: 'home',
-    jsonld: ld({ '@context': 'https://schema.org', '@graph': [{ '@type': 'WebSite', name: 'Scattered Dad', url: SITE + '/' }, { '@type': 'Person', name: 'Dan', url: SITE + '/about', description: '48-year-old divorced dad with ADHD documenting systems, weight loss and AI tools on camera.' }] }) },
+    jsonld: ld({ '@context': 'https://schema.org', '@graph': [{ '@type': 'WebSite', name: 'Scattered Dad', url: SITE + '/' }, { '@type': 'Person', name: 'Dan', url: SITE + '/about', description: '48-year-old divorced dad with ADHD documenting systems, weight loss and AI tools on camera.', sameAs: [YT, XURL] }] }) },
   { p: '/about', title: "About Dan | Scattered Dad", desc: "Divorced dad, ADHD brain, twin daughters heading to college. What the Scattered Dad channel covers, and what it isn't.", body: about, cur: '/about', type: 'profile' },
   { p: '/start-here', title: 'Start here | Scattered Dad', desc: 'New to Scattered Dad? Three steps: meet Dan, try one free tool, get the newsletter.', body: start, cur: '/start-here' },
   { p: '/tools', title: 'Tools that help me focus (ADHD-friendly planners & apps) | Scattered Dad', desc: `${tools.length} planners, focus and brain-dump tools sorted by the problem they help with, with prices checked on official sites. Not medical advice.`, body: toolsBody, cur: '/tools' },

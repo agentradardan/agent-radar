@@ -20,7 +20,8 @@ nav.main a{color:var(--tx);text-decoration:none;font-weight:600;font-size:.9rem;
 nav.main a:hover{color:var(--acx);text-decoration:underline}nav.main a[aria-current]{border-bottom-color:var(--ac)}
 .menu{display:none}
 /* buttons */
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 24px;border-radius:var(--r);font-weight:800;text-transform:uppercase;letter-spacing:.08em;font-size:.95rem;text-decoration:none;border:2px solid var(--ac);text-align:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:var(--r);font-weight:800;text-transform:uppercase;letter-spacing:.08em;font-size:.95rem;text-decoration:none;border:2px solid var(--ac);text-align:center}
+.btn svg{flex:none}
 .btn.p{background:var(--ac);color:var(--on)}.btn.g{color:var(--tx);border-color:var(--tx);background:transparent}
 .btn:hover{text-decoration:underline}.btn.p:hover{background:var(--acx);border-color:var(--acx)}.btn.g:hover{border-color:var(--acx);color:var(--acx)}
 .btn.sm{min-height:44px;padding:0 16px;font-size:.85rem}
@@ -114,6 +115,10 @@ a.card:hover{border-color:var(--ac)}a.card:hover h3{text-decoration:underline}
 /* footer */
 footer{padding:48px 0;border-top:1px solid var(--line);color:var(--mu);font-size:.95rem}
 footer .disc{border:1px solid var(--line);padding:16px;margin:0 0 20px;color:var(--tx);border-radius:var(--r)}
+footer .social{display:flex;flex-wrap:wrap;gap:8px 20px;margin:0 0 16px}
+footer .social a{display:inline-flex;align-items:center;gap:8px;color:var(--tx);text-decoration:none;font-weight:700;min-height:44px;padding:0 4px}
+footer .social a:hover{color:var(--acx);text-decoration:underline}
+footer .social svg{flex:none}
 footer nav{display:flex;flex-wrap:wrap;gap:0 4px;margin-left:-8px}footer nav a{color:var(--mu);padding:0 8px;min-height:44px;display:inline-flex;align-items:center}
 footer nav a:hover{color:var(--acx)}.fine{margin:8px 0 0}
 /* motion: one-time fade only when the user allows motion */
