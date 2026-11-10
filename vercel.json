@@ -1,0 +1,6 @@
+{
+  "redirects": [
+    { "source": "/(.*)", "has": [{ "type": "host", "value": "scattereddad.com" }], "destination": "https://www.tryagentradar.com/adhd/", "permanent": true },
+    { "source": "/(.*)", "has": [{ "type": "host", "value": "www.scattereddad.com" }], "destination": "https://www.tryagentradar.com/adhd/", "permanent": true }
+  ]
+}
